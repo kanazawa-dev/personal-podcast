@@ -9,26 +9,25 @@ Este proyecto usa un generador estático para crear un feed RSS compatible con A
 ### Arquitectura
 
 ```
-┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│  Google     │     │   GitHub     │     │  GitHub     │
-│  Drive      │────▶│   Repo       │────▶│  Pages      │
-│  (audio)    │     │  (episodios) │     │  (RSS+Web)  │
-└─────────────┘     └──────────────┘     └─────────────┘
-                           │
-                           ▼
-                    ┌──────────────┐
-                    │  GitHub      │
-                    │  Actions     │
-                    │  (generador) │
-                    └──────────────┘
+┌─────────────────┐     ┌──────────────┐     ┌─────────────┐
+│  GitHub         │     │   GitHub     │     │  GitHub     │
+│  Releases       │────▶│   Repo       │────▶│  Pages      │
+│  (audio + img)  │     │  (episodios) │     │  (RSS+Web)  │
+└─────────────────┘     └──────────────┘     └─────────────┘
+                               │
+                               ▼
+                        ┌──────────────┐
+                        │  GitHub      │
+                        │  Actions     │
+                        │  (generador) │
+                        └──────────────┘
 ```
 
-1. **Subís el audio** (`.m4a`) a Google Drive y copiás el link de compartir.
-2. **Creás un archivo Markdown** en `episodes/` con los metadatos del episodio (título, fecha, link de Drive, etc.).
+1. **Subís el audio** (`.m4a`) como asset de un **GitHub Release** en este mismo repo.
+2. **Creás un archivo Markdown** en `episodes/` con los metadatos del episodio (título, fecha, link al release, etc.).
 3. **Hacés `git push`** a la rama `main`.
 4. **GitHub Actions** corre `generate.py`, que:
    - Lee todos los episodios de la carpeta `episodes/`
-   - Convierte los links de Drive a URLs de descarga directa
    - Genera el feed RSS (`feed.xml`) compatible con Apple Podcasts
    - Genera la página web (`index.html`) con reproductor de audio
 5. **GitHub Pages** sirve los archivos generados automáticamente.
@@ -44,31 +43,31 @@ El feed sigue la especificación RSS 2.0 con el namespace de iTunes (`<itunes:*>
 - Duración
 - Imagen opcional
 
-### Por qué Drive (por ahora)
+### Por qué GitHub Releases
 
-Drive es gratis y funciona para empezar. El generador convierte automáticamente los links de compartir de Drive:
+**GitHub Releases** es la forma más simple y confiable de hostear archivos de audio para un podcast personal:
 
-```
-https://drive.google.com/file/d/ID/view?usp=sharing
-```
+- ✅ **URLs permanentes**: `https://github.com/usuario/repo/releases/download/vX.Y.Z/archivo.m4a`
+- ✅ **Sin límites de ancho de banda** para repos públicos
+- ✅ **CORS habilitado**: funciona en navegadores y apps de podcast
+- ✅ **Sin autenticación**: cualquiera puede descargar
+- ✅ **Ya tenés GitHub**: no necesitás otra cuenta ni servicio
 
-en links de descarga directa:
-
-```
-https://drive.google.com/uc?export=download&id=ID
-```
-
-> ⚠️ **Limitación de Drive**: si descargás el mismo archivo muchas veces en poco tiempo, Google puede mostrar una página de advertencia en lugar del audio. Para uso personal es raro que pase. Cuando quieras escalar, migrá a Cloudflare R2, S3 o similar — solo cambiás la URL y listo.
+> **Nota**: Cuando un usuario accede a la URL, GitHub redirige a una URL temporal de Azure Blob Storage. Esto es transparente tanto para navegadores como para agregadores de podcasts.
 
 ## Agregar un episodio
 
-### 1. Subir el audio a Drive
+### 1. Crear un GitHub Release con el audio
 
-1. Subí tu archivo `.m4a` a Google Drive.
-2. Clic derecho en el archivo > **Compartir** > **Cambiar a "Cualquiera con el enlace"**.
-3. Copiá el link. Se ve así:
+1. Andá a la pestaña **Releases** de tu repo en GitHub.
+2. Clic en **Draft a new release**.
+3. Elegí una etiqueta de versión (ej: `v1.0.0`, `v1.1.0`).
+4. Título: nombre del episodio.
+5. En **Attach binaries**, arrastrá tu archivo `.m4a`.
+6. Publicá el release.
+7. Copiá la URL del asset. Se ve así:
    ```
-   https://drive.google.com/file/d/1A2B3C4D5E6F7G8H9I0J/view?usp=sharing
+   https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a
    ```
 
 ### 2. Crear el archivo del episodio
@@ -80,9 +79,9 @@ Crear un archivo `episodes/YYYY-MM-DD-titulo-del-episodio.md`:
 title: "Episodio 1 - El principio"
 date: 2026-05-04
 duration: "42:15"
-audio_url: "https://drive.google.com/file/d/TU_ID_DEL_AUDIO/view?usp=sharing"
-audio_size: 20480000
-image_url: "https://drive.google.com/file/d/TU_ID_DE_LA_IMAGEN/view?usp=sharing"
+audio_url: "https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a"
+audio_size: 58346917
+image_url: "https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/cover-episodio.jpg"
 ---
 
 Descripción del episodio. Puede ser tan larga como quieras.
@@ -101,6 +100,7 @@ Puede incluir markdown básico como **negrita** o [links](https://ejemplo.com).
 | `image_url` | No | Link de compartir de Google Drive a una imagen de portada del episodio |
 
 **Imagen del episodio:**
+- Subila como asset del mismo GitHub Release donde está el audio
 - Formatos recomendados: `.jpg` o `.png`
 - Tamaño recomendado: 1400x1400px (mínimo 600x600px para iTunes)
 - Si no especificás `image_url`, el episodio usa la imagen general del podcast definida en `config.yml`
@@ -148,11 +148,11 @@ image: "https://kanazawa-dev.github.io/personal-podcast/cover.jpg"
 
 ## Migrar a otro hosting de audio
 
-Cuando quieras dejar de usar Google Drive (por ejemplo, para evitar las limitaciones de descarga):
+Si en algún momento querés dejar de usar GitHub Releases (por ejemplo, si necesitás más de 2GB por archivo o querés analytics de reproducción):
 
 1. Subí tus audios a otro servicio (Cloudflare R2, AWS S3, Backblaze B2, etc.).
-2. Obtené URLs directas a los archivos (no páginas intermedias).
-3. En cada archivo de episodio en `episodes/`, cambiá el campo `audio_url` por la nueva URL directa.
+2. Obtené URLs directas y permanentes a los archivos.
+3. En cada archivo de episodio en `episodes/`, cambiá el campo `audio_url` por la nueva URL.
 4. Hacé `git push`.
 
 El resto del sistema funciona exactamente igual. No hay que tocar nada del generador.
