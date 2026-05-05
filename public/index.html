@@ -57,7 +57,7 @@
 
     .episodes-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 2rem;
     }
 
@@ -322,6 +322,13 @@
     }
 
     /* Responsive */
+    @media (max-width: 1024px) {
+      .episodes-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+
     @media (max-width: 768px) {
       .container {
         padding: 2.5rem 1rem 1.5rem;
@@ -526,13 +533,13 @@
       
       <div class="episodes-column">
         <div class="column-header">
-          <h2 class="section-title">Mis episodios</h2>
+          <h2 class="section-title">Ingeniería</h2>
           <div class="column-nav">
-            <button class="scroll-btn" onclick="scrollColumn('personal', -200)" aria-label="Subir">&#8593;</button>
-            <button class="scroll-btn" onclick="scrollColumn('personal', 200)" aria-label="Bajar">&#8595;</button>
+            <button class="scroll-btn" onclick="scrollColumn('ingenieria', -200)" aria-label="Subir">&#8593;</button>
+            <button class="scroll-btn" onclick="scrollColumn('ingenieria', 200)" aria-label="Bajar">&#8595;</button>
           </div>
         </div>
-        <div class="episodes-list" id="list-personal">
+        <div class="episodes-list" id="list-ingenieria">
           
           <article class="episode">
             <div class="episode-header">
@@ -553,9 +560,11 @@ El mensaje central es brutalmente simple: **el código limpio es una responsabil
 Martin propone principios concretos: nombres que revelen intención, funciones que hagan UNA sola cosa, comentarios que no compensen código confuso, y la disciplina de refactorizar constantemente. Pero lo más importante es la mentalidad: el código que escribís hoy va a ser leído cientos de veces. Escribilo como si el próximo desarrollador fuera un psicópata violento que sabe dónde vivís.
 
 ¿Código limpio es más lento? Al principio sí. Pero el código sucio te mata en el largo plazo. La elección es simple: inversión inteligente o deuda técnica letal.</div>
+            
             <audio controls preload="metadata">
               <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a" type="audio/mp4">
             </audio>
+            
           </article>
           
           <article class="episode">
@@ -571,9 +580,11 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
               </div>
             </div>
             <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
+            
             <audio controls preload="metadata">
               <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a" type="audio/mp4">
             </audio>
+            
           </article>
           
           <article class="episode">
@@ -597,9 +608,11 @@ Lo que me gusta de Pressman es que no se olvida de lo obvio: el software es un p
 El autor insiste en que antes de diseñar una solución técnica, tenés que entender el problema. Suena simple, pero mirá cuántos proyectos fallan por empezar a codear sin saber qué están resolviendo.
 
 En este episodio repasamos por qué este libro sigue siendo relevante, desde aplicaciones web hasta sistemas heredados, y por qué un enfoque de ingeniería adaptable es la única forma de garantizar calidad a largo plazo.</div>
+            
             <audio controls preload="metadata">
               <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a" type="audio/mp4">
             </audio>
+            
           </article>
           
         </div>
@@ -609,19 +622,45 @@ En este episodio repasamos por qué este libro sigue siendo relevante, desde apl
       
       <div class="episodes-column">
         <div class="column-header">
-          <h2 class="section-title">Encargos</h2>
+          <h2 class="section-title">Crianza</h2>
           <div class="column-nav">
-            <button class="scroll-btn" onclick="scrollColumn('encargo', -200)" aria-label="Subir">&#8593;</button>
-            <button class="scroll-btn" onclick="scrollColumn('encargo', 200)" aria-label="Bajar">&#8595;</button>
+            <button class="scroll-btn" onclick="scrollColumn('crianza', -200)" aria-label="Subir">&#8593;</button>
+            <button class="scroll-btn" onclick="scrollColumn('crianza', 200)" aria-label="Bajar">&#8595;</button>
           </div>
         </div>
-        <div class="episodes-list" id="list-encargo">
+        <div class="episodes-list" id="list-crianza">
+          
+          <article class="episode">
+            <div class="episode-header">
+              <div class="episode-number">2</div>
+              <div class="episode-info">
+                <h2>Episodio 5 - Cómo integrar el cerebro de tus hijos</h2>
+                <div class="meta">
+                  <span>2026-05-08</span>
+                  <span class="meta-separator"></span>
+                  <span>31:43</span>
+                </div>
+              </div>
+            </div>
+            <div class="episode-description">En este episodio hablamos de cómo **integrar el cerebro de los niños** a través de estrategias prácticas que fortalecen las conexiones neuronales y promueven un desarrollo emocional equilibrado.
+
+El cerebro infantil no es una miniatura del adulto: está en constante construcción. Cada experiencia, cada interacción, cada momento de calma o caos deja huella en su arquitectura neural. Por eso, entender cómo funciona el cerebro de nuestros hijos no es un lujo académico — es una herramienta esencial para criar con intención.
+
+Exploramos cómo las rutinas, el contacto físico, el juego libre y la validación emocional contribuyen a una integración cerebral saludada. Un cerebro integrado es un cerebro que puede regular emociones, tomar decisiones conscientes y construir relaciones significativas.
+
+Este episodio es para quienes creen que criar no es solo alimentar y vestir, sino **acompañar la construcción de una mente**.</div>
+            
+            <audio controls preload="metadata">
+              <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v.1.4.0/Como_integrar_el_cerebro_de_tus_hijos.m4a" type="audio/mp4">
+            </audio>
+            
+          </article>
           
           <article class="episode">
             <div class="episode-header">
               <div class="episode-number">1</div>
               <div class="episode-info">
-                <h2>Episodio 4 : Hoy hablamos de crianza (Encargo para Ignacio)</h2>
+                <h2>Episodio 4 : Hoy hablamos de crianza</h2>
                 <div class="meta">
                   <span>2026-05-07</span>
                   <span class="meta-separator"></span>
@@ -636,9 +675,48 @@ La pantalla no es un peligro por sí sola, pero sí lo es cuando reemplaza lo es
 Criar sin pantallas no es un capricho romántico. Es una decisión consciente de priorizar la **neuroplasticidad natural**, la regulación emocional a través del cuerpo, y el aprendizaje por descubrimiento sobre la estimulación pasiva. El mundo real, con toda su lentitud y fricción, es el mejor entorno para que un cerebro en desarrollo se conecte de verdad.
 
 Este episodio es una invitación a confiar en lo básico: menos contenido, más presencia. Menos scroll, más contacto.</div>
+            
             <audio controls preload="metadata">
               <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a" type="audio/mp4">
             </audio>
+            
+          </article>
+          
+        </div>
+      </div>
+      
+
+      
+      <div class="episodes-column">
+        <div class="column-header">
+          <h2 class="section-title">Política</h2>
+          <div class="column-nav">
+            <button class="scroll-btn" onclick="scrollColumn('politica', -200)" aria-label="Subir">&#8593;</button>
+            <button class="scroll-btn" onclick="scrollColumn('politica', 200)" aria-label="Bajar">&#8595;</button>
+          </div>
+        </div>
+        <div class="episodes-list" id="list-politica">
+          
+          <article class="episode">
+            <div class="episode-header">
+              <div class="episode-number">1</div>
+              <div class="episode-info">
+                <h2>Episodio 6 - El Príncipe de Maquiavelo</h2>
+                <div class="meta">
+                  <span>2026-05-09</span>
+                  <span class="meta-separator"></span>
+                  <span>00:00</span>
+                </div>
+              </div>
+            </div>
+            <div class="episode-description">En este episodio hablamos de **El Príncipe** de Nicolás Maquiavelo — el tratado político más influyente y controvertido de la historia occidental. Escrito en 1513, sigue siendo lectura obligada para entender el poder, la astucia y la realidad de la política tal cual es, no como debería ser.
+
+Maquiavelo rompe con la tradición medieval de justificar el poder desde la moral cristiana. Para él, un gobernante debe ser **león y zorro a la vez**: fuerte para defenderse, astuto para no caer en trampas. El fin justifica los medios no como excusa para la maldad, sino como reconocimiento de que en el mundo real, la bondad pura es una debilidad letal.
+
+Analizamos los conceptos centrales: la virtù (capacidad de acción), la fortuna (lo que escapa al control), el uso estratégico del miedo y el amor, y por qué Maquiavelo sigue siendo relevante en democracias modernas donde el marketing político reemplazó a las espadas.
+
+Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un manual del mal, es una radiografía despiadada de cómo funciona el poder humano.</div>
+            
           </article>
           
         </div>

@@ -59,15 +59,16 @@ def main():
             "audio_size": meta.get("audio_size", 0),
             "description": body,
             "guid": f"{config['base_url']}/episodes/{path.stem}",
-            "type": meta.get("type", "personal"),
+            "category": meta.get("category", "ingenieria"),
         })
 
     # Ordenar por fecha descendente
     episodes.sort(key=lambda e: e["date"], reverse=True)
 
-    # Separar por tipo para la web
-    episodes_personal = [e for e in episodes if e["type"] == "personal"]
-    episodes_encargo = [e for e in episodes if e["type"] == "encargo"]
+    # Separar por categoría para la web
+    episodes_ingenieria = [e for e in episodes if e["category"] == "ingenieria"]
+    episodes_crianza = [e for e in episodes if e["category"] == "crianza"]
+    episodes_politica = [e for e in episodes if e["category"] == "politica"]
 
     PUBLIC_DIR.mkdir(exist_ok=True)
 
@@ -82,15 +83,16 @@ def main():
 
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), autoescape=True)
 
-    # Generar feed RSS
+    # Generar feed RSS (solo episodios con audio)
+    feed_episodes = [e for e in episodes if e["audio_url"]]
     feed_tpl = env.get_template("feed.xml")
     with open(PUBLIC_DIR / "feed.xml", "w", encoding="utf-8") as f:
-        f.write(feed_tpl.render(config=config, episodes=episodes))
+        f.write(feed_tpl.render(config=config, episodes=feed_episodes))
 
     # Generar sitio web
     index_tpl = env.get_template("index.html")
     with open(PUBLIC_DIR / "index.html", "w", encoding="utf-8") as f:
-        f.write(index_tpl.render(config=config, episodes=episodes, episodes_personal=episodes_personal, episodes_encargo=episodes_encargo))
+        f.write(index_tpl.render(config=config, episodes=episodes, episodes_ingenieria=episodes_ingenieria, episodes_crianza=episodes_crianza, episodes_politica=episodes_politica))
 
     print(f"Generados {len(episodes)} episodios en {PUBLIC_DIR}")
 

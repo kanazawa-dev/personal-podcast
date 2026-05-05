@@ -57,7 +57,7 @@
 
     .episodes-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 2rem;
     }
 
@@ -322,6 +322,13 @@
     }
 
     /* Responsive */
+    @media (max-width: 1024px) {
+      .episodes-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+
     @media (max-width: 768px) {
       .container {
         padding: 2.5rem 1rem 1.5rem;
@@ -523,17 +530,17 @@
     <div class="divider"></div>
 
     <main class="episodes-grid">
-      {% if episodes_personal %}
+      {% if episodes_ingenieria %}
       <div class="episodes-column">
         <div class="column-header">
-          <h2 class="section-title">Mis episodios</h2>
+          <h2 class="section-title">Ingeniería</h2>
           <div class="column-nav">
-            <button class="scroll-btn" onclick="scrollColumn('personal', -200)" aria-label="Subir">&#8593;</button>
-            <button class="scroll-btn" onclick="scrollColumn('personal', 200)" aria-label="Bajar">&#8595;</button>
+            <button class="scroll-btn" onclick="scrollColumn('ingenieria', -200)" aria-label="Subir">&#8593;</button>
+            <button class="scroll-btn" onclick="scrollColumn('ingenieria', 200)" aria-label="Bajar">&#8595;</button>
           </div>
         </div>
-        <div class="episodes-list" id="list-personal">
-          {% for episode in episodes_personal %}
+        <div class="episodes-list" id="list-ingenieria">
+          {% for episode in episodes_ingenieria %}
           <article class="episode">
             <div class="episode-header">
               <div class="episode-number">{{ loop.revindex }}</div>
@@ -547,26 +554,28 @@
               </div>
             </div>
             <div class="episode-description">{{ episode.description }}</div>
+            {% if episode.audio_url %}
             <audio controls preload="metadata">
               <source src="{{ episode.audio_url }}" type="audio/mp4">
             </audio>
+            {% endif %}
           </article>
           {% endfor %}
         </div>
       </div>
       {% endif %}
 
-      {% if episodes_encargo %}
+      {% if episodes_crianza %}
       <div class="episodes-column">
         <div class="column-header">
-          <h2 class="section-title">Encargos</h2>
+          <h2 class="section-title">Crianza</h2>
           <div class="column-nav">
-            <button class="scroll-btn" onclick="scrollColumn('encargo', -200)" aria-label="Subir">&#8593;</button>
-            <button class="scroll-btn" onclick="scrollColumn('encargo', 200)" aria-label="Bajar">&#8595;</button>
+            <button class="scroll-btn" onclick="scrollColumn('crianza', -200)" aria-label="Subir">&#8593;</button>
+            <button class="scroll-btn" onclick="scrollColumn('crianza', 200)" aria-label="Bajar">&#8595;</button>
           </div>
         </div>
-        <div class="episodes-list" id="list-encargo">
-          {% for episode in episodes_encargo %}
+        <div class="episodes-list" id="list-crianza">
+          {% for episode in episodes_crianza %}
           <article class="episode">
             <div class="episode-header">
               <div class="episode-number">{{ loop.revindex }}</div>
@@ -580,9 +589,46 @@
               </div>
             </div>
             <div class="episode-description">{{ episode.description }}</div>
+            {% if episode.audio_url %}
             <audio controls preload="metadata">
               <source src="{{ episode.audio_url }}" type="audio/mp4">
             </audio>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% if episodes_politica %}
+      <div class="episodes-column">
+        <div class="column-header">
+          <h2 class="section-title">Política</h2>
+          <div class="column-nav">
+            <button class="scroll-btn" onclick="scrollColumn('politica', -200)" aria-label="Subir">&#8593;</button>
+            <button class="scroll-btn" onclick="scrollColumn('politica', 200)" aria-label="Bajar">&#8595;</button>
+          </div>
+        </div>
+        <div class="episodes-list" id="list-politica">
+          {% for episode in episodes_politica %}
+          <article class="episode">
+            <div class="episode-header">
+              <div class="episode-number">{{ loop.revindex }}</div>
+              <div class="episode-info">
+                <h2>{{ episode.title }}</h2>
+                <div class="meta">
+                  <span>{{ episode.date }}</span>
+                  <span class="meta-separator"></span>
+                  <span>{{ episode.duration }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="episode-description">{{ episode.description }}</div>
+            {% if episode.audio_url %}
+            <audio controls preload="metadata">
+              <source src="{{ episode.audio_url }}" type="audio/mp4">
+            </audio>
+            {% endif %}
           </article>
           {% endfor %}
         </div>
