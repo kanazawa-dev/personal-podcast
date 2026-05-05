@@ -66,6 +66,15 @@ def main():
 
     PUBLIC_DIR.mkdir(exist_ok=True)
 
+    # Copiar assets estáticos
+    import shutil
+    static_files = ['manifest.json', 'service-worker.js', 'cover.jpg', 'icon-192.png', 'icon-512.png']
+    for filename in static_files:
+        src = ROOT / filename
+        dst = PUBLIC_DIR / filename
+        if src.exists():
+            shutil.copy2(src, dst)
+
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), autoescape=True)
 
     # Generar feed RSS

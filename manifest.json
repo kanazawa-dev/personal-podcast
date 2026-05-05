@@ -1,0 +1,25 @@
+{
+  "name": "Podcast Kanazawa",
+  "short_name": "Kanazawa",
+  "description": "Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.",
+  "start_url": "/personal-podcast/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#ff6b00",
+  "orientation": "portrait",
+  "scope": "/personal-podcast/",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
