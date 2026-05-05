@@ -3,35 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#1a1a2e">
+  <meta name="theme-color" content="#f1f1f1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Kanazawa">
   <meta name="description" content="Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.">
-  
+
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icon-192.png">
-  
+
   <!-- Open Graph -->
   <meta property="og:title" content="Podcast Kanazawa">
   <meta property="og:description" content="Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.">
   <meta property="og:image" content="https://kanazawa-dev.github.io/personal-podcast/cover-lofi.jpg">
   <meta property="og:type" content="website">
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;700&display=swap" rel="stylesheet">
+
   <title>Podcast Kanazawa</title>
   <style>
     :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --text: #f5f5f5;
-      --text-secondary: #737373;
-      --border: #262626;
-      --accent: #e5e5e5;
+      --color-canvas-ice: #f1f1f1;
+      --color-ink-black: #0e0e0e;
+      --color-border-fog: #e5e7eb;
+      --color-true-white: #ffffff;
+      --font-sctogroteska: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --text-body: 16px;
+      --leading-body: 1.17;
+      --tracking-body: -0.48px;
+      --text-subheading: 24px;
+      --leading-subheading: 1.13;
+      --tracking-subheading: -0.72px;
+      --text-heading: 48px;
+      --leading-heading: 1;
+      --tracking-heading: -1.92px;
+      --spacing-20: 20px;
+      --spacing-30: 30px;
+      --spacing-80: 80px;
     }
 
     * {
@@ -41,306 +52,303 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
+      font-family: var(--font-sctogroteska);
+      background-color: var(--color-canvas-ice);
+      color: var(--color-ink-black);
+      line-height: var(--leading-body);
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
 
+    /* Layout */
     .container {
-      max-width: 640px;
+      max-width: 720px;
       margin: 0 auto;
-      padding: 4rem 1.5rem 2rem;
+      padding: var(--spacing-80) var(--spacing-30);
     }
 
-    /* Header */
+    /* Navigation */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--spacing-80);
+    }
+
+    .nav-brand {
+      font-size: var(--text-body);
+      font-weight: 700;
+      letter-spacing: var(--tracking-body);
+      color: var(--color-ink-black);
+    }
+
+    .nav-link {
+      font-size: var(--text-body);
+      font-weight: 700;
+      letter-spacing: var(--tracking-body);
+      color: var(--color-ink-black);
+      text-decoration: none;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      outline: none;
+      border-bottom: 1px solid var(--color-ink-black);
+    }
+
+    /* Hero */
     .hero {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .cover-art {
-      display: inline-block;
-      margin-bottom: 1.75rem;
-    }
-
-    .cover-art img {
-      width: 180px;
-      height: 180px;
-      border-radius: 12px;
-      object-fit: cover;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: var(--spacing-80);
     }
 
     .hero h1 {
-      font-size: 1.5rem;
-      font-weight: 500;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
+      font-size: var(--text-heading);
+      font-weight: 700;
+      line-height: var(--leading-heading);
+      letter-spacing: var(--tracking-heading);
+      margin-bottom: var(--spacing-30);
     }
 
     .hero p {
-      color: var(--text-secondary);
-      font-size: 0.9375rem;
-      font-weight: 400;
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    .author-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      font-size: 0.8125rem;
-      color: var(--text-secondary);
-    }
-
-    /* Divider */
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 2rem;
+      font-size: var(--text-subheading);
+      font-weight: 300;
+      line-height: var(--leading-subheading);
+      letter-spacing: var(--tracking-subheading);
+      max-width: 600px;
     }
 
     /* Episodes */
+    .episodes {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-80);
+    }
+
     .episode {
-      padding: 1.5rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .episode:first-child {
-      padding-top: 0;
-    }
-
-    .episode:last-child {
-      border-bottom: none;
+      border-top: 1px solid var(--color-border-fog);
+      padding-top: var(--spacing-30);
     }
 
     .episode-header {
       display: flex;
-      align-items: flex-start;
-      gap: 0.875rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .episode-number {
-      flex-shrink: 0;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text-secondary);
-    }
-
-    .episode-info {
-      flex: 1;
-      min-width: 0;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: var(--spacing-20);
+      gap: var(--spacing-20);
     }
 
     .episode h2 {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-      line-height: 1.4;
-      letter-spacing: -0.01em;
+      font-size: var(--text-subheading);
+      font-weight: 700;
+      line-height: var(--leading-subheading);
+      letter-spacing: var(--tracking-subheading);
+      flex: 1;
     }
 
-    .meta {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8125rem;
-      color: var(--text-secondary);
-    }
-
-    .meta-separator {
-      width: 3px;
-      height: 3px;
-      background: var(--text-secondary);
-      border-radius: 50%;
-      opacity: 0.4;
+    .episode-meta {
+      font-size: var(--text-body);
+      font-weight: 300;
+      letter-spacing: var(--tracking-body);
+      color: var(--color-ink-black);
+      opacity: 0.6;
+      white-space: nowrap;
     }
 
     .episode-description {
-      color: var(--text-secondary);
-      font-size: 0.875rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+      font-size: var(--text-body);
+      font-weight: 300;
+      line-height: var(--leading-body);
+      letter-spacing: var(--tracking-body);
+      margin-bottom: var(--spacing-30);
+      max-width: 600px;
     }
 
     /* Audio player */
     audio {
       width: 100%;
-      height: 36px;
-      border-radius: 6px;
-      opacity: 0.85;
+      height: 40px;
+      border-radius: 0;
+      opacity: 0.9;
     }
 
     audio::-webkit-media-controls-panel {
-      background: var(--surface);
+      background: var(--color-canvas-ice);
     }
 
     audio::-webkit-media-controls-enclosure {
-      background: var(--surface);
-      border-radius: 6px;
+      background: var(--color-canvas-ice);
+      border-radius: 0;
     }
 
     /* Subscribe */
     .subscribe {
-      margin: 3rem 0 2rem;
-      padding: 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      text-align: center;
+      margin-top: var(--spacing-80);
+      padding-top: var(--spacing-30);
+      border-top: 1px solid var(--color-border-fog);
     }
 
     .subscribe h3 {
-      font-size: 0.9375rem;
-      font-weight: 500;
-      margin-bottom: 0.25rem;
-      color: var(--text);
+      font-size: var(--text-subheading);
+      font-weight: 700;
+      line-height: var(--leading-subheading);
+      letter-spacing: var(--tracking-subheading);
+      margin-bottom: var(--spacing-20);
     }
 
     .subscribe p {
-      color: var(--text-secondary);
-      font-size: 0.8125rem;
-      margin-bottom: 1rem;
+      font-size: var(--text-body);
+      font-weight: 300;
+      line-height: var(--leading-body);
+      letter-spacing: var(--tracking-body);
+      margin-bottom: var(--spacing-30);
     }
 
     .feed-url {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 0.625rem 1rem;
-      border-radius: 8px;
+      display: inline-block;
       font-family: 'SF Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      word-break: break-all;
+      font-size: var(--text-body);
+      font-weight: 300;
+      color: var(--color-ink-black);
+      background: transparent;
+      border: 1px solid var(--color-border-fog);
+      padding: var(--spacing-20) var(--spacing-30);
       cursor: pointer;
-      transition: border-color 0.2s ease;
       user-select: all;
+      word-break: break-all;
     }
 
-    .feed-url:hover {
-      border-color: var(--text-secondary);
+    .feed-url:hover,
+    .feed-url:focus {
+      border-color: var(--color-ink-black);
+      outline: none;
     }
 
     /* Install button */
     #install-btn {
       display: none;
       width: 100%;
-      padding: 0.875rem;
-      background: var(--text);
-      color: var(--bg);
-      border: none;
-      border-radius: 10px;
+      margin-top: var(--spacing-30);
+      padding: var(--spacing-20) var(--spacing-30);
+      background: transparent;
+      color: var(--color-ink-black);
+      border: 1px solid var(--color-ink-black);
       font-family: inherit;
-      font-size: 0.9375rem;
-      font-weight: 500;
+      font-size: var(--text-body);
+      font-weight: 700;
+      letter-spacing: var(--tracking-body);
       cursor: pointer;
-      transition: opacity 0.2s ease;
     }
 
     #install-btn.visible {
       display: block;
     }
 
-    #install-btn:hover {
-      opacity: 0.9;
+    #install-btn:hover,
+    #install-btn:focus {
+      background: var(--color-ink-black);
+      color: var(--color-canvas-ice);
+      outline: none;
     }
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 2rem 0;
-      color: var(--text-secondary);
-      font-size: 0.75rem;
+      margin-top: var(--spacing-80);
+      padding-top: var(--spacing-30);
+      border-top: 1px solid var(--color-border-fog);
+    }
+
+    footer p {
+      font-size: var(--text-body);
+      font-weight: 300;
+      letter-spacing: var(--tracking-body);
+      opacity: 0.6;
     }
 
     /* Responsive */
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       .container {
-        padding: 2.5rem 1rem 1.5rem;
-      }
-
-      .cover-art img {
-        width: 160px;
-        height: 160px;
+        padding: var(--spacing-30) var(--spacing-20);
       }
 
       .hero h1 {
-        font-size: 1.375rem;
+        font-size: 36px;
+        letter-spacing: -1.44px;
+      }
+
+      .hero p {
+        font-size: 20px;
+        letter-spacing: -0.6px;
+      }
+
+      .episode-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
       }
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     ::selection {
-      background: rgba(255, 255, 255, 0.15);
-      color: var(--text);
+      background: var(--color-ink-black);
+      color: var(--color-canvas-ice);
     }
   </style>
 </head>
 <body>
   <div class="container">
+    <nav class="nav">
+      <span class="nav-brand">Podcast Kanazawa</span>
+    </nav>
+
     <header class="hero">
-      <div class="cover-art">
-        <img src="cover-lofi.jpg" alt="Podcast Kanazawa">
-      </div>
       <h1>Podcast Kanazawa</h1>
       <p>Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.</p>
-      <div class="author-badge">Alex Elgueta</div>
     </header>
 
-    <div class="divider"></div>
-
-    <main>
+    <main class="episodes">
+      
       <article class="episode">
         <div class="episode-header">
-          <div class="episode-number">1</div>
-          <div class="episode-info">
-            <h2>Episodio 1 — Pressman y la Ingeniería de Software como disciplina</h2>
-            <div class="meta">
-              <span>2026-05-04</span>
-              <span class="meta-separator"></span>
-              <span>32:45</span>
-            </div>
-          </div>
+          <h2>Episodio 2 - The Pragmatic Programmer</h2>
+          <span class="episode-meta">2026-05-05 &mdash; 13:28</span>
         </div>
-        <div class="episode-description">Hoy hablamos de <strong>Software Engineering: A Practitioner's Approach</strong>, la séptima edición de Roger S. Pressman. Un proceso sistemático compuesto por cinco actividades estructurales: comunicación, planeación, modelado, construcción y despliegue.</div>
+        <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
+        <audio controls preload="metadata">
+          <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a" type="audio/mp4">
+        </audio>
+      </article>
+      
+      <article class="episode">
+        <div class="episode-header">
+          <h2>Episodio 1 - Pressman y la Ingeniería de Software como disciplina</h2>
+          <span class="episode-meta">2026-05-04 &mdash; 32:45</span>
+        </div>
+        <div class="episode-description">Hoy hablamos de **&#34;Software Engineering: A Practitioner&#39;s Approach&#34;**, la séptima edición del libro de Roger S. Pressman que es referencia obligada para cualquiera que quiera entender esta disciplina en serio.
+
+Pressman no te vende magia. Te presenta la ingeniería de software como lo que es: un proceso sistemático compuesto por cinco actividades estructurales — **comunicación, planeación, modelado, construcción y despliegue**. Nada de saltar directo al código sin entender el problema primero.
+
+Lo que me gusta de Pressman es que no se olvida de lo obvio: el software es un producto intelectual. No se desgasta físicamente, pero se deteriora si no lo mantenés. Y ese deterioro no es por oxidación, es por malas decisiones acumuladas.
+
+El autor insiste en que antes de diseñar una solución técnica, tenés que entender el problema. Suena simple, pero mirá cuántos proyectos fallan por empezar a codear sin saber qué están resolviendo.
+
+En este episodio repasamos por qué este libro sigue siendo relevante, desde aplicaciones web hasta sistemas heredados, y por qué un enfoque de ingeniería adaptable es la única forma de garantizar calidad a largo plazo.</div>
         <audio controls preload="metadata">
           <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a" type="audio/mp4">
         </audio>
       </article>
+      
     </main>
 
-    <div class="subscribe">
+    <section class="subscribe">
       <h3>Suscribite en tu app favorita</h3>
-      <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
+      <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app.</p>
       <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
         https://kanazawa-dev.github.io/personal-podcast/feed.xml
       </div>
-    </div>
+    </section>
 
     <button id="install-btn">Instalar como app</button>
 
@@ -348,7 +356,7 @@
       <p>Hecho por Alex Elgueta</p>
     </footer>
   </div>
-  
+
   <script>
     // Registrar Service Worker
     if ('serviceWorker' in navigator) {
@@ -356,17 +364,17 @@
         .then(reg => console.log('SW registered'))
         .catch(err => console.log('SW error:', err));
     }
-    
+
     // Botón de instalación
     let deferredPrompt;
     const installBtn = document.getElementById('install-btn');
-    
+
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       installBtn.classList.add('visible');
     });
-    
+
     installBtn.addEventListener('click', async () => {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
@@ -376,12 +384,12 @@
       }
       deferredPrompt = null;
     });
-    
+
     // Copiar feed URL feedback
     document.querySelectorAll('.feed-url').forEach(el => {
       el.addEventListener('click', function() {
         const original = this.innerHTML;
-        this.innerHTML = '✅ Copiado!';
+        this.innerHTML = 'Copiado';
         setTimeout(() => {
           this.innerHTML = original;
         }, 2000);
