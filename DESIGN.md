@@ -27,20 +27,21 @@ General Intelligence Company employs a sophisticated aesthetic, blending an evoc
 
 ## Tokens — Typography
 
-### PPMondwest — Headlines and prominent display text. Its distinct serif creates a sense of gravitas and intellectual authority, often appearing in sizes like 40px and 54px. · `--font-ppmondwest`
-- **Weights:** 400, 500
+### Newsreader — Headlines and prominent display text. A high-contrast transitional serif with strong editorial character, conveying gravitas and intellectual authority. Used at large sizes (40px–54px) for hero headlines and section titles. · `--font-newsreader`
+- **Weights:** 400, 700
 - **Sizes:** 40px, 48px, 54px
 - **Line height:** 1.10
 - **Letter spacing:** -0.0200em
-- **OpenType features:** `"liga" 0`
-- **Role:** Headlines and prominent display text. Its distinct serif creates a sense of gravitas and intellectual authority, often appearing in sizes like 40px and 54px.
+- **Role:** Headlines and prominent display text. Its distinct serif creates a sense of gravitas and intellectual authority.
+- **Fallbacks:** Georgia, 'Times New Roman', serif
 
-### af — Body text, navigation, buttons, and all functional UI labels. This sans-serif provides clarity and modernity, varying in weight from 400 for standard body copy to 700 for more prominent labels, with a subtle negative letter spacing for a compact feel across sizes 13px to 18px. · `--font-af`
-- **Weights:** 400, 500, 600, 700
+### Inter — Body text, navigation, buttons, and all functional UI labels. A clean, modern sans-serif with excellent readability at small sizes. Varies from 300 for subtle text to 700 for labels. · `--font-inter`
+- **Weights:** 300, 400, 500, 600, 700
 - **Sizes:** 13px, 15px, 16px, 18px
 - **Line height:** 1.00, 1.20, 1.30, 1.40, 1.50
 - **Letter spacing:** -0.0120em, -0.0100em
-- **Role:** Body text, navigation, buttons, and all functional UI labels. This sans-serif provides clarity and modernity, varying in weight from 400 for standard body copy to 700 for more prominent labels, with a subtle negative letter spacing for a compact feel across sizes 13px to 18px.
+- **Role:** Body text, navigation, buttons, and all functional UI labels.
+- **Fallbacks:** ui-sans-serif, system-ui, -apple-system, sans-serif
 
 ### Type Scale
 
@@ -93,8 +94,8 @@ General Intelligence Company employs a sophisticated aesthetic, blending an evoc
 |------|-------|-------|
 | sm | `rgba(0, 0, 0, 0.15) 0px 2px 6px 0px` | `--shadow-sm` |
 | subtle | `rgb(222, 226, 222) 0px 0px 0px 1px` | `--shadow-subtle` |
-| subtle-2 | `rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) ...` | `--shadow-subtle-2` |
-| subtle-3 | `rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) ...` | `--shadow-subtle-3` |
+| subtle-2 | `rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px` | `--shadow-subtle-2` |
+| subtle-3 | `rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px` | `--shadow-subtle-3` |
 | sm-2 | `rgba(0, 0, 0, 0.05) 0px 1px 8px 0px` | `--shadow-sm-2` |
 
 ### Layout
@@ -153,7 +154,7 @@ Background #f9faf7, text and border #444141, 0px border radius. Default padding 
 ## Do's and Don'ts
 
 ### Do
-- Prioritize PPMondwest for all display and large headings (40px, 48px, 54px) using weight 400 or 500, with letter-spacing -0.0200em for a refined, compact look.
+- Prioritize Newsreader for all display and large headings (40px, 48px, 54px) using weight 400 or 700, with letter-spacing -0.0200em for a refined, compact look.
 - Use 'Night Sky' (#1f1f29) as a deep, rich background for hero sections or brand-defining modules, contrasting with light body text and elements.
 - Layer surfaces with 'Off White' (#fefffc) and 'Canvas White' (#ffffff) to provide subtle depth and structure on light-themed pages, emphasizing 'Canvas White' for main backgrounds and 'Off White' for slightly recessed elements.
 - Apply 'Cofounder Blue' (#0081c0) sparingly as a functional accent color for key cards or active states, reserving its prominence for maximum impact.
@@ -195,10 +196,10 @@ accent: #0081c0
 primary action: #41a1cf (outlined action border)
 
 Example Component Prompts:
-1. Create a hero section with a 'Night Sky' background (#1f1f29). Headline (PPMondwest, 54px, weight 400, #ffffff, letter-spacing -1.08px). Subtext (af, 18px, weight 400, #ffffff, line-height 1.2).
-2. Create an 'Elevated Content Card': background 'Off White' (#fefffc), 12px border-radius, box-shadow rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px, 16px padding. Title (af, 18px, weight 600, #2c2c2c), body text (af, 16px, weight 400, #171717).
-3. Create an 'Outlined Action Button': background transparent, border 1px solid 'Action Azure' (#41a1cf), text 'Dark Charcoal' (#171717), 4px border-radius. Text (af, 16px, weight 500, letter-spacing -0.19px), 5px vertical / 12px horizontal padding.
-4. Create a 'Blurred Nav Item': background rgba(255, 255, 255, 0.06), 50.496px border-radius, box-shadow rgba(0, 0, 0, 0.15) 0px 2px 6px 0px. Text (af, 15px, weight 400, #171717), 8px padding. Implement a backdrop-filter: blur(9px).
+1. Create a hero section with a 'Night Sky' background (#1f1f29). Headline (Newsreader, 54px, weight 400, #ffffff, letter-spacing -1.08px). Subtext (Inter, 18px, weight 400, #ffffff, line-height 1.2).
+2. Create an 'Elevated Content Card': background 'Off White' (#fefffc), 12px border-radius, box-shadow rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px, 16px padding. Title (Inter, 18px, weight 600, #2c2c2c), body text (Inter, 16px, weight 400, #171717).
+3. Create an 'Outlined Action Button': background transparent, border 1px solid 'Action Azure' (#41a1cf), text 'Dark Charcoal' (#171717), 4px border-radius. Text (Inter, 16px, weight 500, letter-spacing -0.19px), 5px vertical / 12px horizontal padding.
+4. Create a 'Blurred Nav Item': background rgba(255, 255, 255, 0.06), 50.496px border-radius, box-shadow rgba(0, 0, 0, 0.15) 0px 2px 6px 0px. Text (Inter, 15px, weight 400, #171717), 8px padding. Implement a backdrop-filter: blur(9px).
 
 ## Similar Brands
 
@@ -231,8 +232,8 @@ Example Component Prompts:
   --color-light-gray: #b4b8b4;
 
   /* Typography — Font Families */
-  --font-ppmondwest: 'PPMondwest', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-af: 'af', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-newsreader: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
   --text-caption: 13px;
@@ -255,6 +256,7 @@ Example Component Prompts:
   --tracking-display: -1.08px;
 
   /* Typography — Weights */
+  --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -295,81 +297,6 @@ Example Component Prompts:
   --radius-cardssmall: 12px;
   --radius-cardsmedium: 16px;
   --radius-navitemssmall: 8px;
-
-  /* Shadows */
-  --shadow-sm: rgba(0, 0, 0, 0.15) 0px 2px 6px 0px;
-  --shadow-subtle: rgb(222, 226, 222) 0px 0px 0px 1px;
-  --shadow-subtle-2: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px;
-  --shadow-subtle-3: rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px;
-  --shadow-sm-2: rgba(0, 0, 0, 0.05) 0px 1px 8px 0px;
-}
-```
-
-### Tailwind v4
-
-```css
-@theme {
-  /* Colors */
-  --color-night-sky: #1f1f29;
-  --color-cofounder-blue: #0081c0;
-  --color-action-azure: #41a1cf;
-  --color-pitch-black: #000000;
-  --color-canvas-white: #ffffff;
-  --color-off-white: #fefffc;
-  --color-ash-gray: #f9faf7;
-  --color-cool-gray: #eef1ed;
-  --color-steel-gray: #dee2de;
-  --color-dark-charcoal: #171717;
-  --color-charcoal: #2c2c2c;
-  --color-rich-black: #282834;
-  --color-slate-gray: #444141;
-  --color-medium-gray: #646464;
-  --color-light-gray: #b4b8b4;
-
-  /* Typography */
-  --font-ppmondwest: 'PPMondwest', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-af: 'af', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  /* Typography — Scale */
-  --text-caption: 13px;
-  --leading-caption: 1.5;
-  --tracking-caption: -0.13px;
-  --text-button-label: 16px;
-  --leading-button-label: 1;
-  --tracking-button-label: -0.19px;
-  --text-subheading: 18px;
-  --leading-subheading: 1.2;
-  --tracking-subheading: -0.18px;
-  --text-heading: 40px;
-  --leading-heading: 1.1;
-  --tracking-heading: -0.8px;
-  --text-heading-lg: 48px;
-  --leading-heading-lg: 1.1;
-  --tracking-heading-lg: -0.96px;
-  --text-display: 54px;
-  --leading-display: 1.1;
-  --tracking-display: -1.08px;
-
-  /* Spacing */
-  --spacing-4: 4px;
-  --spacing-8: 8px;
-  --spacing-12: 12px;
-  --spacing-16: 16px;
-  --spacing-20: 20px;
-  --spacing-24: 24px;
-  --spacing-32: 32px;
-  --spacing-40: 40px;
-  --spacing-48: 48px;
-  --spacing-64: 64px;
-  --spacing-80: 80px;
-
-  /* Border Radius */
-  --radius-md: 4px;
-  --radius-lg: 8px;
-  --radius-xl: 12px;
-  --radius-2xl: 16px;
-  --radius-3xl: 24px;
-  --radius-full: 50.496px;
 
   /* Shadows */
   --shadow-sm: rgba(0, 0, 0, 0.15) 0px 2px 6px 0px;
