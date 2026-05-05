@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#1f1f29">
+  <meta name="theme-color" content="#f7f7f4">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Kanazawa">
   <meta name="description" content="Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.">
 
@@ -22,73 +22,70 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
   <title>Podcast Kanazawa</title>
   <style>
     :root {
-      --color-night-sky: #1f1f29;
-      --color-cofounder-blue: #0081c0;
-      --color-action-azure: #41a1cf;
-      --color-pitch-black: #000000;
-      --color-canvas-white: #ffffff;
-      --color-off-white: #fefffc;
-      --color-ash-gray: #f9faf7;
-      --color-cool-gray: #eef1ed;
-      --color-steel-gray: #dee2de;
-      --color-dark-charcoal: #171717;
-      --color-charcoal: #2c2c2c;
-      --color-rich-black: #282834;
-      --color-slate-gray: #444141;
-      --color-medium-gray: #646464;
-      --color-light-gray: #b4b8b4;
+      --color-canvas-parchment: #f7f7f4;
+      --color-inkwell: #262510;
+      --color-muted-stone: #7a7974;
+      --color-deep-shadow: #141414;
+      --color-pebble-gray: #e6e5e0;
+      --color-onyx-outline: #f54e00;
+      --color-chartreuse-alert: #4ade80;
+      --color-goldenrod-accent: #c08532;
+      --color-forest-green-action: #34785c;
+      --color-highlight-beige: #cdcdc9;
 
-      --font-pixel: 'Pixelify Sans', 'VT323', monospace;
-      --font-mono: 'VT323', monospace;
+      --font-gothic: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-utility: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
-      --text-caption: 13px;
-      --leading-caption: 1.5;
-      --tracking-caption: -0.13px;
-      --text-button-label: 16px;
-      --leading-button-label: 1;
-      --tracking-button-label: -0.19px;
-      --text-subheading: 18px;
-      --leading-subheading: 1.2;
-      --tracking-subheading: -0.18px;
-      --text-heading: 40px;
-      --leading-heading: 1.1;
-      --tracking-heading: -0.8px;
-      --text-heading-lg: 48px;
+      --text-caption: 10px;
+      --leading-caption: 1.1;
+      --tracking-caption: 0.06px;
+      --text-body-lg: 14px;
+      --leading-body-lg: 1.43;
+      --tracking-body-lg: 0.08px;
+      --text-heading-sm: 22px;
+      --leading-heading-sm: 1.25;
+      --tracking-heading-sm: -0.08px;
+      --text-heading: 26px;
+      --leading-heading: 1.2;
+      --tracking-heading: -0.35px;
+      --text-heading-lg: 36px;
       --leading-heading-lg: 1.1;
-      --tracking-heading-lg: -0.96px;
-      --text-display: 54px;
-      --leading-display: 1.1;
-      --tracking-display: -1.08px;
+      --tracking-heading-lg: -0.45px;
+      --text-display: 72px;
+      --leading-display: 1;
+      --tracking-display: -2.16px;
 
       --spacing-4: 4px;
+      --spacing-5: 5px;
+      --spacing-6: 6px;
       --spacing-8: 8px;
+      --spacing-10: 10px;
+      --spacing-11: 11px;
       --spacing-12: 12px;
+      --spacing-13: 13px;
+      --spacing-15: 15px;
       --spacing-16: 16px;
+      --spacing-18: 18px;
       --spacing-20: 20px;
-      --spacing-24: 24px;
-      --spacing-32: 32px;
-      --spacing-40: 40px;
-      --spacing-48: 48px;
-      --spacing-64: 64px;
-      --spacing-80: 80px;
+      --spacing-22: 22px;
+      --spacing-28: 28px;
+      --spacing-43: 43px;
+      --spacing-67: 67px;
 
+      --radius-sm: 1.5px;
       --radius-md: 4px;
       --radius-lg: 8px;
       --radius-xl: 12px;
-      --radius-2xl: 16px;
-      --radius-3xl: 24px;
-      --radius-full: 50.496px;
 
-      --shadow-sm: rgba(0, 0, 0, 0.15) 0px 2px 6px 0px;
-      --shadow-subtle: rgb(222, 226, 222) 0px 0px 0px 1px;
-      --shadow-subtle-2: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px;
-      --shadow-subtle-3: rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px;
-      --shadow-sm-2: rgba(0, 0, 0, 0.05) 0px 1px 8px 0px;
+      --shadow-xl: rgba(0, 0, 0, 0.14) 0px 28px 70px 0px, rgba(0, 0, 0, 0.1) 0px 14px 32px 0px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px;
+      --shadow-xl-2: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px, rgba(0, 0, 0, 0.15) 0px 12px 24px -8px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 0.5px;
+      --shadow-subtle: oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.28) 0px 18px 36px -18px;
     }
 
     * {
@@ -98,10 +95,10 @@
     }
 
     body {
-      font-family: var(--font-pixel);
-      background-color: var(--color-canvas-white);
-      color: var(--color-dark-charcoal);
-      line-height: var(--leading-subheading);
+      font-family: var(--font-gothic);
+      background-color: var(--color-canvas-parchment);
+      color: var(--color-inkwell);
+      line-height: var(--leading-body-lg);
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
@@ -110,7 +107,7 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
       }
       to {
         opacity: 1;
@@ -118,330 +115,268 @@
       }
     }
 
-    @keyframes scanline {
-      0% { transform: translateY(-100%); }
-      100% { transform: translateY(100vh); }
-    }
-
     .fade-in {
       opacity: 0;
-      animation: fadeInUp 1.2s ease-out forwards;
+      animation: fadeInUp 0.8s ease-out forwards;
     }
 
-    .fade-in-delay-1 { animation-delay: 0.2s; }
-    .fade-in-delay-2 { animation-delay: 0.5s; }
-    .fade-in-delay-3 { animation-delay: 0.8s; }
-    .fade-in-delay-4 { animation-delay: 1.1s; }
-
-    /* Hero - Pure CSS pixel aesthetic */
-    .hero {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-      background-color: var(--color-night-sky);
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at center, rgba(65, 161, 207, 0.08) 0%, transparent 70%);
-      z-index: 1;
-    }
-
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: rgba(65, 161, 207, 0.2);
-      animation: scanline 6s linear infinite;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(31, 31, 41, 0.1), rgba(31, 31, 41, 0.9));
-      z-index: 2;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      max-width: 800px;
-      padding: var(--spacing-64) var(--spacing-24);
-    }
-
-    .hero h1 {
-      font-family: var(--font-pixel);
-      font-size: clamp(48px, 10vw, 80px);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: var(--color-canvas-white);
-      margin-bottom: var(--spacing-32);
-      text-shadow: 0 0 40px rgba(65, 161, 207, 0.3);
-    }
-
-    .hero p {
-      font-family: var(--font-mono);
-      font-size: clamp(18px, 2.5vw, 24px);
-      font-weight: 400;
-      line-height: 1.4;
-      letter-spacing: 0.02em;
-      color: rgba(255, 255, 255, 0.65);
-      max-width: 560px;
-      margin: 0 auto;
-    }
-
-    .hero-author {
-      display: block;
-      margin-top: var(--spacing-32);
-      font-family: var(--font-mono);
-      font-size: 16px;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      color: var(--color-action-azure);
-      text-transform: uppercase;
-    }
-
-    .hero-cursor {
-      display: inline-block;
-      width: 12px;
-      height: 1.2em;
-      background: var(--color-action-azure);
-      margin-left: 4px;
-      vertical-align: text-bottom;
-      animation: blink 1s step-end infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
+    .fade-in-delay-1 { animation-delay: 0.15s; }
+    .fade-in-delay-2 { animation-delay: 0.3s; }
+    .fade-in-delay-3 { animation-delay: 0.5s; }
+    .fade-in-delay-4 { animation-delay: 0.7s; }
 
     /* Navigation */
     .nav {
       position: sticky;
-      top: var(--spacing-16);
-      z-index: 10;
-      display: flex;
-      justify-content: center;
-      margin-top: calc(var(--spacing-40) * -1);
-      padding: 0 var(--spacing-24);
+      top: 0;
+      z-index: 100;
+      background: rgba(247, 247, 244, 0.92);
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border-bottom: 1px solid var(--color-highlight-beige);
     }
 
     .nav-inner {
-      display: inline-flex;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: var(--spacing-12) var(--spacing-16);
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: var(--spacing-4);
-      background: rgba(249, 250, 247, 0.95);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border-radius: var(--radius-full);
-      box-shadow: var(--shadow-sm);
-      padding: var(--spacing-8) var(--spacing-12);
-      border: 1px solid var(--color-steel-gray);
+    }
+
+    .nav-brand {
+      font-family: var(--font-gothic);
+      font-size: var(--text-body-lg);
+      font-weight: 600;
+      letter-spacing: var(--tracking-body-lg);
+      color: var(--color-inkwell);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--spacing-8);
+      align-items: center;
     }
 
     .nav-item {
-      font-family: var(--font-mono);
-      font-size: 18px;
+      font-family: var(--font-gothic);
+      font-size: var(--text-body-lg);
       font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--color-dark-charcoal);
+      letter-spacing: var(--tracking-body-lg);
+      color: var(--color-muted-stone);
       text-decoration: none;
-      padding: 6px 16px;
-      border-radius: var(--radius-navitemssmall);
-      transition: background 0.2s ease;
+      padding: var(--spacing-2) var(--spacing-6);
+      border-radius: var(--radius-md);
+      transition: color 0.2s ease;
     }
 
     .nav-item:hover,
     .nav-item:focus {
-      background: rgba(0, 0, 0, 0.05);
+      color: var(--color-inkwell);
       outline: none;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: var(--spacing-67) var(--spacing-16) var(--spacing-43);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-28);
+    }
+
+    .hero h1 {
+      font-family: var(--font-gothic);
+      font-size: clamp(36px, 5vw, var(--text-display));
+      font-weight: 500;
+      line-height: var(--leading-display);
+      letter-spacing: var(--tracking-display);
+      color: var(--color-deep-shadow);
+      max-width: 900px;
+    }
+
+    .hero p {
+      font-family: var(--font-gothic);
+      font-size: var(--text-heading-sm);
+      font-weight: 400;
+      line-height: var(--leading-heading-sm);
+      letter-spacing: var(--tracking-heading-sm);
+      color: var(--color-muted-stone);
+      max-width: 560px;
+    }
+
+    .hero-author {
+      font-family: var(--font-mono);
+      font-size: var(--text-body-lg);
+      font-weight: 400;
+      letter-spacing: var(--tracking-body-lg);
+      color: var(--color-muted-stone);
     }
 
     /* Layout */
     .container {
-      max-width: 800px;
+      max-width: 1300px;
       margin: 0 auto;
-      padding: var(--spacing-80) var(--spacing-24);
+      padding: var(--spacing-43) var(--spacing-16);
     }
 
     /* Section headers */
     .section-header {
-      margin-bottom: var(--spacing-48);
-      text-align: center;
+      margin-bottom: var(--spacing-28);
     }
 
     .section-header h2 {
-      font-family: var(--font-pixel);
+      font-family: var(--font-gothic);
       font-size: var(--text-heading);
-      font-weight: 600;
+      font-weight: 500;
       line-height: var(--leading-heading);
       letter-spacing: var(--tracking-heading);
-      color: var(--color-pitch-black);
+      color: var(--color-deep-shadow);
     }
 
     /* Episodes */
     .episodes {
       display: flex;
       flex-direction: column;
-      gap: var(--spacing-32);
+      gap: var(--spacing-16);
     }
 
     .episode-card {
-      background: var(--color-off-white);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow-subtle-2);
-      padding: var(--spacing-32);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      border: 1px solid var(--color-cool-gray);
+      background: var(--color-pebble-gray);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: var(--spacing-20);
+      transition: box-shadow 0.3s ease, transform 0.2s ease;
     }
 
     .episode-card:hover {
-      box-shadow: var(--shadow-subtle-3);
-      transform: translateY(-2px);
+      box-shadow: var(--shadow-xl-2);
+      transform: translateY(-1px);
     }
 
     .episode-header {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      gap: var(--spacing-16);
-      margin-bottom: var(--spacing-20);
+      gap: var(--spacing-12);
+      margin-bottom: var(--spacing-12);
     }
 
     .episode h3 {
-      font-family: var(--font-pixel);
-      font-size: var(--text-subheading);
-      font-weight: 600;
-      line-height: var(--leading-subheading);
-      letter-spacing: var(--tracking-subheading);
-      color: var(--color-charcoal);
+      font-family: var(--font-gothic);
+      font-size: var(--text-heading-sm);
+      font-weight: 500;
+      line-height: var(--leading-heading-sm);
+      letter-spacing: var(--tracking-heading-sm);
+      color: var(--color-inkwell);
       flex: 1;
     }
 
     .episode-meta {
       font-family: var(--font-mono);
-      font-size: 15px;
+      font-size: var(--text-body-lg);
       font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--color-medium-gray);
+      letter-spacing: var(--tracking-body-lg);
+      color: var(--color-muted-stone);
       white-space: nowrap;
     }
 
     .episode-description {
-      font-family: var(--font-pixel);
-      font-size: var(--text-body);
+      font-family: var(--font-utility);
+      font-size: var(--text-body-lg);
       font-weight: 400;
-      line-height: 1.5;
-      letter-spacing: var(--tracking-button-label);
-      color: var(--color-dark-charcoal);
-      margin-bottom: var(--spacing-24);
-      max-width: 640px;
+      line-height: var(--leading-body-lg);
+      letter-spacing: var(--tracking-body-lg);
+      color: var(--color-inkwell);
+      margin-bottom: var(--spacing-16);
+      max-width: 720px;
     }
 
     /* Audio player */
     audio {
       width: 100%;
-      height: 44px;
+      height: 36px;
       border-radius: var(--radius-md);
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     audio::-webkit-media-controls-panel {
-      background: var(--color-ash-gray);
+      background: var(--color-canvas-parchment);
     }
 
     audio::-webkit-media-controls-enclosure {
-      background: var(--color-ash-gray);
+      background: var(--color-canvas-parchment);
       border-radius: var(--radius-md);
     }
 
     /* Subscribe */
     .subscribe {
-      margin-top: var(--spacing-80);
-      padding: var(--spacing-48) var(--spacing-32);
-      background: var(--color-off-white);
-      border-radius: var(--radius-3xl);
-      box-shadow: var(--shadow-subtle-2);
-      text-align: center;
-      border: 1px solid var(--color-cool-gray);
+      margin-top: var(--spacing-43);
+      padding: var(--spacing-28);
+      background: var(--color-pebble-gray);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
     }
 
     .subscribe h3 {
-      font-family: var(--font-pixel);
+      font-family: var(--font-gothic);
       font-size: var(--text-heading);
-      font-weight: 600;
+      font-weight: 500;
       line-height: var(--leading-heading);
       letter-spacing: var(--tracking-heading);
-      color: var(--color-pitch-black);
-      margin-bottom: var(--spacing-16);
+      color: var(--color-deep-shadow);
+      margin-bottom: var(--spacing-12);
     }
 
     .subscribe p {
-      font-family: var(--font-pixel);
-      font-size: var(--text-subheading);
+      font-family: var(--font-utility);
+      font-size: var(--text-body-lg);
       font-weight: 400;
-      line-height: var(--leading-subheading);
-      letter-spacing: var(--tracking-subheading);
-      color: var(--color-charcoal);
-      margin-bottom: var(--spacing-32);
+      line-height: var(--leading-body-lg);
+      letter-spacing: var(--tracking-body-lg);
+      color: var(--color-muted-stone);
+      margin-bottom: var(--spacing-20);
     }
 
     .feed-url {
       display: inline-block;
       font-family: var(--font-mono);
-      font-size: 18px;
+      font-size: var(--text-body-lg);
       font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--color-slate-gray);
-      background: var(--color-canvas-white);
-      border: 1px solid var(--color-steel-gray);
+      letter-spacing: var(--tracking-body-lg);
+      color: var(--color-muted-stone);
+      background: var(--color-canvas-parchment);
+      border: 1px solid var(--color-highlight-beige);
       border-radius: var(--radius-md);
-      padding: var(--spacing-12) var(--spacing-24);
+      padding: var(--spacing-10) var(--spacing-16);
       cursor: pointer;
       user-select: all;
       word-break: break-all;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color 0.2s ease;
     }
 
     .feed-url:hover,
     .feed-url:focus {
-      border-color: var(--color-action-azure);
-      box-shadow: var(--shadow-sm-2);
+      border-color: var(--color-onyx-outline);
       outline: none;
     }
 
     /* Install button */
     #install-btn {
       display: none;
-      margin-top: var(--spacing-24);
-      padding: var(--spacing-12) var(--spacing-32);
+      margin-top: var(--spacing-16);
+      padding: var(--spacing-10) var(--spacing-18);
       background: transparent;
-      color: var(--color-dark-charcoal);
-      border: 1px solid var(--color-action-azure);
+      color: var(--color-onyx-outline);
+      border: 1px solid var(--color-onyx-outline);
       border-radius: var(--radius-md);
-      font-family: var(--font-mono);
-      font-size: 18px;
-      font-weight: 400;
-      letter-spacing: 0.02em;
+      font-family: var(--font-gothic);
+      font-size: var(--text-body-lg);
+      font-weight: 500;
+      letter-spacing: var(--tracking-body-lg);
       cursor: pointer;
       transition: background 0.2s ease, color 0.2s ease;
     }
@@ -452,102 +387,84 @@
 
     #install-btn:hover,
     #install-btn:focus {
-      background: var(--color-night-sky);
-      color: var(--color-canvas-white);
+      background: var(--color-onyx-outline);
+      color: var(--color-canvas-parchment);
       outline: none;
     }
 
     /* Footer */
-    .footer-wrap {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-      margin-top: var(--spacing-64);
-    }
-
-    .footer-img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      object-position: center;
-      opacity: 0.85;
-      display: block;
-    }
-
     footer {
+      margin-top: var(--spacing-43);
+      padding: var(--spacing-28) var(--spacing-16);
+      border-top: 1px solid var(--color-highlight-beige);
       text-align: center;
-      padding: var(--spacing-32) var(--spacing-24);
-      background: var(--color-night-sky);
     }
 
     footer p {
-      font-family: var(--font-mono);
-      font-size: 16px;
+      font-family: var(--font-utility);
+      font-size: var(--text-caption);
       font-weight: 400;
-      letter-spacing: 0.05em;
-      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: var(--tracking-caption);
+      color: var(--color-muted-stone);
+      text-transform: uppercase;
     }
 
     /* Responsive */
     @media (max-width: 640px) {
-      .hero h1 {
-        font-size: 40px;
+      .hero {
+        padding: var(--spacing-43) var(--spacing-12) var(--spacing-28);
       }
 
-      .hero p {
-        font-size: 18px;
+      .hero h1 {
+        font-size: 32px;
+        letter-spacing: -0.96px;
       }
 
       .container {
-        padding: var(--spacing-48) var(--spacing-16);
-      }
-
-      .episode-card {
-        padding: var(--spacing-24);
+        padding: var(--spacing-28) var(--spacing-12);
       }
 
       .episode-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: var(--spacing-8);
+        gap: var(--spacing-6);
       }
 
-      .subscribe {
-        padding: var(--spacing-32) var(--spacing-20);
+      .nav-inner {
+        padding: var(--spacing-10) var(--spacing-12);
       }
 
-      .nav-item {
-        font-size: 16px;
-        padding: 5px 12px;
+      .nav-links {
+        gap: var(--spacing-4);
       }
     }
 
     ::selection {
-      background: var(--color-cofounder-blue);
-      color: var(--color-canvas-white);
+      background: var(--color-onyx-outline);
+      color: var(--color-canvas-parchment);
     }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 class="fade-in">Podcast Kanazawa<span class="hero-cursor"></span></h1>
-      <p class="fade-in fade-in-delay-1">Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.</p>
-      <span class="hero-author fade-in fade-in-delay-2">> Alex Elgueta</span>
-    </div>
-  </header>
-
-  <nav class="nav fade-in fade-in-delay-2">
+  <nav class="nav">
     <div class="nav-inner">
-      <a class="nav-item" href="#episodes">[ Episodios ]</a>
-      <a class="nav-item" href="#subscribe">[ Suscribirse ]</a>
+      <a class="nav-brand" href="/">Podcast Kanazawa</a>
+      <div class="nav-links">
+        <a class="nav-item" href="#episodes">Episodios</a>
+        <a class="nav-item" href="#subscribe">Suscribirse</a>
+      </div>
     </div>
   </nav>
 
+  <header class="hero">
+    <h1 class="fade-in">Podcast Kanazawa</h1>
+    <p class="fade-in fade-in-delay-1">Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.</p>
+    <span class="hero-author fade-in fade-in-delay-2">Alex Elgueta</span>
+  </header>
+
   <main class="container" id="episodes">
     <div class="section-header fade-in">
-      <h2>> Episodios_</h2>
+      <h2>Episodios</h2>
     </div>
 
     <div class="episodes">
@@ -555,7 +472,7 @@
       <article class="episode-card fade-in">
         <div class="episode-header">
           <h3>Episodio 2 - The Pragmatic Programmer</h3>
-          <span class="episode-meta">2026-05-05 | 13:28</span>
+          <span class="episode-meta">2026-05-05 — 13:28</span>
         </div>
         <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
         <audio controls preload="metadata">
@@ -566,7 +483,7 @@
       <article class="episode-card fade-in">
         <div class="episode-header">
           <h3>Episodio 1 - Pressman y la Ingeniería de Software como disciplina</h3>
-          <span class="episode-meta">2026-05-04 | 32:45</span>
+          <span class="episode-meta">2026-05-04 — 32:45</span>
         </div>
         <div class="episode-description">Hoy hablamos de **&#34;Software Engineering: A Practitioner&#39;s Approach&#34;**, la séptima edición del libro de Roger S. Pressman que es referencia obligada para cualquiera que quiera entender esta disciplina en serio.
 
@@ -585,21 +502,18 @@ En este episodio repasamos por qué este libro sigue siendo relevante, desde apl
     </div>
 
     <section class="subscribe fade-in" id="subscribe">
-      <h3>> Suscribite_</h3>
+      <h3>Suscribite en tu app favorita</h3>
       <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app.</p>
       <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
         https://kanazawa-dev.github.io/personal-podcast/feed.xml
       </div>
-      <button id="install-btn">[ Instalar como app ]</button>
+      <button id="install-btn">Instalar como app</button>
     </section>
   </main>
 
-  <div class="footer-wrap">
-    <img class="footer-img" src="images/footer-2.png" alt="">
-    <footer>
-      <p>Hecho por Alex Elgueta</p>
-    </footer>
-  </div>
+  <footer>
+    <p>Hecho por Alex Elgueta</p>
+  </footer>
 
   <script>
     // Registrar Service Worker
@@ -633,7 +547,7 @@ En este episodio repasamos por qué este libro sigue siendo relevante, desde apl
     document.querySelectorAll('.feed-url').forEach(el => {
       el.addEventListener('click', function() {
         const original = this.innerHTML;
-        this.innerHTML = 'Copiado!';
+        this.innerHTML = 'Copiado';
         setTimeout(() => {
           this.innerHTML = original;
         }, 2000);

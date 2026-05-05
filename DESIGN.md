@@ -1,212 +1,198 @@
-# General Intelligence Company — Style Reference
-> Architectural Night Sky
+# Cursor — Style Reference
+> Warm ivory software studio.
 
 **Theme:** light
 
-General Intelligence Company employs a sophisticated aesthetic, blending an evocative, illustrative dark hero with a predominantly minimalist, architectural light UI. Typography is restrained and elegant, utilizing a serif for headlines that conveys gravitas and a clean sans-serif for body text. Surfaces are layered with subtle translucency and soft, multi-layered shadows, creating depth without heaviness. The overall impression is one of calm authority and advanced technology, articulated through precise achromatic forms punctuated by a singular, cool blue accent for interactive elements.
+Cursor's design language evokes a functional, precise studio environment, blending the tactile feel of physical tools with the clean, digital interface of modern software. A foundation of warm, off-white backgrounds (#f7f7f4) and subtle, multi-layered shadows create a sense of depth and hierarchy, mimicking stacked, floating interface elements. Typography is highly refined, utilizing custom mono and gothic fonts with precise letter-spacing and stylistic alternates that convey technical sophistication.
 
 ## Tokens — Colors
 
 | Name | Value | Token | Role |
 |------|-------|-------|------|
-| Night Sky | `#1f1f29` | `--color-night-sky` | Dark base for hero sections and occasional accent backgrounds; creates a deep, contemplative atmosphere |
-| Cofounder Blue | `#0081c0` | `--color-cofounder-blue` | Highlight elements, card backgrounds for featured content, and active interface states. Its vivid hue draws attention while maintaining a high-tech feel |
-| Action Azure | `#41a1cf` | `--color-action-azure` | Border color for ghost buttons and interactive elements, providing a clear but understated active state |
-| Pitch Black | `#000000` | `--color-pitch-black` | Primary text for headings and bold statements against light backgrounds, emphasizing core information |
-| Canvas White | `#ffffff` | `--color-canvas-white` | Main page background, component backgrounds, and primary text on dark elements, maintaining brightness and spaciousness |
-| Off White | `#fefffc` | `--color-off-white` | Subtle alternative background for secondary sections and cards, creating a slight visual separation from the main canvas |
-| Ash Gray | `#f9faf7` | `--color-ash-gray` | Background for input fields and navigation elements, providing a soft contrast |
-| Cool Gray | `#eef1ed` | `--color-cool-gray` | Subtle border for UI elements and dividers, offering minimal distinction |
-| Steel Gray | `#dee2de` | `--color-steel-gray` | Hairline borders and soft shadows, contributing to a refined, nearly unnoticeable separation of elements |
-| Dark Charcoal | `#171717` | `--color-dark-charcoal` | Primary body text and deep contrast accents. Used where legibility against light backgrounds is paramount |
-| Charcoal | `#2c2c2c` | `--color-charcoal` | Secondary text and less prominent headings, providing contrast below the primary text level |
-| Rich Black | `#282834` | `--color-rich-black` | Darker accent for navigation hover states and subtly outlined actions, providing depth on dark surfaces |
-| Slate Gray | `#444141` | `--color-slate-gray` | Placeholder text and subtle icon fills, indicating less active states or auxiliary information |
-| Medium Gray | `#646464` | `--color-medium-gray` | Muted text for helper descriptions and secondary information, reducing visual noise |
-| Light Gray | `#b4b8b4` | `--color-light-gray` | Lightest neutral used for subtle background variations or very soft dividers |
+| Canvas Parchment | `#f7f7f4` | `--color-canvas-parchment` | Page backgrounds, card backgrounds, neutral button backgrounds — provides a soft, warm foundation. |
+| Inkwell | `#262510` | `--color-inkwell` | Primary text, strong borders, navigation text — grounds the lighter surfaces with significant contrast. |
+| Muted Stone | `#7a7974` | `--color-muted-stone` | Secondary text, subtle borders, icon fills — a mid-tone gray for less prominent information or structural lines. |
+| Deep Shadow | `#141414` | `--color-deep-shadow` | Deepest text variant — for maximum contrast on headlines or critical information. |
+| Pebble Gray | `#e6e5e0` | `--color-pebble-gray` | Hover states on neutral buttons, subtle card backgrounds — visually lighter than Canvas Parchment, indicating elevation. |
+| Onyx Outline | `#f54e00` | `--color-onyx-outline` | Outlined action button borders and link text — a vibrant orange indicating interactive elements without a solid fill. |
+| Chartreuse Alert | `#4ade80` | `--color-chartreuse-alert` | supporting accents, small interactive text snippets — a vivid green for positive or noteworthy cues, often within code examples. |
+| Goldenrod Accent | `#c08532` | `--color-goldenrod-accent` | Accent for specific interactive states or icons, often found in button backgrounds for 'Build' actions. |
+| Forest Green Action | `#34785c` | `--color-forest-green-action` | Specific button backgrounds/borders like 'View PR' — a moderate green for distinct, yet secondary actions. |
+| Highlight Beige | `#cdcdc9` | `--color-highlight-beige` | Subtle card backgrounds on nested elements, faint border color — a light neutral for separation with low visual weight. |
 
 ## Tokens — Typography
 
-### Newsreader — Headlines and prominent display text. A high-contrast transitional serif with strong editorial character, conveying gravitas and intellectual authority. Used at large sizes (40px–54px) for hero headlines and section titles. · `--font-newsreader`
-- **Weights:** 400, 700
-- **Sizes:** 40px, 48px, 54px
-- **Line height:** 1.10
-- **Letter spacing:** -0.0200em
-- **Role:** Headlines and prominent display text. Its distinct serif creates a sense of gravitas and intellectual authority.
-- **Fallbacks:** Georgia, 'Times New Roman', serif
+### Space Grotesk — Primary UI text for headlines, navigation items, and larger body copy. A geometric sans-serif with technical character, providing the sophisticated studio feel. · `--font-space-grotesk`
+- **Substitute:** system-ui
+- **Weights:** 400, 500, 600, 700
+- **Sizes:** 13px, 14px, 16px, 22px, 26px, 36px, 72px
+- **Line height:** 1.00, 1.10, 1.20, 1.25, 1.30, 1.43, 1.50
+- **Letter spacing:** -0.45, -0.35, -0.19, -0.08, 0.08, 0.18
+- **Role:** Primary UI text for headlines, navigation items, and larger body copy.
 
-### Inter — Body text, navigation, buttons, and all functional UI labels. A clean, modern sans-serif with excellent readability at small sizes. Varies from 300 for subtle text to 700 for labels. · `--font-inter`
-- **Weights:** 300, 400, 500, 600, 700
-- **Sizes:** 13px, 15px, 16px, 18px
-- **Line height:** 1.00, 1.20, 1.30, 1.40, 1.50
-- **Letter spacing:** -0.0120em, -0.0100em
-- **Role:** Body text, navigation, buttons, and all functional UI labels.
-- **Fallbacks:** ui-sans-serif, system-ui, -apple-system, sans-serif
+### JetBrains Mono — Code snippets, input text, and small descriptive body copy. The monospaced nature reinforces the developer tool identity. · `--font-jetbrains-mono`
+- **Substitute:** monospace
+- **Weights:** 400, 500
+- **Sizes:** 12px, 13px
+- **Line height:** 1.21, 1.43, 1.50, 1.63, 1.67
+- **Role:** Code snippets, input text, and small descriptive body copy.
+
+### Lato — Secondary and utility text across various components like buttons, links, and small informational sections. · `--font-lato`
+- **Substitute:** sans-serif
+- **Weights:** 400, 600
+- **Sizes:** 10px, 12px, 14px, 16px
+- **Line height:** 1.10, 1.27, 1.33, 1.50
+- **Letter spacing:** 0.06
+- **Role:** Secondary and utility text across various components.
 
 ### Type Scale
 
 | Role | Size | Line Height | Letter Spacing | Token |
 |------|------|-------------|----------------|-------|
-| caption | 13px | 1.5 | -0.13px | `--text-caption` |
-| button-label | 16px | 1 | -0.19px | `--text-button-label` |
-| subheading | 18px | 1.2 | -0.18px | `--text-subheading` |
-| heading | 40px | 1.1 | -0.8px | `--text-heading` |
-| heading-lg | 48px | 1.1 | -0.96px | `--text-heading-lg` |
-| display | 54px | 1.1 | -1.08px | `--text-display` |
+| caption | 10px | 1.1 | 0.06px | `--text-caption` |
+| body-lg | 14px | 1.43 | 0.08px | `--text-body-lg` |
+| heading-sm | 22px | 1.25 | -0.08px | `--text-heading-sm` |
+| heading | 26px | 1.2 | -0.35px | `--text-heading` |
+| heading-lg | 36px | 1.1 | -0.45px | `--text-heading-lg` |
+| display | 72px | 1 | -2.16px | `--text-display` |
 
 ## Tokens — Spacing & Shapes
 
-**Base unit:** 4px
-
-**Density:** comfortable
+**Density:** compact
 
 ### Spacing Scale
 
 | Name | Value | Token |
 |------|-------|-------|
 | 4 | 4px | `--spacing-4` |
+| 5 | 5px | `--spacing-5` |
+| 6 | 6px | `--spacing-6` |
 | 8 | 8px | `--spacing-8` |
+| 10 | 10px | `--spacing-10` |
+| 11 | 11px | `--spacing-11` |
 | 12 | 12px | `--spacing-12` |
+| 13 | 13px | `--spacing-13` |
+| 15 | 15px | `--spacing-15` |
 | 16 | 16px | `--spacing-16` |
+| 18 | 18px | `--spacing-18` |
 | 20 | 20px | `--spacing-20` |
-| 24 | 24px | `--spacing-24` |
-| 32 | 32px | `--spacing-32` |
-| 40 | 40px | `--spacing-40` |
-| 48 | 48px | `--spacing-48` |
-| 64 | 64px | `--spacing-64` |
-| 80 | 80px | `--spacing-80` |
+| 22 | 22px | `--spacing-22` |
+| 28 | 28px | `--spacing-28` |
+| 43 | 43px | `--spacing-43` |
+| 67 | 67px | `--spacing-67` |
 
 ### Border Radius
 
 | Element | Value |
 |---------|-------|
-| nav | 50.496px |
-| none | 0px |
+| cards | 4px |
 | buttons | 4px |
-| cardsLarge | 24px |
-| cardsSmall | 12px |
-| cardsMedium | 16px |
-| navItemsSmall | 8px |
+| general | 4px |
+| prominent | 8px |
 
 ### Shadows
 
 | Name | Value | Token |
 |------|-------|-------|
-| sm | `rgba(0, 0, 0, 0.15) 0px 2px 6px 0px` | `--shadow-sm` |
-| subtle | `rgb(222, 226, 222) 0px 0px 0px 1px` | `--shadow-subtle` |
-| subtle-2 | `rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px` | `--shadow-subtle-2` |
-| subtle-3 | `rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px` | `--shadow-subtle-3` |
-| sm-2 | `rgba(0, 0, 0, 0.05) 0px 1px 8px 0px` | `--shadow-sm-2` |
+| xl | `rgba(0, 0, 0, 0.14) 0px 28px 70px 0px, rgba(0, 0, 0, 0.1)...` | `--shadow-xl` |
+| xl-2 | `rgba(0, 0, 0, 0.25) 0px 25px 50px -12px, rgba(0, 0, 0, 0....` | `--shadow-xl-2` |
+| subtle | `oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1...` | `--shadow-subtle` |
 
 ### Layout
 
-- **Section gap:** 32px
-- **Card padding:** 16px
+- **Page max-width:** 1300px
+- **Section gap:** 43px
+- **Card padding:** 12px
 - **Element gap:** 8px
 
 ## Components
 
-### Ghost Button
-**Role:** Subtle interactive element
+### Primary Filled Button
+**Role:** Interactive element
 
-Transparent background, text color typically #444141 or #171717, no explicit border, 0px radius. Used for links within text or secondary actions.
+Solid Inkwell (#26251e) background, Canvas Parchment (#f7f7f4) text, 4px border-radius, with 17.5px padding on all sides. Used for primary calls to action.
 
-### Subtle Nav Button
-**Role:** Navigation item or secondary ghost action
+### Ghost Action Button
+**Role:** Interactive element
 
-Background rgba(255, 255, 255, 0.06), text color #171717, 8px border radius, 5px vertical padding and 12px horizontal padding. Offers a soft, contained interaction.
+Transparent background, Inkwell (#26251e) text, 4px border-radius, with 2px vertical and 6px horizontal padding. Typically used for less prominent actions or text buttons within interfaces.
 
-### Solid Dark Button
-**Role:** Primary action within darker contexts
+### Outlined Accent Button
+**Role:** Interactive element
 
-Background #1f1f29, text color #ffffff. Border #282834, 8px border radius, 7px top, 8px bottom, 16px left, 12px right padding. Used for high-emphasis CTAs.
-
-### Outlined Action Button
-**Role:** Interactive button with a defined border
-
-Ghost background, text color #444141 or #171717, border color #41a1cf or #282834, 4px border radius. Offers a clear but not overly prominent action.
-
-### Blurred Nav Item
-**Role:** Navigation element with translucent background
-
-Background #f9faf7 with blur effect, 50.496px border radius, #171717 text. Soft shadow rgba(0, 0, 0, 0.15) 0px 2px 6px 0px. Used in the header, suggesting elegance and lightness.
+Transparent background, Onyx Outline (#f54e00) text and 1px border, 4px border-radius, often with 17.5px padding. Signals an important interaction without being a solid fill.
 
 ### Elevated Content Card
-**Role:** Content container with subtle elevation
+**Role:** Content container
 
-Background #fefffc, 12px border radius. Soft shadow rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px. Used for featured information blocks.
+Pebble Gray (#e6e5e0) background, 10px border-radius, with a multi-layered shadow: rgba(0, 0, 0, 0.14) 0px 28px 70px 0px, rgba(0, 0, 0, 0.1) 0px 14px 32px 0px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px. No explicit padding mentioned in variants, implies content defines padding.
 
-### Hero Overlay Card
-**Role:** Translucent content block over imagery
+### Flat Background Card
+**Role:** Content container
 
-Background rgba(222, 226, 222, 0.16), 24px border radius, no shadow. 16px padding. Used on the hero section for minimal visual intrusion and atmospheric depth.
+Canvas Parchment (#f7f7f4) background, 4px border-radius, no shadow. Padding 0px vertical and 7.5px horizontal. Used for subtle content grouping without strong visual separation.
 
-### Cofounder Featured Card
-**Role:** Prominent, brand-colored feature display
+### Text Input Field
+**Role:** Form element
 
-Background #0081c0, 24px border radius. Complex shadow rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0) 0px 6px 6px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px. Generous padding 128px top, 80px right/bottom/left. Commands attention for key information.
+Transparent background, Muted Stone (#7a7974) border, Inkwell (#26251e) text, 0px border-radius, 8px horizontal and 6-8px vertical padding. Designed for content editing.
 
-### Ghost Input Field
-**Role:** Standard user input field
+### Icon Button
+**Role:** Interactive element
 
-Background #f9faf7, text and border #444141, 0px border radius. Default padding for clarity.
+Transparent background with Muted Stone (#7a7974) border and text, 0px border-radius. Padding 0px on all sides, implies icon dictates clickable area not visual padding.
+
+### Branding Card
+**Role:** Informational display
+
+Pebble Gray (#e6e5e0) background, 4px border-radius, no shadow on the card itself, but the text beneath may have a shadow. Used to display partner logos or small brand mentions.
 
 ## Do's and Don'ts
 
 ### Do
-- Prioritize Newsreader for all display and large headings (40px, 48px, 54px) using weight 400 or 700, with letter-spacing -0.0200em for a refined, compact look.
-- Use 'Night Sky' (#1f1f29) as a deep, rich background for hero sections or brand-defining modules, contrasting with light body text and elements.
-- Layer surfaces with 'Off White' (#fefffc) and 'Canvas White' (#ffffff) to provide subtle depth and structure on light-themed pages, emphasizing 'Canvas White' for main backgrounds and 'Off White' for slightly recessed elements.
-- Apply 'Cofounder Blue' (#0081c0) sparingly as a functional accent color for key cards or active states, reserving its prominence for maximum impact.
-- Implement soft, layered shadows for card components (e.g., rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px) to give elements a subtle lift without feeling heavy.
-- Maintain a comfortable density with an element gap of 8px and card padding of 16px, ensuring sufficient breathing room between UI elements.
-- Round corners with care: use 4px for small buttons, 8px for main interactive elements, 12px for cards, and 24px for larger, more prominent cards like the 'Hero Overlay Card', with 50.496px for highly rounded nav items.
+- Use Space Grotesk for all headings and primary UI text, applying precise letter-spacing values (e.g., -0.45px at 72px, -0.08px at 22px).
+- Elevate content with the multi-layered shadow token: rgba(0, 0, 0, 0.14) 0px 28px 70px 0px, rgba(0, 0, 0, 0.1) 0px 14px 32px 0px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px.
+- Apply Canvas Parchment (#f7f7f4) as the primary background for all major page sections and UI elements.
+- Reserve Onyx Outline (#f54e00) exclusively for outlined interactive elements or prominent link text to signal primary action.
+- Use 4px border-radius for most general rounded elements like cards and buttons, with 8px radius for more visually distinct components.
+- Maintain a compact information density with an 8px element gap between related UI elements.
+- Ensure input fields use a transparent background with Muted Stone (#7a7974) for borders, prioritizing readability of the input over strong visual containment.
 
 ### Don't
-- Avoid excessive use of 'Cofounder Blue' (#0081c0) outside of clear accent roles; it should highlight, not dominate, the UI.
-- Do not introduce strong, bold colors or gradients other than the defined brand accents; the system relies on a sophisticated achromatic foundation.
-- Resist using heavy, opaque backgrounds for layered elements on light pages; instead, favor sublte translucency (rgba(222, 226, 222, 0.16)) for a delicate, modern effect.
-- Do not use letter-spacing values tighter than -0.0200em for headings or wider than -0.0100em for body text. Maintain the precise, compact typographic rhythm.
-- Refrain from sharp, angular corners for cards and buttons; apply the specified radii (4px, 8px, 12px, 16px, 24px, 50.496px) consistently for a softer, approachable feel.
-- Do not deviate from the specified shadow values; the subtle, multi-layered shadows are key to the brand's sophisticated depth without visual clutter.
-- Avoid cluttering the layout; aim for comfortable spacing both vertically (32px section gap) and horizontally, letting content breathe rather than stacking elements too closely.
+- Do not use solid background colors for primary call-to-action buttons; prefer bordered actions with Onyx Outline (#f54e00).
+- Avoid arbitrary shadow values; adhere strictly to the defined multi-layered shadow for all elevated cards and elements.
+- Never use purely achromatic grays for primary text or borders; always use Inkwell (#26251e) or Muted Stone (#7a7974).
+- Do not introduce new font families or weights beyond Space Grotesk (400-700), Lato (400, 600), and JetBrains Mono (400, 500).
+- Do not use the vivid accent color Onyx Outline (#f54e00) as a background fill for any component.
+- Avoid large, uncontained background images; all visuals should appear within component bounds or as subtle, textural overlays.
+- Do not vary letter-spacing for standard body text or inputs; only apply the specified letter-spacing values for headlines.
+
+## Surfaces
+
+| Level | Name | Value | Purpose |
+|-------|------|-------|---------|
+| 0 | Canvas Parchment | `#f7f7f4` | Base page background, light card surfaces. |
+| 1 | Pebble Gray | `#e6e5e0` | Elevated card backgrounds, hover states, subtle section differentiation. |
+| 2 | Highlight Beige | `#cdcdc9` | Nesting card elements, subtle background variations within components. |
 
 ## Elevation
 
-- **Nav Items:** `rgba(0, 0, 0, 0.15) 0px 2px 6px 0px`
-- **Card:** `rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px`
-- **Cofounder Featured Card:** `rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0) 0px 6px 6px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px`
-- **Input fields and subtle UI elements:** `rgba(0, 0, 0, 0.05) 0px 1px 8px 0px`
+- **Elevated Content Card:** `rgba(0, 0, 0, 0.14) 0px 28px 70px 0px, rgba(0, 0, 0, 0.1) 0px 14px 32px 0px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px`
 
 ## Imagery
 
-The visual language for imagery combines two distinct styles: a highly detailed, illustrative, dark-themed cityscape for the hero section, serving as an atmospheric backdrop, and minimalist, contained product screenshots or abstract graphics for content areas. Photography is absent. Illustrations are organic and atmospheric in the hero, while content area graphics are abstract and geometric, typically featuring outlined shapes and a subdued, near-achromatic palette. Icons are outlined, with a moderate stroke weight, and mostly monochromatic. Imagery acts as both decorative atmosphere in the hero to draw the user in and as explanatory content in product sections, with a balanced density on content-heavy pages.
+The visual language for imagery is driven by product screenshots and UI examples, emphasizing the tool's functionality. These are typically contained within card-like structures, often floating with subtle shadows, and sometimes overlapping to create a dynamic, multi-windowed feel. The product screenshots themselves feature a dark UI with distinct syntax highlighting, contrasting with the light surrounding page, effectively showcasing the software environment. There is minimal photography; the focus is on UI and code. Icons are simple, monochrome, using Muted Stone (#7a7974) for fills, suggesting utility over embellishment. Density is balanced, with imagery illustrating explanations rather than dominating sections.
 
 ## Layout
 
-The page structure features an initial full-bleed hero section defined by a dark, illustrative cityscape background with a centered headline. Following this, the layout transitions to a contained, max-width (implied 1200px from content grouping) centered model for content sections. Sections alternate between 'Canvas White' and 'Off White' backgrounds, establishing a clear visual rhythm. Content is arranged predominantly in a two-column text-left/image-right pattern or centered text stacks for emphasis. Feature grids may appear in three-column structures. Navigation is a compact top bar, with sticky behavior, containing minimalist text links and a 'Get Cofounder' button.
-
-## Agent Prompt Guide
-
-Quick Color Reference: 
-text: #171717
-background: #ffffff
-border: #dee2de
-accent: #0081c0
-primary action: #41a1cf (outlined action border)
-
-Example Component Prompts:
-1. Create a hero section with a 'Night Sky' background (#1f1f29). Headline (Newsreader, 54px, weight 400, #ffffff, letter-spacing -1.08px). Subtext (Inter, 18px, weight 400, #ffffff, line-height 1.2).
-2. Create an 'Elevated Content Card': background 'Off White' (#fefffc), 12px border-radius, box-shadow rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px, 16px padding. Title (Inter, 18px, weight 600, #2c2c2c), body text (Inter, 16px, weight 400, #171717).
-3. Create an 'Outlined Action Button': background transparent, border 1px solid 'Action Azure' (#41a1cf), text 'Dark Charcoal' (#171717), 4px border-radius. Text (Inter, 16px, weight 500, letter-spacing -0.19px), 5px vertical / 12px horizontal padding.
-4. Create a 'Blurred Nav Item': background rgba(255, 255, 255, 0.06), 50.496px border-radius, box-shadow rgba(0, 0, 0, 0.15) 0px 2px 6px 0px. Text (Inter, 15px, weight 400, #171717), 8px padding. Implement a backdrop-filter: blur(9px).
+The page adheres to a max-width of 1300px, creating a contained, spacious feel. The hero section is a split layout, featuring a prominent headline next to a contextual product screenshot, providing an immediate understanding of the tool. Content sections alternate between visually distinct blocks, often with a large left-aligned text column paired with right-aligned product imagery or stacked UI elements. A central element on the page is the responsive display of product screenshots, often overlapping, giving the impression of a live, multi-tasking interface on the screen. The overall rhythm is unhurried, with generous vertical spacing between sections, avoiding a dense, information-heavy presentation. Navigation is a simple top bar with distinct links and a primary download button.
 
 ## Similar Brands
 
-- **Linear** — Shares a sophisticated dark header/light body theme, minimalist aesthetic, and subtle elevation patterns.
-- **Anthropic (Cloude)** — Similar restrained aesthetic, heavy use of high-quality custom typography, and a bias towards clean, functional UI over decorative elements.
-- **Stripe** — Uses a similar approach to elegant typography, crisp surfaces, and a well-defined achromatic palette with controlled accent colors for interactive elements.
-- **Intercom** — Features a balanced use of white space, crisp typography, and strategic color accents to highlight key information or actions, against a generally light background.
+- **Linear** — Similar focus on precise typography, subtle neutral palette, and nuanced elevation to create a sophisticated SaaS aesthetic centered on productivity.
+- **Stripe** — Adopts a clean, light-themed UI with strong typography and a measured use of functional accent colors, echoing Cursor's blend of professionalism and subtle branding.
+- **OpenAI** — Combines a light, spacious layout with restrained color application and a distinct focus on showcasing software interfaces and code, similar to Cursor's presentation of AI tools.
+- **Figma** — Features a light UI with carefully selected typographic choices and the use of soft neutral tones contrasted with specific brand accents, much like Cursor's approach.
 
 ## Quick Start
 
@@ -215,94 +201,164 @@ Example Component Prompts:
 ```css
 :root {
   /* Colors */
-  --color-night-sky: #1f1f29;
-  --color-cofounder-blue: #0081c0;
-  --color-action-azure: #41a1cf;
-  --color-pitch-black: #000000;
-  --color-canvas-white: #ffffff;
-  --color-off-white: #fefffc;
-  --color-ash-gray: #f9faf7;
-  --color-cool-gray: #eef1ed;
-  --color-steel-gray: #dee2de;
-  --color-dark-charcoal: #171717;
-  --color-charcoal: #2c2c2c;
-  --color-rich-black: #282834;
-  --color-slate-gray: #444141;
-  --color-medium-gray: #646464;
-  --color-light-gray: #b4b8b4;
+  --color-canvas-parchment: #f7f7f4;
+  --color-inkwell: #262510;
+  --color-muted-stone: #7a7974;
+  --color-deep-shadow: #141414;
+  --color-pebble-gray: #e6e5e0;
+  --color-onyx-outline: #f54e00;
+  --color-chartreuse-alert: #4ade80;
+  --color-goldenrod-accent: #c08532;
+  --color-forest-green-action: #34785c;
+  --color-highlight-beige: #cdcdc9;
 
   /* Typography — Font Families */
-  --font-newsreader: 'Newsreader', Georgia, 'Times New Roman', serif;
-  --font-inter: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-space-grotesk: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-lato: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
-  --text-caption: 13px;
-  --leading-caption: 1.5;
-  --tracking-caption: -0.13px;
-  --text-button-label: 16px;
-  --leading-button-label: 1;
-  --tracking-button-label: -0.19px;
-  --text-subheading: 18px;
-  --leading-subheading: 1.2;
-  --tracking-subheading: -0.18px;
-  --text-heading: 40px;
-  --leading-heading: 1.1;
-  --tracking-heading: -0.8px;
-  --text-heading-lg: 48px;
+  --text-caption: 10px;
+  --leading-caption: 1.1;
+  --tracking-caption: 0.06px;
+  --text-body-lg: 14px;
+  --leading-body-lg: 1.43;
+  --tracking-body-lg: 0.08px;
+  --text-heading-sm: 22px;
+  --leading-heading-sm: 1.25;
+  --tracking-heading-sm: -0.08px;
+  --text-heading: 26px;
+  --leading-heading: 1.2;
+  --tracking-heading: -0.35px;
+  --text-heading-lg: 36px;
   --leading-heading-lg: 1.1;
-  --tracking-heading-lg: -0.96px;
-  --text-display: 54px;
-  --leading-display: 1.1;
-  --tracking-display: -1.08px;
+  --tracking-heading-lg: -0.45px;
+  --text-display: 72px;
+  --leading-display: 1;
+  --tracking-display: -2.16px;
 
   /* Typography — Weights */
-  --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
   /* Spacing */
-  --spacing-unit: 4px;
   --spacing-4: 4px;
+  --spacing-5: 5px;
+  --spacing-6: 6px;
   --spacing-8: 8px;
+  --spacing-10: 10px;
+  --spacing-11: 11px;
   --spacing-12: 12px;
+  --spacing-13: 13px;
+  --spacing-15: 15px;
   --spacing-16: 16px;
+  --spacing-18: 18px;
   --spacing-20: 20px;
-  --spacing-24: 24px;
-  --spacing-32: 32px;
-  --spacing-40: 40px;
-  --spacing-48: 48px;
-  --spacing-64: 64px;
-  --spacing-80: 80px;
+  --spacing-22: 22px;
+  --spacing-28: 28px;
+  --spacing-43: 43px;
+  --spacing-67: 67px;
 
   /* Layout */
-  --section-gap: 32px;
-  --card-padding: 16px;
+  --page-max-width: 1300px;
+  --section-gap: 43px;
+  --card-padding: 12px;
   --element-gap: 8px;
 
   /* Border Radius */
+  --radius-sm: 1.5px;
   --radius-md: 4px;
   --radius-lg: 8px;
   --radius-xl: 12px;
-  --radius-2xl: 16px;
-  --radius-3xl: 24px;
-  --radius-full: 50.496px;
 
   /* Named Radii */
-  --radius-nav: 50.496px;
-  --radius-none: 0px;
+  --radius-cards: 4px;
   --radius-buttons: 4px;
-  --radius-cardslarge: 24px;
-  --radius-cardssmall: 12px;
-  --radius-cardsmedium: 16px;
-  --radius-navitemssmall: 8px;
+  --radius-general: 4px;
+  --radius-prominent: 8px;
 
   /* Shadows */
-  --shadow-sm: rgba(0, 0, 0, 0.15) 0px 2px 6px 0px;
-  --shadow-subtle: rgb(222, 226, 222) 0px 0px 0px 1px;
-  --shadow-subtle-2: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px;
-  --shadow-subtle-3: rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px;
-  --shadow-sm-2: rgba(0, 0, 0, 0.05) 0px 1px 8px 0px;
+  --shadow-xl: rgba(0, 0, 0, 0.14) 0px 28px 70px 0px, rgba(0, 0, 0, 0.1) 0px 14px 32px 0px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px;
+  --shadow-xl-2: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px, rgba(0, 0, 0, 0.15) 0px 12px 24px -8px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 0.5px;
+  --shadow-subtle: oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.28) 0px 18px 36px -18px;
+
+  /* Surfaces */
+  --surface-canvas-parchment: #f7f7f4;
+  --surface-pebble-gray: #e6e5e0;
+  --surface-highlight-beige: #cdcdc9;
+}
+```
+
+### Tailwind v4
+
+```css
+@theme {
+  /* Colors */
+  --color-canvas-parchment: #f7f7f4;
+  --color-inkwell: #262510;
+  --color-muted-stone: #7a7974;
+  --color-deep-shadow: #141414;
+  --color-pebble-gray: #e6e5e0;
+  --color-onyx-outline: #f54e00;
+  --color-chartreuse-alert: #4ade80;
+  --color-goldenrod-accent: #c08532;
+  --color-forest-green-action: #34785c;
+  --color-highlight-beige: #cdcdc9;
+
+  /* Typography */
+  --font-space-grotesk: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-jetbrains-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-lato: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Typography — Scale */
+  --text-caption: 10px;
+  --leading-caption: 1.1;
+  --tracking-caption: 0.06px;
+  --text-body-lg: 14px;
+  --leading-body-lg: 1.43;
+  --tracking-body-lg: 0.08px;
+  --text-heading-sm: 22px;
+  --leading-heading-sm: 1.25;
+  --tracking-heading-sm: -0.08px;
+  --text-heading: 26px;
+  --leading-heading: 1.2;
+  --tracking-heading: -0.35px;
+  --text-heading-lg: 36px;
+  --leading-heading-lg: 1.1;
+  --tracking-heading-lg: -0.45px;
+  --text-display: 72px;
+  --leading-display: 1;
+  --tracking-display: -2.16px;
+
+  /* Spacing */
+  --spacing-4: 4px;
+  --spacing-5: 5px;
+  --spacing-6: 6px;
+  --spacing-8: 8px;
+  --spacing-10: 10px;
+  --spacing-11: 11px;
+  --spacing-12: 12px;
+  --spacing-13: 13px;
+  --spacing-15: 15px;
+  --spacing-16: 16px;
+  --spacing-18: 18px;
+  --spacing-20: 20px;
+  --spacing-22: 22px;
+  --spacing-28: 28px;
+  --spacing-43: 43px;
+  --spacing-67: 67px;
+
+  /* Border Radius */
+  --radius-sm: 1.5px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+
+  /* Shadows */
+  --shadow-xl: rgba(0, 0, 0, 0.14) 0px 28px 70px 0px, rgba(0, 0, 0, 0.1) 0px 14px 32px 0px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px;
+  --shadow-xl-2: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px, rgba(0, 0, 0, 0.15) 0px 12px 24px -8px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 0.5px;
+  --shadow-subtle: oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.28) 0px 18px 36px -18px;
 }
 ```
