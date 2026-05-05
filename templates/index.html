@@ -34,17 +34,6 @@
       --accent: #e5e5e5;
     }
 
-    @media (prefers-color-scheme: light) {
-      :root:not(.dark) {
-        --bg: #fafafa;
-        --surface: #f0f0f0;
-        --text: #1a1a1a;
-        --text-secondary: #666666;
-        --border: #e0e0e0;
-        --accent: #333333;
-      }
-    }
-
     :root.light {
       --bg: #fafafa;
       --surface: #f0f0f0;
@@ -462,13 +451,13 @@
       .hero {
         flex-shrink: 0;
         margin-bottom: 0;
-        padding: 0.75rem 1.5rem;
+        padding: 1.5rem 1.5rem;
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
         gap: 1rem;
         text-align: left;
-        max-height: 140px;
+        max-height: 160px;
       }
 
       .cover-art {
@@ -843,7 +832,7 @@
     function initTheme() {
       const saved = localStorage.getItem('theme');
       const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-      const isLight = saved ? saved === 'light' : prefersLight;
+      const isLight = saved === 'light' || (!saved && prefersLight);
       applyTheme(isLight);
     }
 
@@ -851,7 +840,7 @@
       const root = document.documentElement;
       const sunIcons = document.querySelectorAll('.icon-sun');
       const moonIcons = document.querySelectorAll('.icon-moon');
-      
+
       if (isLight) {
         root.classList.add('light');
         sunIcons.forEach(i => i.style.display = 'block');
