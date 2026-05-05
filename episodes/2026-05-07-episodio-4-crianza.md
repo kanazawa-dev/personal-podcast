@@ -1,6 +1,6 @@
 ---
 title: "Episodio 4 : Hoy hablamos de crianza"
-date: 2026-05-05
+date: 2026-05-07
 duration: "17:12"
 audio_url: "https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a"
 audio_size: 33232892
