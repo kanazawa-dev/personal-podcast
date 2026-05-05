@@ -386,7 +386,7 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 150px;
+      max-width: 200px;
     }
 
     .player-subtitle {
@@ -465,6 +465,166 @@
 
     .player-volume {
       display: none;
+    }
+
+    /* Fullscreen player */
+    .fullscreen-player {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 200;
+      display: none;
+      flex-direction: column;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .fullscreen-player.active {
+      display: flex;
+    }
+
+    .fs-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-shrink: 0;
+    }
+
+    .fs-close {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+
+    .fs-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      max-width: 500px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .fs-cover {
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .fs-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .fs-info {
+      text-align: center;
+      width: 100%;
+    }
+
+    .fs-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .fs-subtitle {
+      font-size: 1rem;
+      color: var(--text-secondary);
+    }
+
+    .fs-progress-area {
+      width: 100%;
+    }
+
+    .fs-progress-bar {
+      width: 100%;
+      height: 6px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--border);
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+    }
+
+    .fs-progress-bar::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 16px;
+      height: 16px;
+      background: var(--text);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .fs-time-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+    }
+
+    .fs-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .fs-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease;
+    }
+
+    .fs-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .fs-btn-play {
+      width: 64px;
+      height: 64px;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 50%;
+    }
+
+    .fs-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .fs-btn-play svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .player-info {
+      cursor: pointer;
     }
 
     /* Subscribe */
@@ -643,6 +803,10 @@
         font-size: 0.875rem;
       }
 
+      .column-nav {
+        display: none;
+      }
+
       .episodes-grid {
         grid-template-columns: 1fr;
         gap: 0;
@@ -657,7 +821,7 @@
       }
 
       .player-title {
-        max-width: 100px;
+        max-width: 120px;
       }
 
       .player-progress {
@@ -673,7 +837,7 @@
 
     @media (max-width: 640px) {
       .container {
-        padding: 2.5rem 1rem 1.5rem;
+        padding: 1.5rem 1rem 6rem;
       }
     }
 
@@ -1114,6 +1278,35 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       <audio id="global-audio" preload="metadata"></audio>
     </div>
 
+    <!-- Fullscreen Player -->
+    <div class="fullscreen-player" id="fullscreen-player">
+      <div class="fs-header">
+        <button class="fs-close" onclick="toggleFullscreen()">↓</button>
+      </div>
+      <div class="fs-content">
+        <div class="fs-cover">
+          <img src="cover-lofi.jpg" alt="Cover" id="fs-cover-img">
+        </div>
+        <div class="fs-info">
+          <div class="fs-title" id="fs-title">Selecciona un episodio</div>
+          <div class="fs-subtitle" id="fs-subtitle">Podcast Kanazawa</div>
+        </div>
+        <div class="fs-progress-area">
+          <input type="range" class="fs-progress-bar" id="fs-progress" value="0" min="0" max="100" step="0.1" oninput="seekAudio(this.value)">
+          <div class="fs-time-row">
+            <span id="fs-current">0:00</span>
+            <span id="fs-total">0:00</span>
+          </div>
+        </div>
+        <div class="fs-controls">
+          <button class="fs-btn fs-btn-play" id="fs-play-btn" onclick="togglePlay()" aria-label="Reproducir/Pausar">
+            <svg id="fs-icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            <svg id="fs-icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- Mobile only -->
     <div class="mobile-only">
       <div class="subscribe">
@@ -1223,6 +1416,13 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
     const currentTimeEl = document.getElementById('current-time');
     const totalTimeEl = document.getElementById('total-time');
     const playerTitle = document.getElementById('player-title');
+    const fsPlayer = document.getElementById('fullscreen-player');
+    const fsTitle = document.getElementById('fs-title');
+    const fsProgress = document.getElementById('fs-progress');
+    const fsCurrent = document.getElementById('fs-current');
+    const fsTotal = document.getElementById('fs-total');
+    const fsIconPlay = document.getElementById('fs-icon-play');
+    const fsIconPause = document.getElementById('fs-icon-pause');
 
     function formatTime(seconds) {
       if (isNaN(seconds)) return '0:00';
@@ -1262,7 +1462,9 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       audio.play();
       player.classList.remove('hidden');
       playerTitle.textContent = title;
+      fsTitle.textContent = title;
       totalTimeEl.textContent = duration;
+      fsTotal.textContent = duration;
       updatePlayButton(true);
     }
 
@@ -1283,11 +1485,25 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       if (playing) {
         iconPlay.style.display = 'none';
         iconPause.style.display = 'block';
+        fsIconPlay.style.display = 'none';
+        fsIconPause.style.display = 'block';
       } else {
         iconPlay.style.display = 'block';
         iconPause.style.display = 'none';
+        fsIconPlay.style.display = 'block';
+        fsIconPause.style.display = 'none';
       }
     }
+
+    function toggleFullscreen() {
+      fsPlayer.classList.toggle('active');
+      document.body.style.overflow = fsPlayer.classList.contains('active') ? 'hidden' : '';
+    }
+
+    // Hacer clic en player-info abre fullscreen
+    document.querySelectorAll('.player-info').forEach(el => {
+      el.addEventListener('click', toggleFullscreen);
+    });
 
     function seekAudio(value) {
       if (audio.duration) {
@@ -1299,12 +1515,15 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       if (audio.duration) {
         const pct = (audio.currentTime / audio.duration) * 100;
         progressBar.value = pct;
+        fsProgress.value = pct;
         currentTimeEl.textContent = formatTime(audio.currentTime);
+        fsCurrent.textContent = formatTime(audio.currentTime);
       }
     });
 
     audio.addEventListener('loadedmetadata', () => {
       totalTimeEl.textContent = formatTime(audio.duration);
+      fsTotal.textContent = formatTime(audio.duration);
     });
 
     audio.addEventListener('ended', () => {
