@@ -133,6 +133,39 @@
       opacity: 0.7;
     }
 
+    .bio-container {
+      position: relative;
+    }
+
+    .bio-container.collapsed .bio-fade {
+      display: block;
+    }
+
+    .bio-fade {
+      display: none;
+      position: absolute;
+      bottom: 32px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(transparent, var(--bg));
+      pointer-events: none;
+    }
+
+    .bio-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      margin-top: 0.25rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     .hero-title-row {
       display: flex;
       align-items: center;
@@ -405,16 +438,34 @@
 
     @media (max-width: 768px) {
       .container {
-        padding: 2.5rem 1rem 1.5rem;
+        padding: 1.5rem 1rem 1.5rem;
+      }
+
+      .hero {
+        margin-bottom: 2rem;
+      }
+
+      .cover-art {
+        margin-bottom: 1rem;
       }
 
       .cover-art img {
-        width: 160px;
-        height: 160px;
+        width: 120px;
+        height: 120px;
       }
 
       .hero h1 {
-        font-size: 1.375rem;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .bio-container.collapsed {
+        max-height: 180px;
+        overflow: hidden;
+      }
+
+      .bio-toggle {
+        display: inline-block;
       }
 
       .episodes-grid {
@@ -621,10 +672,14 @@
             <svg class="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </button>
         </div>
-        {% set bio_paragraphs = config.bio.split('\n\n') %}
-        {% for para in bio_paragraphs if para.strip() %}
-        <p>{{ para.strip() | replace('\n', '<br>') | safe }}</p>
-        {% endfor %}
+        <div class="bio-container collapsed" id="bio-container">
+          {% set bio_paragraphs = config.bio.split('\n\n') %}
+          {% for para in bio_paragraphs if para.strip() %}
+          <p>{{ para.strip() | replace('\n', '<br>') | safe }}</p>
+          {% endfor %}
+          <div class="bio-fade"></div>
+          <button class="bio-toggle" id="bio-toggle" onclick="toggleBio()">Ver más</button>
+        </div>
         <div class="author-badge">{{ config.author }}</div>
       </div>
       <div class="cover-art">
@@ -825,6 +880,19 @@
         }, 2000);
       });
     });
+
+    // Bio expand/collapse
+    function toggleBio() {
+      const container = document.getElementById('bio-container');
+      const btn = document.getElementById('bio-toggle');
+      if (container.classList.contains('collapsed')) {
+        container.classList.remove('collapsed');
+        btn.textContent = 'Ver menos';
+      } else {
+        container.classList.add('collapsed');
+        btn.textContent = 'Ver más';
+      }
+    }
 
     // Tema oscuro/claro
     function initTheme() {
