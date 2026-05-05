@@ -8,9 +8,9 @@
     <itunes:author>Alex Elgueta</itunes:author>
     <itunes:category text="Technology" />
     <itunes:explicit>no</itunes:explicit>
-    <itunes:image href="https://kanazawa-dev.github.io/personal-podcast/cover.jpg" />
+    <itunes:image href="https://kanazawa-dev.github.io/personal-podcast/cover-lofi.jpg" />
     <image>
-      <url>https://kanazawa-dev.github.io/personal-podcast/cover.jpg</url>
+      <url>https://kanazawa-dev.github.io/personal-podcast/cover-lofi.jpg</url>
       <title>Podcast Kanazawa</title>
       <link>https://kanazawa-dev.github.io/personal-podcast</link>
     </image>

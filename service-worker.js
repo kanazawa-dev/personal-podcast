@@ -2,7 +2,7 @@ const CACHE_NAME = 'podcast-kanazawa-v1';
 const STATIC_ASSETS = [
   '/personal-podcast/',
   '/personal-podcast/index.html',
-  '/personal-podcast/cover.jpg',
+  '/personal-podcast/cover-lofi.jpg',
   '/personal-podcast/icon-192.png',
   '/personal-podcast/icon-512.png'
 ];

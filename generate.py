@@ -68,7 +68,7 @@ def main():
 
     # Copiar assets estáticos
     import shutil
-    static_files = ['manifest.json', 'service-worker.js', 'cover.jpg', 'icon-192.png', 'icon-512.png']
+    static_files = ['manifest.json', 'service-worker.js', 'cover-lofi.jpg', 'icon-192.png', 'icon-512.png']
     for filename in static_files:
         src = ROOT / filename
         dst = PUBLIC_DIR / filename

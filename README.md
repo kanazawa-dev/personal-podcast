@@ -130,7 +130,7 @@ email: "podcast@kanazawa.dev"
 category: "Technology"
 explicit: "no"
 base_url: "https://kanazawa-dev.github.io/personal-podcast"
-image: "https://kanazawa-dev.github.io/personal-podcast/cover.jpg"
+image: "https://kanazawa-dev.github.io/personal-podcast/cover-lofi.jpg"
 ```
 
 - `image`: URL de la imagen de portada general del podcast. Se muestra en Apple Podcasts como carátula principal. Idealmente 1400x1400px o 3000x3000px.
