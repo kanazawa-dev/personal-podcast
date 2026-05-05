@@ -77,6 +77,97 @@
       min-width: 0;
     }
 
+    .episodes-column[data-cat="ingenieria"] {
+      --cat-color: #3b82f6;
+    }
+
+    .episodes-column[data-cat="crianza"] {
+      --cat-color: #10b981;
+    }
+
+    .episodes-column[data-cat="politica"] {
+      --cat-color: #f59e0b;
+    }
+
+    .episodes-column[data-cat="ingenieria"] .section-title {
+      color: #3b82f6;
+    }
+
+    .episodes-column[data-cat="crianza"] .section-title {
+      color: #10b981;
+    }
+
+    .episodes-column[data-cat="politica"] .section-title {
+      color: #f59e0b;
+    }
+
+    .episodes-column[data-cat="ingenieria"] .column-header {
+      border-bottom: 2px solid #3b82f6;
+    }
+
+    .episodes-column[data-cat="crianza"] .column-header {
+      border-bottom: 2px solid #10b981;
+    }
+
+    .episodes-column[data-cat="politica"] .column-header {
+      border-bottom: 2px solid #f59e0b;
+    }
+
+    /* Filter tabs */
+    .filter-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-tab {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: 100px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .filter-tab:hover {
+      border-color: var(--text-secondary);
+      color: var(--text);
+    }
+
+    .filter-tab.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
+    }
+
+    .filter-tab[data-filter="ingenieria"].active {
+      background: #3b82f6;
+      border-color: #3b82f6;
+      color: #fff;
+    }
+
+    .filter-tab[data-filter="crianza"].active {
+      background: #10b981;
+      border-color: #10b981;
+      color: #fff;
+    }
+
+    .filter-tab[data-filter="politica"].active {
+      background: #f59e0b;
+      border-color: #f59e0b;
+      color: #000;
+    }
+
+    .episodes-column.hidden {
+      display: none;
+    }
+
     /* Header compacto tipo app */
     .hero {
       text-align: center;
@@ -1151,9 +1242,22 @@
 
     <div class="divider"></div>
 
-    <main class="episodes-grid">
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all" onclick="filterCategory('all')">Todo</button>
       {% if episodes_ingenieria %}
-      <div class="episodes-column">
+      <button class="filter-tab" data-filter="ingenieria" onclick="filterCategory('ingenieria')">Ingeniería</button>
+      {% endif %}
+      {% if episodes_crianza %}
+      <button class="filter-tab" data-filter="crianza" onclick="filterCategory('crianza')">Crianza</button>
+      {% endif %}
+      {% if episodes_politica %}
+      <button class="filter-tab" data-filter="politica" onclick="filterCategory('politica')">Política</button>
+      {% endif %}
+    </div>
+
+    <main class="episodes-grid" id="episodes-grid">
+      {% if episodes_ingenieria %}
+      <div class="episodes-column" data-cat="ingenieria">
         <div class="column-header">
           <h2 class="section-title">Ingeniería</h2>
           <div class="column-nav">
@@ -1191,7 +1295,7 @@
       {% endif %}
 
       {% if episodes_crianza %}
-      <div class="episodes-column">
+      <div class="episodes-column" data-cat="crianza">
         <div class="column-header">
           <h2 class="section-title">Crianza</h2>
           <div class="column-nav">
@@ -1229,7 +1333,7 @@
       {% endif %}
 
       {% if episodes_politica %}
-      <div class="episodes-column">
+      <div class="episodes-column" data-cat="politica">
         <div class="column-header">
           <h2 class="section-title">Política</h2>
           <div class="column-nav">
@@ -1640,6 +1744,30 @@
         moonIcons.forEach(i => i.style.display = 'block');
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#1a1a2e');
       }
+    }
+
+    function filterCategory(cat) {
+      const columns = document.querySelectorAll('.episodes-column');
+      const tabs = document.querySelectorAll('.filter-tab');
+
+      tabs.forEach(t => t.classList.toggle('active', t.dataset.filter === cat));
+
+      columns.forEach(col => {
+        if (cat === 'all' || col.dataset.cat === cat) {
+          col.classList.remove('hidden');
+        } else {
+          col.classList.add('hidden');
+        }
+      });
+
+      // Guardar preferencia
+      localStorage.setItem('kanazawa-filter', cat);
+    }
+
+    // Restaurar filtro guardado
+    const savedFilter = localStorage.getItem('kanazawa-filter');
+    if (savedFilter && savedFilter !== 'all') {
+      filterCategory(savedFilter);
     }
 
     function toggleTheme() {
