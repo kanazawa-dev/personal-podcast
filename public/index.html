@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#ff6b00">
+  <meta name="theme-color" content="#1a1a2e">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Kanazawa">
@@ -19,152 +19,511 @@
   <meta property="og:image" content="https://kanazawa-dev.github.io/personal-podcast/cover.jpg">
   <meta property="og:type" content="website">
   
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
   <title>Podcast Kanazawa</title>
   <style>
     :root { 
-      --bg: #0f0f0f; 
-      --text: #f0f0f0; 
-      --accent: #ff6b00; 
-      --card: #1a1a1a;
-      --card-hover: #222222;
+      --bg: #0f0f1a; 
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --bg-card-hover: rgba(255, 255, 255, 0.06);
+      --text: #e8e8f0; 
+      --text-secondary: #a0a0b8;
+      --accent: #ff7eb3;
+      --accent-secondary: #7ee8fa;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: rgba(0, 0, 0, 0.3);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { 
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
-      background: var(--bg); 
-      color: var(--text); 
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    .container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
     
-    /* Header con cover */
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    body { 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    
+    /* Background decoration */
+    .bg-decoration {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .bg-decoration::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(255, 126, 179, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .bg-decoration::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(126, 232, 250, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    
+    .container { 
+      position: relative;
+      z-index: 1;
+      max-width: 720px; 
+      margin: 0 auto; 
+      padding: 2rem 1.5rem;
+    }
+    
+    /* Header / Hero */
     .hero {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
       padding: 2rem 0;
+      animation: fadeInUp 0.8s ease-out;
     }
-    .hero img {
+    
+    .cover-art {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    
+    .cover-art img {
       width: 280px;
       height: 280px;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(255, 107, 0, 0.15);
-      margin-bottom: 1.5rem;
+      border-radius: 24px;
       object-fit: cover;
+      box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
-    .hero h1 { font-size: 2rem; margin-bottom: 0.5rem; font-weight: 700; }
-    .hero p { color: #aaa; font-size: 1.1rem; max-width: 500px; margin: 0 auto; }
     
-    /* Episodios */
-    .episode { 
-      background: var(--card); 
-      border-radius: 16px; 
-      padding: 1.5rem; 
-      margin-bottom: 1.5rem;
-      transition: transform 0.2s, background 0.2s;
+    .cover-art img:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 
+        0 30px 60px -12px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(255, 255, 255, 0.15),
+        0 0 60px rgba(255, 126, 179, 0.1);
     }
-    .episode:hover {
-      background: var(--card-hover);
-      transform: translateY(-2px);
+    
+    .cover-art::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: 32px;
+      background: linear-gradient(135deg, rgba(255, 126, 179, 0.2), rgba(126, 232, 250, 0.2));
+      filter: blur(30px);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
     }
-    .episode h2 { 
-      font-size: 1.25rem; 
-      margin-bottom: 0.5rem; 
-      color: var(--accent); 
-      font-weight: 600;
+    
+    .cover-art:hover::before {
+      opacity: 1;
     }
-    .meta { 
-      font-size: 0.875rem; 
-      color: #888; 
-      margin-bottom: 1rem;
-      display: flex;
+    
+    .hero h1 { 
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero p { 
+      color: var(--text-secondary); 
+      font-size: 1.1rem;
+      font-weight: 300;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .author-badge {
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-    }
-    .meta::before {
-      content: '🎧';
-    }
-    audio { 
-      width: 100%; 
-      margin-top: 1rem;
-      border-radius: 8px;
-      height: 40px;
-    }
-    audio::-webkit-media-controls-panel {
-      background: #2a2a2a;
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
     }
     
-    /* RSS Link */
-    .subscribe {
-      background: linear-gradient(135deg, var(--accent), #ff8c00);
+    .author-badge::before {
+      content: '🎙️';
+    }
+    
+    /* Episodes */
+    .episodes-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .episodes-header::before {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .episodes-header::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    .episode { 
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 20px; 
+      padding: 1.75rem;
+      margin-bottom: 1.25rem;
+      transition: all 0.3s ease;
+      animation: fadeInUp 0.6s ease-out backwards;
+    }
+    
+    .episode:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+    }
+    
+    .episode-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .episode-number {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      border-radius: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--bg);
+    }
+    
+    .episode-info {
+      flex: 1;
+    }
+    
+    .episode h2 { 
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.15rem; 
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+      line-height: 1.4;
+    }
+    
+    .meta { 
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.8125rem; 
+      color: var(--text-secondary);
+    }
+    
+    .meta-separator {
+      width: 3px;
+      height: 3px;
+      background: var(--text-secondary);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+    
+    .episode-description {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    
+    .episode-description strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+    
+    /* Audio player */
+    .player-wrapper {
+      background: rgba(0, 0, 0, 0.2);
       border-radius: 16px;
-      padding: 2rem;
+      padding: 0.75rem;
+    }
+    
+    audio { 
+      width: 100%;
+      height: 44px;
+      border-radius: 12px;
+    }
+    
+    audio::-webkit-media-controls-panel {
+      background: transparent;
+    }
+    
+    audio::-webkit-media-controls-enclosure {
+      background: transparent;
+      border-radius: 12px;
+    }
+    
+    /* Subscribe section */
+    .subscribe {
+      background: linear-gradient(135deg, rgba(255, 126, 179, 0.1), rgba(126, 232, 250, 0.1));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
       text-align: center;
       margin: 3rem 0;
+      position: relative;
+      overflow: hidden;
     }
+    
+    .subscribe::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 126, 179, 0.05) 0%, transparent 60%);
+      animation: pulse 4s ease-in-out infinite;
+    }
+    
+    .subscribe-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .subscribe-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
     .subscribe h3 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-      color: #fff;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
     }
-    .subscribe code {
-      background: rgba(0,0,0,0.3);
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-size: 0.875rem;
+    
+    .subscribe p {
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
+      margin-bottom: 1.25rem;
+    }
+    
+    .feed-url {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      padding: 0.875rem 1.25rem;
+      border-radius: 12px;
+      font-family: 'SF Mono', monospace;
+      font-size: 0.8125rem;
+      color: var(--accent-secondary);
       word-break: break-all;
-      display: inline-block;
-      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: all;
+    }
+    
+    .feed-url:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background: rgba(0, 0, 0, 0.4);
+    }
+    
+    .feed-url::before {
+      content: '📋';
+      flex-shrink: 0;
     }
     
     /* Install button */
     #install-btn {
       display: none;
-      background: var(--accent);
-      color: #fff;
+      width: 100%;
+      max-width: 400px;
+      margin: 2rem auto;
+      padding: 1rem 2rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      color: var(--bg);
       border: none;
-      padding: 0.875rem 2rem;
-      border-radius: 12px;
+      border-radius: 16px;
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      margin: 2rem auto;
-      width: 100%;
-      max-width: 400px;
+      transition: all 0.3s ease;
     }
-    #install-btn.visible { display: block; }
+    
+    #install-btn.visible { 
+      display: block; 
+    }
+    
+    #install-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px -10px rgba(255, 126, 179, 0.4);
+    }
     
     /* Footer */
     footer { 
-      text-align: center; 
-      margin-top: 3rem; 
-      color: #555; 
-      font-size: 0.875rem;
-      padding-bottom: 2rem;
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+    }
+    
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
     }
     
     /* Responsive */
-    @media (max-width: 600px) {
-      .hero img { width: 200px; height: 200px; }
-      .hero h1 { font-size: 1.5rem; }
-      .episode { padding: 1.25rem; }
+    @media (max-width: 640px) {
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      
+      .cover-art img {
+        width: 220px;
+        height: 220px;
+      }
+      
+      .hero h1 {
+        font-size: 2rem;
+      }
+      
+      .episode {
+        padding: 1.25rem;
+      }
+      
+      .episode-header {
+        gap: 0.75rem;
+      }
+      
+      .episode-number {
+        width: 36px;
+        height: 36px;
+        font-size: 0.75rem;
+      }
+      
+      .subscribe {
+        padding: 2rem 1.25rem;
+      }
+    }
+    
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Selection color */
+    ::selection {
+      background: rgba(255, 126, 179, 0.3);
+      color: var(--text);
     }
   </style>
 </head>
 <body>
+  <div class="bg-decoration"></div>
+  
   <div class="container">
     <header class="hero">
-      <img src="cover.jpg" alt="Podcast Kanazawa">
+      <div class="cover-art">
+        <img src="cover.jpg" alt="Podcast Kanazawa">
+      </div>
       <h1>Podcast Kanazawa</h1>
       <p>Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.</p>
+      <div class="author-badge">Alex Elgueta</div>
     </header>
+    
+    <div class="episodes-header">Episodios</div>
     
     <main>
       
-      <article class="episode">
-        <h2>Episodio 1 - Pressman y la Ingeniería de Software como disciplina</h2>
-        <div class="meta">2026-05-04 · 32:45</div>
-        <p>Hoy hablamos de **&#34;Software Engineering: A Practitioner&#39;s Approach&#34;**, la séptima edición del libro de Roger S. Pressman que es referencia obligada para cualquiera que quiera entender esta disciplina en serio.
+      <article class="episode" style="animation-delay: 0.1s">
+        <div class="episode-header">
+          <div class="episode-number">1</div>
+          <div class="episode-info">
+            <h2>Episodio 1 - Pressman y la Ingeniería de Software como disciplina</h2>
+            <div class="meta">
+              <span>2026-05-04</span>
+              <span class="meta-separator"></span>
+              <span>32:45</span>
+            </div>
+          </div>
+        </div>
+        <div class="episode-description">Hoy hablamos de **&#34;Software Engineering: A Practitioner&#39;s Approach&#34;**, la séptima edición del libro de Roger S. Pressman que es referencia obligada para cualquiera que quiera entender esta disciplina en serio.
 
 Pressman no te vende magia. Te presenta la ingeniería de software como lo que es: un proceso sistemático compuesto por cinco actividades estructurales — **comunicación, planeación, modelado, construcción y despliegue**. Nada de saltar directo al código sin entender el problema primero.
 
@@ -172,23 +531,31 @@ Lo que me gusta de Pressman es que no se olvida de lo obvio: el software es un p
 
 El autor insiste en que antes de diseñar una solución técnica, tenés que entender el problema. Suena simple, pero mirá cuántos proyectos fallan por empezar a codear sin saber qué están resolviendo.
 
-En este episodio repasamos por qué este libro sigue siendo relevante, desde aplicaciones web hasta sistemas heredados, y por qué un enfoque de ingeniería adaptable es la única forma de garantizar calidad a largo plazo.</p>
-        <audio controls preload="metadata">
-          <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a" type="audio/mp4">
-        </audio>
+En este episodio repasamos por qué este libro sigue siendo relevante, desde aplicaciones web hasta sistemas heredados, y por qué un enfoque de ingeniería adaptable es la única forma de garantizar calidad a largo plazo.</div>
+        <div class="player-wrapper">
+          <audio controls preload="metadata">
+            <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a" type="audio/mp4">
+          </audio>
+        </div>
       </article>
       
     </main>
     
     <div class="subscribe">
-      <h3>Suscribite en tu app de podcasts</h3>
-      <code>https://kanazawa-dev.github.io/personal-podcast/feed.xml</code>
+      <div class="subscribe-content">
+        <div class="subscribe-icon">🎧</div>
+        <h3>Suscribite en tu app favorita</h3>
+        <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
+        <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.replace('📋', '').trim())">
+          https://kanazawa-dev.github.io/personal-podcast/feed.xml
+        </div>
+      </div>
     </div>
     
-    <button id="install-btn">📲 Instalar App</button>
+    <button id="install-btn">📲 Instalar como app</button>
     
     <footer>
-      <p>Alex Elgueta · Podcast Kanazawa</p>
+      <p>Hecho con 💜 por Alex Elgueta</p>
     </footer>
   </div>
   
@@ -218,6 +585,17 @@ En este episodio repasamos por qué este libro sigue siendo relevante, desde apl
         installBtn.classList.remove('visible');
       }
       deferredPrompt = null;
+    });
+    
+    // Copiar feed URL feedback
+    document.querySelectorAll('.feed-url').forEach(el => {
+      el.addEventListener('click', function() {
+        const original = this.innerHTML;
+        this.innerHTML = '✅ Copiado!';
+        setTimeout(() => {
+          this.innerHTML = original;
+        }, 2000);
+      });
     });
   </script>
 </body>
