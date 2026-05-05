@@ -1,120 +1,211 @@
-# B/D® JAMS — Style Reference
-> Editorial White Canvas
+# General Intelligence Company — Style Reference
+> Architectural Night Sky
 
 **Theme:** light
 
-The B/D® JAMS design system presents a clean, editorial aesthetic reminiscent of a digital zine, prioritizing spaciousness and direct typography over decorative elements. Its visual language relies on a monochrome palette of stark black text and crisp backgrounds, occasionally softened by subtle gray borders. Layouts are deliberately sparse, framing content with generous whitespace, and interactions are signaled through direct text changes rather than elaborate animations or vivid highlights. Components are minimalist, focusing on function with zero radii and transparent backgrounds.
+General Intelligence Company employs a sophisticated aesthetic, blending an evocative, illustrative dark hero with a predominantly minimalist, architectural light UI. Typography is restrained and elegant, utilizing a serif for headlines that conveys gravitas and a clean sans-serif for body text. Surfaces are layered with subtle translucency and soft, multi-layered shadows, creating depth without heaviness. The overall impression is one of calm authority and advanced technology, articulated through precise achromatic forms punctuated by a singular, cool blue accent for interactive elements.
 
 ## Tokens — Colors
 
 | Name | Value | Token | Role |
 |------|-------|-------|------|
-| Canvas Ice | `#f1f1f1` | `--color-canvas-ice` | Primary page background, expansive surfaces |
-| Ink Black | `#0e0e0e` | `--color-ink-black` | Primary text, strong headings, button borders, and essential UI strokes. Establishes a bold, high-contrast presence |
-| Border Fog | `#e5e7eb` | `--color-border-fog` | Subtle borders and dividers for nuanced separation |
-| True White | `#ffffff` | `--color-true-white` | Secondary text in specific contexts, subtle border accents, and for maximum contrast elements |
+| Night Sky | `#1f1f29` | `--color-night-sky` | Dark base for hero sections and occasional accent backgrounds; creates a deep, contemplative atmosphere |
+| Cofounder Blue | `#0081c0` | `--color-cofounder-blue` | Highlight elements, card backgrounds for featured content, and active interface states. Its vivid hue draws attention while maintaining a high-tech feel |
+| Action Azure | `#41a1cf` | `--color-action-azure` | Border color for ghost buttons and interactive elements, providing a clear but understated active state |
+| Pitch Black | `#000000` | `--color-pitch-black` | Primary text for headings and bold statements against light backgrounds, emphasizing core information |
+| Canvas White | `#ffffff` | `--color-canvas-white` | Main page background, component backgrounds, and primary text on dark elements, maintaining brightness and spaciousness |
+| Off White | `#fefffc` | `--color-off-white` | Subtle alternative background for secondary sections and cards, creating a slight visual separation from the main canvas |
+| Ash Gray | `#f9faf7` | `--color-ash-gray` | Background for input fields and navigation elements, providing a soft contrast |
+| Cool Gray | `#eef1ed` | `--color-cool-gray` | Subtle border for UI elements and dividers, offering minimal distinction |
+| Steel Gray | `#dee2de` | `--color-steel-gray` | Hairline borders and soft shadows, contributing to a refined, nearly unnoticeable separation of elements |
+| Dark Charcoal | `#171717` | `--color-dark-charcoal` | Primary body text and deep contrast accents. Used where legibility against light backgrounds is paramount |
+| Charcoal | `#2c2c2c` | `--color-charcoal` | Secondary text and less prominent headings, providing contrast below the primary text level |
+| Rich Black | `#282834` | `--color-rich-black` | Darker accent for navigation hover states and subtly outlined actions, providing depth on dark surfaces |
+| Slate Gray | `#444141` | `--color-slate-gray` | Placeholder text and subtle icon fills, indicating less active states or auxiliary information |
+| Medium Gray | `#646464` | `--color-medium-gray` | Muted text for helper descriptions and secondary information, reducing visual noise |
+| Light Gray | `#b4b8b4` | `--color-light-gray` | Lightest neutral used for subtle background variations or very soft dividers |
 
 ## Tokens — Typography
 
-### SctoGroteskA — All textual content, from navigation links and body text to prominent headings. The varied weights with tight letter-spacing contribute to its editorial, almost typewritten feel, emphasizing clarity and precision over decorative flair. · `--font-sctogroteska`
-- **Substitute:** Inter
-- **Weights:** 300, 700
-- **Sizes:** 16px, 24px, 48px
-- **Line height:** 1.00, 1.13, 1.17
-- **Letter spacing:** -0.04em at 48px, -0.03em at 24px and 16px
-- **Role:** All textual content, from navigation links and body text to prominent headings. The varied weights with tight letter-spacing contribute to its editorial, almost typewritten feel, emphasizing clarity and precision over decorative flair.
+### PPMondwest — Headlines and prominent display text. Its distinct serif creates a sense of gravitas and intellectual authority, often appearing in sizes like 40px and 54px. · `--font-ppmondwest`
+- **Weights:** 400, 500
+- **Sizes:** 40px, 48px, 54px
+- **Line height:** 1.10
+- **Letter spacing:** -0.0200em
+- **OpenType features:** `"liga" 0`
+- **Role:** Headlines and prominent display text. Its distinct serif creates a sense of gravitas and intellectual authority, often appearing in sizes like 40px and 54px.
+
+### af — Body text, navigation, buttons, and all functional UI labels. This sans-serif provides clarity and modernity, varying in weight from 400 for standard body copy to 700 for more prominent labels, with a subtle negative letter spacing for a compact feel across sizes 13px to 18px. · `--font-af`
+- **Weights:** 400, 500, 600, 700
+- **Sizes:** 13px, 15px, 16px, 18px
+- **Line height:** 1.00, 1.20, 1.30, 1.40, 1.50
+- **Letter spacing:** -0.0120em, -0.0100em
+- **Role:** Body text, navigation, buttons, and all functional UI labels. This sans-serif provides clarity and modernity, varying in weight from 400 for standard body copy to 700 for more prominent labels, with a subtle negative letter spacing for a compact feel across sizes 13px to 18px.
 
 ### Type Scale
 
 | Role | Size | Line Height | Letter Spacing | Token |
 |------|------|-------------|----------------|-------|
-| body | 16px | 1.17 | -0.48px | `--text-body` |
-| subheading | 24px | 1.13 | -0.72px | `--text-subheading` |
-| heading | 48px | 1 | -1.92px | `--text-heading` |
+| caption | 13px | 1.5 | -0.13px | `--text-caption` |
+| button-label | 16px | 1 | -0.19px | `--text-button-label` |
+| subheading | 18px | 1.2 | -0.18px | `--text-subheading` |
+| heading | 40px | 1.1 | -0.8px | `--text-heading` |
+| heading-lg | 48px | 1.1 | -0.96px | `--text-heading-lg` |
+| display | 54px | 1.1 | -1.08px | `--text-display` |
 
 ## Tokens — Spacing & Shapes
 
 **Base unit:** 4px
 
-**Density:** spacious
+**Density:** comfortable
 
 ### Spacing Scale
 
 | Name | Value | Token |
 |------|-------|-------|
+| 4 | 4px | `--spacing-4` |
+| 8 | 8px | `--spacing-8` |
+| 12 | 12px | `--spacing-12` |
+| 16 | 16px | `--spacing-16` |
 | 20 | 20px | `--spacing-20` |
-| 30 | 30px | `--spacing-30` |
+| 24 | 24px | `--spacing-24` |
+| 32 | 32px | `--spacing-32` |
+| 40 | 40px | `--spacing-40` |
+| 48 | 48px | `--spacing-48` |
+| 64 | 64px | `--spacing-64` |
 | 80 | 80px | `--spacing-80` |
 
 ### Border Radius
 
 | Element | Value |
 |---------|-------|
-| default | 0px |
+| nav | 50.496px |
+| none | 0px |
+| buttons | 4px |
+| cardsLarge | 24px |
+| cardsSmall | 12px |
+| cardsMedium | 16px |
+| navItemsSmall | 8px |
+
+### Shadows
+
+| Name | Value | Token |
+|------|-------|-------|
+| sm | `rgba(0, 0, 0, 0.15) 0px 2px 6px 0px` | `--shadow-sm` |
+| subtle | `rgb(222, 226, 222) 0px 0px 0px 1px` | `--shadow-subtle` |
+| subtle-2 | `rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) ...` | `--shadow-subtle-2` |
+| subtle-3 | `rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) ...` | `--shadow-subtle-3` |
+| sm-2 | `rgba(0, 0, 0, 0.05) 0px 1px 8px 0px` | `--shadow-sm-2` |
 
 ### Layout
 
-- **Section gap:** 80px
-- **Card padding:** 0px
-- **Element gap:** 30px
+- **Section gap:** 32px
+- **Card padding:** 16px
+- **Element gap:** 8px
 
 ## Components
 
-### Ghost Navigation Button
-**Role:** Interactive element for navigation and primary actions.
+### Ghost Button
+**Role:** Subtle interactive element
 
-Background transparent (rgba(0, 0, 0, 0)), text color Ink Black (#0e0e0e), with no padding or border by default. Focus states are indicated by border.
+Transparent background, text color typically #444141 or #171717, no explicit border, 0px radius. Used for links within text or secondary actions.
 
-### Information Card (minimal)
-**Role:** Container for content.
+### Subtle Nav Button
+**Role:** Navigation item or secondary ghost action
 
-Background transparent (rgba(0, 0, 0, 0)), no border, no shadow, and zero padding. Achieves separation primarily through generous vertical spacing.
+Background rgba(255, 255, 255, 0.06), text color #171717, 8px border radius, 5px vertical padding and 12px horizontal padding. Offers a soft, contained interaction.
+
+### Solid Dark Button
+**Role:** Primary action within darker contexts
+
+Background #1f1f29, text color #ffffff. Border #282834, 8px border radius, 7px top, 8px bottom, 16px left, 12px right padding. Used for high-emphasis CTAs.
+
+### Outlined Action Button
+**Role:** Interactive button with a defined border
+
+Ghost background, text color #444141 or #171717, border color #41a1cf or #282834, 4px border radius. Offers a clear but not overly prominent action.
+
+### Blurred Nav Item
+**Role:** Navigation element with translucent background
+
+Background #f9faf7 with blur effect, 50.496px border radius, #171717 text. Soft shadow rgba(0, 0, 0, 0.15) 0px 2px 6px 0px. Used in the header, suggesting elegance and lightness.
+
+### Elevated Content Card
+**Role:** Content container with subtle elevation
+
+Background #fefffc, 12px border radius. Soft shadow rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px. Used for featured information blocks.
+
+### Hero Overlay Card
+**Role:** Translucent content block over imagery
+
+Background rgba(222, 226, 222, 0.16), 24px border radius, no shadow. 16px padding. Used on the hero section for minimal visual intrusion and atmospheric depth.
+
+### Cofounder Featured Card
+**Role:** Prominent, brand-colored feature display
+
+Background #0081c0, 24px border radius. Complex shadow rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0) 0px 6px 6px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px. Generous padding 128px top, 80px right/bottom/left. Commands attention for key information.
+
+### Ghost Input Field
+**Role:** Standard user input field
+
+Background #f9faf7, text and border #444141, 0px border radius. Default padding for clarity.
 
 ## Do's and Don'ts
 
 ### Do
-- Prioritize Canvas Ice (#f1f1f1) for all background surfaces to maintain a clean, expansive feel.
-- Use Ink Black (#0e0e0e) for primary text and borders to ensure strong contrast and visual hierarchy.
-- Apply SctoGroteskA (or Inter) with letter-spacing -0.04em for headings at 48px, and -0.03em for 16px and 24px text to consistently deliver the concise, editorial aesthetic.
-- Maintain a zero border-radius for all interactive elements and containers to preserve the sharp, angular aesthetic.
-- Utilize 80px for vertical spacing between major sections, and 30px for horizontal and vertical spacing within content blocks to ensure generous whitespace.
-- Implement Ghost Navigation Buttons with a transparent background and Ink Black (#0e0e0e) text, only showing a border on hover/focus using Ink Black (#0e0e0e).
+- Prioritize PPMondwest for all display and large headings (40px, 48px, 54px) using weight 400 or 500, with letter-spacing -0.0200em for a refined, compact look.
+- Use 'Night Sky' (#1f1f29) as a deep, rich background for hero sections or brand-defining modules, contrasting with light body text and elements.
+- Layer surfaces with 'Off White' (#fefffc) and 'Canvas White' (#ffffff) to provide subtle depth and structure on light-themed pages, emphasizing 'Canvas White' for main backgrounds and 'Off White' for slightly recessed elements.
+- Apply 'Cofounder Blue' (#0081c0) sparingly as a functional accent color for key cards or active states, reserving its prominence for maximum impact.
+- Implement soft, layered shadows for card components (e.g., rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px) to give elements a subtle lift without feeling heavy.
+- Maintain a comfortable density with an element gap of 8px and card padding of 16px, ensuring sufficient breathing room between UI elements.
+- Round corners with care: use 4px for small buttons, 8px for main interactive elements, 12px for cards, and 24px for larger, more prominent cards like the 'Hero Overlay Card', with 50.496px for highly rounded nav items.
 
 ### Don't
-- Do not use highly saturated colors for main UI elements; chromatic colors are not part of the brand's core palette.
-- Avoid using box-shadows or elevated elements; the design emphasizes a flat, two-dimensional aesthetic.
-- Do not introduce decorative borders or excessive padding on cards; they should remain minimalist and transparent.
-- Do not use rounded corners on any UI element; all corners should be sharp and angular.
-- Avoid dense information blocks; instead, use ample whitespace and clear typographic hierarchy for content organization.
-- Do not use generic system fonts; always prioritize SctoGroteskA (or Inter) to maintain the brand's unique typographic voice.
+- Avoid excessive use of 'Cofounder Blue' (#0081c0) outside of clear accent roles; it should highlight, not dominate, the UI.
+- Do not introduce strong, bold colors or gradients other than the defined brand accents; the system relies on a sophisticated achromatic foundation.
+- Resist using heavy, opaque backgrounds for layered elements on light pages; instead, favor sublte translucency (rgba(222, 226, 222, 0.16)) for a delicate, modern effect.
+- Do not use letter-spacing values tighter than -0.0200em for headings or wider than -0.0100em for body text. Maintain the precise, compact typographic rhythm.
+- Refrain from sharp, angular corners for cards and buttons; apply the specified radii (4px, 8px, 12px, 16px, 24px, 50.496px) consistently for a softer, approachable feel.
+- Do not deviate from the specified shadow values; the subtle, multi-layered shadows are key to the brand's sophisticated depth without visual clutter.
+- Avoid cluttering the layout; aim for comfortable spacing both vertically (32px section gap) and horizontally, letting content breathe rather than stacking elements too closely.
+
+## Elevation
+
+- **Nav Items:** `rgba(0, 0, 0, 0.15) 0px 2px 6px 0px`
+- **Card:** `rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px`
+- **Cofounder Featured Card:** `rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0) 0px 6px 6px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px`
+- **Input fields and subtle UI elements:** `rgba(0, 0, 0, 0.05) 0px 1px 8px 0px`
 
 ## Imagery
 
-The site's imagery primarily consists of full-bleed, raw photographic or abstract visuals acting as background elements, specifically a weathered-looking sky. These images are treated without specific masking or prominent borders, integrating seamlessly into the minimalist design, acting more as atmospheric textures than focal points. There are no obvious icons or complex illustrations, preserving a text-dominant and stark visual environment.
+The visual language for imagery combines two distinct styles: a highly detailed, illustrative, dark-themed cityscape for the hero section, serving as an atmospheric backdrop, and minimalist, contained product screenshots or abstract graphics for content areas. Photography is absent. Illustrations are organic and atmospheric in the hero, while content area graphics are abstract and geometric, typically featuring outlined shapes and a subdued, near-achromatic palette. Icons are outlined, with a moderate stroke weight, and mostly monochromatic. Imagery acts as both decorative atmosphere in the hero to draw the user in and as explanatory content in product sections, with a balanced density on content-heavy pages.
 
 ## Layout
 
-The page maintains a full-bleed, canvas-like aesthetic, allowing background imagery to extend edge-to-edge. Content appears to be horizontally centered within a broad but undefined maximum width. The hero pattern features minimal navigation text elements positioned prominently at the top, overlaying the background. Sections are separated by generous vertical spacing, typically 80px, maintaining significant breathing room between content blocks. The primary content arrangement is a simple, stacked typographic hierarchy creating an editorial, almost printed page feel with no complex grids or alternating visual patterns.
+The page structure features an initial full-bleed hero section defined by a dark, illustrative cityscape background with a centered headline. Following this, the layout transitions to a contained, max-width (implied 1200px from content grouping) centered model for content sections. Sections alternate between 'Canvas White' and 'Off White' backgrounds, establishing a clear visual rhythm. Content is arranged predominantly in a two-column text-left/image-right pattern or centered text stacks for emphasis. Feature grids may appear in three-column structures. Navigation is a compact top bar, with sticky behavior, containing minimalist text links and a 'Get Cofounder' button.
 
 ## Agent Prompt Guide
 
-Quick Color Reference:
-text: #0e0e0e
-background: #f1f1f1
-border: #e5e7eb
-accent: no distinct accent color
-primary action: no distinct CTA color
+Quick Color Reference: 
+text: #171717
+background: #ffffff
+border: #dee2de
+accent: #0081c0
+primary action: #41a1cf (outlined action border)
 
 Example Component Prompts:
-1. Create a top navigation bar: Canvas Ice background (#f1f1f1). Left-aligned text 'B/D® JAMS' at 16px SctoGroteskA weight 700, color Ink Black (#0e0e0e), letter-spacing -0.48px. Right-aligned 'Notes' link at 16px SctoGroteskA weight 700, color Ink Black (#0e0e0e), letter-spacing -0.48px. No padding, no border, no radius.
-2. Create a heading section: Canvas Ice background (#f1f1f1). Centered text 'Press Option+1 for screen-reader mode, Option+0 to cancel' at 48px SctoGroteskA weight 700, color Ink Black (#0e0e0e), letter-spacing -1.92px. Padding 80px top and bottom.
-3. Create a Ghost Grid Button: Transparent background (rgba(0,0,0,0)), text 'Grid' at 16px SctoGroteskA weight 700, color Ink Black (#0e0e0e), letter-spacing -0.48px. No padding, border, or radius. Should respond to hover/focus by showing a 1px solid Ink Black (#0e0e0e) border.
+1. Create a hero section with a 'Night Sky' background (#1f1f29). Headline (PPMondwest, 54px, weight 400, #ffffff, letter-spacing -1.08px). Subtext (af, 18px, weight 400, #ffffff, line-height 1.2).
+2. Create an 'Elevated Content Card': background 'Off White' (#fefffc), 12px border-radius, box-shadow rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px, 16px padding. Title (af, 18px, weight 600, #2c2c2c), body text (af, 16px, weight 400, #171717).
+3. Create an 'Outlined Action Button': background transparent, border 1px solid 'Action Azure' (#41a1cf), text 'Dark Charcoal' (#171717), 4px border-radius. Text (af, 16px, weight 500, letter-spacing -0.19px), 5px vertical / 12px horizontal padding.
+4. Create a 'Blurred Nav Item': background rgba(255, 255, 255, 0.06), 50.496px border-radius, box-shadow rgba(0, 0, 0, 0.15) 0px 2px 6px 0px. Text (af, 15px, weight 400, #171717), 8px padding. Implement a backdrop-filter: blur(9px).
 
 ## Similar Brands
 
-- **Are.na** — Shares a stark, minimalist visual style with a heavy reliance on monochrome typography and visible borders for UI elements.
-- **Basic Type Foundry** — Features a strong, editorial typographic voice, high contrast, and a sparse, content-focused layout with minimal decorative elements.
-- **The New York Times (digital archives)** — Employs an editorial grid, high typographic rigor, and a focus on clean, legible text without excessive visual distraction, often using large amounts of white space.
+- **Linear** — Shares a sophisticated dark header/light body theme, minimalist aesthetic, and subtle elevation patterns.
+- **Anthropic (Cloude)** — Similar restrained aesthetic, heavy use of high-quality custom typography, and a bias towards clean, functional UI over decorative elements.
+- **Stripe** — Uses a similar approach to elegant typography, crisp surfaces, and a well-defined achromatic palette with controlled accent colors for interactive elements.
+- **Intercom** — Features a balanced use of white space, crisp typography, and strategic color accents to highlight key information or actions, against a generally light background.
 
 ## Quick Start
 
@@ -123,42 +214,94 @@ Example Component Prompts:
 ```css
 :root {
   /* Colors */
-  --color-canvas-ice: #f1f1f1;
-  --color-ink-black: #0e0e0e;
-  --color-border-fog: #e5e7eb;
-  --color-true-white: #ffffff;
+  --color-night-sky: #1f1f29;
+  --color-cofounder-blue: #0081c0;
+  --color-action-azure: #41a1cf;
+  --color-pitch-black: #000000;
+  --color-canvas-white: #ffffff;
+  --color-off-white: #fefffc;
+  --color-ash-gray: #f9faf7;
+  --color-cool-gray: #eef1ed;
+  --color-steel-gray: #dee2de;
+  --color-dark-charcoal: #171717;
+  --color-charcoal: #2c2c2c;
+  --color-rich-black: #282834;
+  --color-slate-gray: #444141;
+  --color-medium-gray: #646464;
+  --color-light-gray: #b4b8b4;
 
   /* Typography — Font Families */
-  --font-sctogroteska: 'SctoGroteskA', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-ppmondwest: 'PPMondwest', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-af: 'af', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
-  --text-body: 16px;
-  --leading-body: 1.17;
-  --tracking-body: -0.48px;
-  --text-subheading: 24px;
-  --leading-subheading: 1.13;
-  --tracking-subheading: -0.72px;
-  --text-heading: 48px;
-  --leading-heading: 1;
-  --tracking-heading: -1.92px;
+  --text-caption: 13px;
+  --leading-caption: 1.5;
+  --tracking-caption: -0.13px;
+  --text-button-label: 16px;
+  --leading-button-label: 1;
+  --tracking-button-label: -0.19px;
+  --text-subheading: 18px;
+  --leading-subheading: 1.2;
+  --tracking-subheading: -0.18px;
+  --text-heading: 40px;
+  --leading-heading: 1.1;
+  --tracking-heading: -0.8px;
+  --text-heading-lg: 48px;
+  --leading-heading-lg: 1.1;
+  --tracking-heading-lg: -0.96px;
+  --text-display: 54px;
+  --leading-display: 1.1;
+  --tracking-display: -1.08px;
 
   /* Typography — Weights */
-  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
   /* Spacing */
   --spacing-unit: 4px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
   --spacing-20: 20px;
-  --spacing-30: 30px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
   --spacing-80: 80px;
 
   /* Layout */
-  --section-gap: 80px;
-  --card-padding: 0px;
-  --element-gap: 30px;
+  --section-gap: 32px;
+  --card-padding: 16px;
+  --element-gap: 8px;
+
+  /* Border Radius */
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 50.496px;
 
   /* Named Radii */
-  --radius-default: 0px;
+  --radius-nav: 50.496px;
+  --radius-none: 0px;
+  --radius-buttons: 4px;
+  --radius-cardslarge: 24px;
+  --radius-cardssmall: 12px;
+  --radius-cardsmedium: 16px;
+  --radius-navitemssmall: 8px;
+
+  /* Shadows */
+  --shadow-sm: rgba(0, 0, 0, 0.15) 0px 2px 6px 0px;
+  --shadow-subtle: rgb(222, 226, 222) 0px 0px 0px 1px;
+  --shadow-subtle-2: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px;
+  --shadow-subtle-3: rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px;
+  --shadow-sm-2: rgba(0, 0, 0, 0.05) 0px 1px 8px 0px;
 }
 ```
 
@@ -167,28 +310,72 @@ Example Component Prompts:
 ```css
 @theme {
   /* Colors */
-  --color-canvas-ice: #f1f1f1;
-  --color-ink-black: #0e0e0e;
-  --color-border-fog: #e5e7eb;
-  --color-true-white: #ffffff;
+  --color-night-sky: #1f1f29;
+  --color-cofounder-blue: #0081c0;
+  --color-action-azure: #41a1cf;
+  --color-pitch-black: #000000;
+  --color-canvas-white: #ffffff;
+  --color-off-white: #fefffc;
+  --color-ash-gray: #f9faf7;
+  --color-cool-gray: #eef1ed;
+  --color-steel-gray: #dee2de;
+  --color-dark-charcoal: #171717;
+  --color-charcoal: #2c2c2c;
+  --color-rich-black: #282834;
+  --color-slate-gray: #444141;
+  --color-medium-gray: #646464;
+  --color-light-gray: #b4b8b4;
 
   /* Typography */
-  --font-sctogroteska: 'SctoGroteskA', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-ppmondwest: 'PPMondwest', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-af: 'af', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   /* Typography — Scale */
-  --text-body: 16px;
-  --leading-body: 1.17;
-  --tracking-body: -0.48px;
-  --text-subheading: 24px;
-  --leading-subheading: 1.13;
-  --tracking-subheading: -0.72px;
-  --text-heading: 48px;
-  --leading-heading: 1;
-  --tracking-heading: -1.92px;
+  --text-caption: 13px;
+  --leading-caption: 1.5;
+  --tracking-caption: -0.13px;
+  --text-button-label: 16px;
+  --leading-button-label: 1;
+  --tracking-button-label: -0.19px;
+  --text-subheading: 18px;
+  --leading-subheading: 1.2;
+  --tracking-subheading: -0.18px;
+  --text-heading: 40px;
+  --leading-heading: 1.1;
+  --tracking-heading: -0.8px;
+  --text-heading-lg: 48px;
+  --leading-heading-lg: 1.1;
+  --tracking-heading-lg: -0.96px;
+  --text-display: 54px;
+  --leading-display: 1.1;
+  --tracking-display: -1.08px;
 
   /* Spacing */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
   --spacing-20: 20px;
-  --spacing-30: 30px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-64: 64px;
   --spacing-80: 80px;
+
+  /* Border Radius */
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+  --radius-3xl: 24px;
+  --radius-full: 50.496px;
+
+  /* Shadows */
+  --shadow-sm: rgba(0, 0, 0, 0.15) 0px 2px 6px 0px;
+  --shadow-subtle: rgb(222, 226, 222) 0px 0px 0px 1px;
+  --shadow-subtle-2: rgba(0, 0, 0, 0.08) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 4px 5px 0px;
+  --shadow-subtle-3: rgba(0, 0, 0, 0.06) 0px 2px 2px 0px, rgba(0, 0, 0, 0.04) 0px 0px 0px 5px;
+  --shadow-sm-2: rgba(0, 0, 0, 0.05) 0px 1px 8px 0px;
 }
 ```
