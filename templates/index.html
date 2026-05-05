@@ -50,9 +50,19 @@
     }
 
     .container {
-      max-width: 640px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 4rem 1.5rem 2rem;
+    }
+
+    .episodes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .episodes-column {
+      min-width: 0;
     }
 
     /* Header */
@@ -291,7 +301,7 @@
     }
 
     /* Responsive */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .container {
         padding: 2.5rem 1rem 1.5rem;
       }
@@ -303,6 +313,17 @@
 
       .hero h1 {
         font-size: 1.375rem;
+      }
+
+      .episodes-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 2.5rem 1rem 1.5rem;
       }
     }
 
@@ -329,51 +350,55 @@
 
     <div class="divider"></div>
 
-    <main>
+    <main class="episodes-grid">
       {% if episodes_personal %}
-      <h2 class="section-title">Mis episodios</h2>
-      {% for episode in episodes_personal %}
-      <article class="episode">
-        <div class="episode-header">
-          <div class="episode-number">{{ loop.revindex }}</div>
-          <div class="episode-info">
-            <h2>{{ episode.title }}</h2>
-            <div class="meta">
-              <span>{{ episode.date }}</span>
-              <span class="meta-separator"></span>
-              <span>{{ episode.duration }}</span>
+      <div class="episodes-column">
+        <h2 class="section-title">Mis episodios</h2>
+        {% for episode in episodes_personal %}
+        <article class="episode">
+          <div class="episode-header">
+            <div class="episode-number">{{ loop.revindex }}</div>
+            <div class="episode-info">
+              <h2>{{ episode.title }}</h2>
+              <div class="meta">
+                <span>{{ episode.date }}</span>
+                <span class="meta-separator"></span>
+                <span>{{ episode.duration }}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="episode-description">{{ episode.description }}</div>
-        <audio controls preload="metadata">
-          <source src="{{ episode.audio_url }}" type="audio/mp4">
-        </audio>
-      </article>
-      {% endfor %}
+          <div class="episode-description">{{ episode.description }}</div>
+          <audio controls preload="metadata">
+            <source src="{{ episode.audio_url }}" type="audio/mp4">
+          </audio>
+        </article>
+        {% endfor %}
+      </div>
       {% endif %}
 
       {% if episodes_encargo %}
-      <h2 class="section-title">Encargos</h2>
-      {% for episode in episodes_encargo %}
-      <article class="episode">
-        <div class="episode-header">
-          <div class="episode-number">{{ loop.revindex }}</div>
-          <div class="episode-info">
-            <h2>{{ episode.title }}</h2>
-            <div class="meta">
-              <span>{{ episode.date }}</span>
-              <span class="meta-separator"></span>
-              <span>{{ episode.duration }}</span>
+      <div class="episodes-column">
+        <h2 class="section-title">Encargos</h2>
+        {% for episode in episodes_encargo %}
+        <article class="episode">
+          <div class="episode-header">
+            <div class="episode-number">{{ loop.revindex }}</div>
+            <div class="episode-info">
+              <h2>{{ episode.title }}</h2>
+              <div class="meta">
+                <span>{{ episode.date }}</span>
+                <span class="meta-separator"></span>
+                <span>{{ episode.duration }}</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="episode-description">{{ episode.description }}</div>
-        <audio controls preload="metadata">
-          <source src="{{ episode.audio_url }}" type="audio/mp4">
-        </audio>
-      </article>
-      {% endfor %}
+          <div class="episode-description">{{ episode.description }}</div>
+          <audio controls preload="metadata">
+            <source src="{{ episode.audio_url }}" type="audio/mp4">
+          </audio>
+        </article>
+        {% endfor %}
+      </div>
       {% endif %}
     </main>
 

@@ -50,9 +50,19 @@
     }
 
     .container {
-      max-width: 640px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 4rem 1.5rem 2rem;
+    }
+
+    .episodes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .episodes-column {
+      min-width: 0;
     }
 
     /* Header */
@@ -291,7 +301,7 @@
     }
 
     /* Responsive */
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .container {
         padding: 2.5rem 1rem 1.5rem;
       }
@@ -303,6 +313,17 @@
 
       .hero h1 {
         font-size: 1.375rem;
+      }
+
+      .episodes-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 2.5rem 1rem 1.5rem;
       }
     }
 
@@ -329,65 +350,66 @@
 
     <div class="divider"></div>
 
-    <main>
+    <main class="episodes-grid">
       
-      <h2 class="section-title">Mis episodios</h2>
-      
-      <article class="episode">
-        <div class="episode-header">
-          <div class="episode-number">3</div>
-          <div class="episode-info">
-            <h2>Episodio 3 - Clean Code</h2>
-            <div class="meta">
-              <span>2026-05-06</span>
-              <span class="meta-separator"></span>
-              <span>27:41</span>
+      <div class="episodes-column">
+        <h2 class="section-title">Mis episodios</h2>
+        
+        <article class="episode">
+          <div class="episode-header">
+            <div class="episode-number">3</div>
+            <div class="episode-info">
+              <h2>Episodio 3 - Clean Code</h2>
+              <div class="meta">
+                <span>2026-05-06</span>
+                <span class="meta-separator"></span>
+                <span>27:41</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="episode-description">En este episodio hablamos de **Clean Code** de Robert C. Martin — uno de los libros más influyentes en la industria del software. Martin no se queda en la teoría: te muestra por qué el código sucio es un cáncer que destruye equipos, productos y empresas enteras.
+          <div class="episode-description">En este episodio hablamos de **Clean Code** de Robert C. Martin — uno de los libros más influyentes en la industria del software. Martin no se queda en la teoría: te muestra por qué el código sucio es un cáncer que destruye equipos, productos y empresas enteras.
 
 El mensaje central es brutalmente simple: **el código limpio es una responsabilidad profesional**, no un capricho. Cuando dejás que la deuda técnica crezca, no estás &#34;yendo más rápido&#34; — estás cavando tu propia tumba. Cada `TODO`, cada variable mal nombrada, cada función de 200 líneas es un paso más hacia el colapso.
 
 Martin propone principios concretos: nombres que revelen intención, funciones que hagan UNA sola cosa, comentarios que no compensen código confuso, y la disciplina de refactorizar constantemente. Pero lo más importante es la mentalidad: el código que escribís hoy va a ser leído cientos de veces. Escribilo como si el próximo desarrollador fuera un psicópata violento que sabe dónde vivís.
 
 ¿Código limpio es más lento? Al principio sí. Pero el código sucio te mata en el largo plazo. La elección es simple: inversión inteligente o deuda técnica letal.</div>
-        <audio controls preload="metadata">
-          <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a" type="audio/mp4">
-        </audio>
-      </article>
-      
-      <article class="episode">
-        <div class="episode-header">
-          <div class="episode-number">2</div>
-          <div class="episode-info">
-            <h2>Episodio 2 - The Pragmatic Programmer</h2>
-            <div class="meta">
-              <span>2026-05-05</span>
-              <span class="meta-separator"></span>
-              <span>13:28</span>
+          <audio controls preload="metadata">
+            <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a" type="audio/mp4">
+          </audio>
+        </article>
+        
+        <article class="episode">
+          <div class="episode-header">
+            <div class="episode-number">2</div>
+            <div class="episode-info">
+              <h2>Episodio 2 - The Pragmatic Programmer</h2>
+              <div class="meta">
+                <span>2026-05-05</span>
+                <span class="meta-separator"></span>
+                <span>13:28</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
-        <audio controls preload="metadata">
-          <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a" type="audio/mp4">
-        </audio>
-      </article>
-      
-      <article class="episode">
-        <div class="episode-header">
-          <div class="episode-number">1</div>
-          <div class="episode-info">
-            <h2>Episodio 1 - Pressman y la Ingeniería de Software como disciplina</h2>
-            <div class="meta">
-              <span>2026-05-04</span>
-              <span class="meta-separator"></span>
-              <span>32:45</span>
+          <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
+          <audio controls preload="metadata">
+            <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a" type="audio/mp4">
+          </audio>
+        </article>
+        
+        <article class="episode">
+          <div class="episode-header">
+            <div class="episode-number">1</div>
+            <div class="episode-info">
+              <h2>Episodio 1 - Pressman y la Ingeniería de Software como disciplina</h2>
+              <div class="meta">
+                <span>2026-05-04</span>
+                <span class="meta-separator"></span>
+                <span>32:45</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="episode-description">Hoy hablamos de **&#34;Software Engineering: A Practitioner&#39;s Approach&#34;**, la séptima edición del libro de Roger S. Pressman que es referencia obligada para cualquiera que quiera entender esta disciplina en serio.
+          <div class="episode-description">Hoy hablamos de **&#34;Software Engineering: A Practitioner&#39;s Approach&#34;**, la séptima edición del libro de Roger S. Pressman que es referencia obligada para cualquiera que quiera entender esta disciplina en serio.
 
 Pressman no te vende magia. Te presenta la ingeniería de software como lo que es: un proceso sistemático compuesto por cinco actividades estructurales — **comunicación, planeación, modelado, construcción y despliegue**. Nada de saltar directo al código sin entender el problema primero.
 
@@ -396,40 +418,43 @@ Lo que me gusta de Pressman es que no se olvida de lo obvio: el software es un p
 El autor insiste en que antes de diseñar una solución técnica, tenés que entender el problema. Suena simple, pero mirá cuántos proyectos fallan por empezar a codear sin saber qué están resolviendo.
 
 En este episodio repasamos por qué este libro sigue siendo relevante, desde aplicaciones web hasta sistemas heredados, y por qué un enfoque de ingeniería adaptable es la única forma de garantizar calidad a largo plazo.</div>
-        <audio controls preload="metadata">
-          <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a" type="audio/mp4">
-        </audio>
-      </article>
-      
+          <audio controls preload="metadata">
+            <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a" type="audio/mp4">
+          </audio>
+        </article>
+        
+      </div>
       
 
       
-      <h2 class="section-title">Encargos</h2>
-      
-      <article class="episode">
-        <div class="episode-header">
-          <div class="episode-number">1</div>
-          <div class="episode-info">
-            <h2>Episodio 4 : Hoy hablamos de crianza</h2>
-            <div class="meta">
-              <span>2026-05-07</span>
-              <span class="meta-separator"></span>
-              <span>17:12</span>
+      <div class="episodes-column">
+        <h2 class="section-title">Encargos</h2>
+        
+        <article class="episode">
+          <div class="episode-header">
+            <div class="episode-number">1</div>
+            <div class="episode-info">
+              <h2>Episodio 4 : Hoy hablamos de crianza (Encargo para Ignacio)</h2>
+              <div class="meta">
+                <span>2026-05-07</span>
+                <span class="meta-separator"></span>
+                <span>17:12</span>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="episode-description">En este episodio hablamos de la **crianza en los primeros seis años de vida** y por qué el contacto físico y la exploración del mundo real son pilares fundamentales para un crecimiento saludable.
+          <div class="episode-description">En este episodio hablamos de la **crianza en los primeros seis años de vida** y por qué el contacto físico y la exploración del mundo real son pilares fundamentales para un crecimiento saludable.
 
 La pantalla no es un peligro por sí sola, pero sí lo es cuando reemplaza lo esencial: el abrazo, el juego al aire libre, la interacción cara a cara, la resolución de conflictos sin intermediarios digitales. Los niños necesitan **tocar, caer, ensuciarse, aburrirse** — porque ahí es donde desarrollan resiliencia, creatividad y vínculos reales.
 
 Criar sin pantallas no es un capricho romántico. Es una decisión consciente de priorizar la **neuroplasticidad natural**, la regulación emocional a través del cuerpo, y el aprendizaje por descubrimiento sobre la estimulación pasiva. El mundo real, con toda su lentitud y fricción, es el mejor entorno para que un cerebro en desarrollo se conecte de verdad.
 
 Este episodio es una invitación a confiar en lo básico: menos contenido, más presencia. Menos scroll, más contacto.</div>
-        <audio controls preload="metadata">
-          <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a" type="audio/mp4">
-        </audio>
-      </article>
-      
+          <audio controls preload="metadata">
+            <source src="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a" type="audio/mp4">
+          </audio>
+        </article>
+        
+      </div>
       
     </main>
 
