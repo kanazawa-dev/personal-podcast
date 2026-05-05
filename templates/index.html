@@ -160,7 +160,7 @@
     }
 
     .bio-panel.open {
-      max-height: 600px;
+      max-height: 2000px;
       opacity: 1;
       margin-bottom: 1rem;
     }
@@ -492,6 +492,7 @@
       overflow: hidden;
       height: 100vh;
       height: 100dvh;
+      background: #000;
     }
 
     .fullscreen-player.active {
@@ -501,16 +502,17 @@
     .fs-bg {
       position: absolute;
       inset: -40px;
-      background: url('cover-lofi.jpg') center/cover no-repeat;
-      filter: blur(40px);
+      background: #000;
       z-index: 0;
     }
 
-    .fs-bg::after {
+    .fs-bg::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.75);
+      background: url('cover-lofi.jpg') center/cover no-repeat;
+      filter: blur(40px);
+      opacity: 0.5;
       z-index: 1;
     }
 
@@ -568,12 +570,12 @@
       font-size: 1.25rem;
       font-weight: 600;
       margin-bottom: 0.25rem;
-      color: var(--text);
+      color: #fff;
     }
 
     .fs-subtitle {
       font-size: 0.875rem;
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .fs-progress-area {
@@ -585,7 +587,7 @@
       height: 6px;
       -webkit-appearance: none;
       appearance: none;
-      background: var(--border);
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 3px;
       outline: none;
       cursor: pointer;
@@ -597,7 +599,7 @@
       appearance: none;
       width: 16px;
       height: 16px;
-      background: var(--text);
+      background: #fff;
       border-radius: 50%;
       cursor: pointer;
     }
@@ -606,7 +608,7 @@
       display: flex;
       justify-content: space-between;
       font-size: 0.875rem;
-      color: var(--text-secondary);
+      color: rgba(255, 255, 255, 0.7);
     }
 
     .fs-controls {
@@ -619,7 +621,7 @@
     .fs-btn {
       background: none;
       border: none;
-      color: var(--text);
+      color: #fff;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -634,8 +636,8 @@
     .fs-btn-play {
       width: 64px;
       height: 64px;
-      background: var(--text);
-      color: var(--bg);
+      background: #fff;
+      color: #000;
       border-radius: 50%;
     }
 
