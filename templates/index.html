@@ -300,6 +300,27 @@
       font-size: 0.75rem;
     }
 
+    /* Scroll buttons */
+    .scroll-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .scroll-btn:hover {
+      border-color: var(--text-secondary);
+      color: var(--text);
+    }
+
     /* Responsive */
     @media (max-width: 768px) {
       .container {
@@ -327,6 +348,155 @@
       }
     }
 
+    /* Desktop: fixed viewport layout */
+    @media (min-width: 769px) {
+      body {
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      .container {
+        height: 100vh;
+        max-width: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hero {
+        flex-shrink: 0;
+        margin-bottom: 0;
+        padding: 1rem 1.5rem 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        text-align: left;
+      }
+
+      .cover-art {
+        margin-bottom: 0;
+      }
+
+      .cover-art img {
+        width: 64px;
+        height: 64px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-content {
+        flex: 1;
+      }
+
+      .hero h1 {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .hero p {
+        font-size: 0.875rem;
+        margin: 0;
+        max-width: none;
+      }
+
+      .author-badge {
+        margin-top: 0;
+        font-size: 0.75rem;
+      }
+
+      .divider {
+        margin: 0 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .episodes-grid {
+        flex: 1;
+        overflow: hidden;
+        padding: 0 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .episodes-column {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .column-header {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+      }
+
+      .section-title {
+        margin: 0;
+      }
+
+      .column-nav {
+        display: flex;
+        gap: 0.375rem;
+      }
+
+      .episodes-list {
+        flex: 1;
+        overflow-y: auto;
+        padding-right: 0.5rem;
+        min-height: 0;
+      }
+
+      .episodes-list::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      .episodes-list::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .episodes-list::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 2px;
+      }
+
+      .bottom-bar {
+        flex-shrink: 0;
+        padding: 0.75rem 1.5rem;
+        border-top: 1px solid var(--border);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .bottom-bar .subscribe {
+        margin: 0;
+        padding: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        text-align: left;
+        flex: 1;
+      }
+
+      .bottom-bar .subscribe h3,
+      .bottom-bar .subscribe p {
+        display: none;
+      }
+
+      .bottom-bar footer {
+        padding: 0;
+        text-align: right;
+        flex-shrink: 0;
+      }
+
+      /* Hide mobile-only elements */
+      .mobile-only {
+        display: none;
+      }
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -343,9 +513,11 @@
       <div class="cover-art">
         <img src="cover-lofi.jpg" alt="{{ config.title }}">
       </div>
-      <h1>{{ config.title }}</h1>
-      <p>{{ config.description }}</p>
-      <div class="author-badge">{{ config.author }}</div>
+      <div class="hero-content">
+        <h1>{{ config.title }}</h1>
+        <p>{{ config.description }}</p>
+        <div class="author-badge">{{ config.author }}</div>
+      </div>
     </header>
 
     <div class="divider"></div>
@@ -353,71 +525,112 @@
     <main class="episodes-grid">
       {% if episodes_personal %}
       <div class="episodes-column">
-        <h2 class="section-title">Mis episodios</h2>
-        {% for episode in episodes_personal %}
-        <article class="episode">
-          <div class="episode-header">
-            <div class="episode-number">{{ loop.revindex }}</div>
-            <div class="episode-info">
-              <h2>{{ episode.title }}</h2>
-              <div class="meta">
-                <span>{{ episode.date }}</span>
-                <span class="meta-separator"></span>
-                <span>{{ episode.duration }}</span>
+        <div class="column-header">
+          <h2 class="section-title">Mis episodios</h2>
+          <div class="column-nav">
+            <button class="scroll-btn" onclick="scrollColumn('personal', -200)" aria-label="Subir">&#8593;</button>
+            <button class="scroll-btn" onclick="scrollColumn('personal', 200)" aria-label="Bajar">&#8595;</button>
+          </div>
+        </div>
+        <div class="episodes-list" id="list-personal">
+          {% for episode in episodes_personal %}
+          <article class="episode">
+            <div class="episode-header">
+              <div class="episode-number">{{ loop.revindex }}</div>
+              <div class="episode-info">
+                <h2>{{ episode.title }}</h2>
+                <div class="meta">
+                  <span>{{ episode.date }}</span>
+                  <span class="meta-separator"></span>
+                  <span>{{ episode.duration }}</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="episode-description">{{ episode.description }}</div>
-          <audio controls preload="metadata">
-            <source src="{{ episode.audio_url }}" type="audio/mp4">
-          </audio>
-        </article>
-        {% endfor %}
+            <div class="episode-description">{{ episode.description }}</div>
+            <audio controls preload="metadata">
+              <source src="{{ episode.audio_url }}" type="audio/mp4">
+            </audio>
+          </article>
+          {% endfor %}
+        </div>
       </div>
       {% endif %}
 
       {% if episodes_encargo %}
       <div class="episodes-column">
-        <h2 class="section-title">Encargos</h2>
-        {% for episode in episodes_encargo %}
-        <article class="episode">
-          <div class="episode-header">
-            <div class="episode-number">{{ loop.revindex }}</div>
-            <div class="episode-info">
-              <h2>{{ episode.title }}</h2>
-              <div class="meta">
-                <span>{{ episode.date }}</span>
-                <span class="meta-separator"></span>
-                <span>{{ episode.duration }}</span>
+        <div class="column-header">
+          <h2 class="section-title">Encargos</h2>
+          <div class="column-nav">
+            <button class="scroll-btn" onclick="scrollColumn('encargo', -200)" aria-label="Subir">&#8593;</button>
+            <button class="scroll-btn" onclick="scrollColumn('encargo', 200)" aria-label="Bajar">&#8595;</button>
+          </div>
+        </div>
+        <div class="episodes-list" id="list-encargo">
+          {% for episode in episodes_encargo %}
+          <article class="episode">
+            <div class="episode-header">
+              <div class="episode-number">{{ loop.revindex }}</div>
+              <div class="episode-info">
+                <h2>{{ episode.title }}</h2>
+                <div class="meta">
+                  <span>{{ episode.date }}</span>
+                  <span class="meta-separator"></span>
+                  <span>{{ episode.duration }}</span>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="episode-description">{{ episode.description }}</div>
-          <audio controls preload="metadata">
-            <source src="{{ episode.audio_url }}" type="audio/mp4">
-          </audio>
-        </article>
-        {% endfor %}
+            <div class="episode-description">{{ episode.description }}</div>
+            <audio controls preload="metadata">
+              <source src="{{ episode.audio_url }}" type="audio/mp4">
+            </audio>
+          </article>
+          {% endfor %}
+        </div>
       </div>
       {% endif %}
     </main>
 
-    <div class="subscribe">
-      <h3>Suscribite en tu app favorita</h3>
-      <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
-      <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
-        {{ config.base_url }}/feed.xml
+    <!-- Mobile only -->
+    <div class="mobile-only">
+      <div class="subscribe">
+        <h3>Suscribite en tu app favorita</h3>
+        <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
+        <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
+          {{ config.base_url }}/feed.xml
+        </div>
       </div>
+
+      <button id="install-btn">Instalar como app</button>
+
+      <footer>
+        <p>Hecho por {{ config.author }}</p>
+      </footer>
     </div>
 
-    <button id="install-btn">Instalar como app</button>
-
-    <footer>
-      <p>Hecho por {{ config.author }}</p>
-    </footer>
+    <!-- Desktop bottom bar -->
+    <div class="bottom-bar desktop-only">
+      <div class="subscribe">
+        <h3>Suscribite en tu app favorita</h3>
+        <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
+        <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
+          {{ config.base_url }}/feed.xml
+        </div>
+      </div>
+      <footer>
+        <p>Hecho por {{ config.author }}</p>
+      </footer>
+    </div>
   </div>
   
   <script>
+    // Scroll de columnas
+    function scrollColumn(type, amount) {
+      const list = document.getElementById('list-' + type);
+      if (list) {
+        list.scrollBy({ top: amount, behavior: 'smooth' });
+      }
+    }
+
     // Registrar Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
@@ -432,18 +645,20 @@
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
-      installBtn.classList.add('visible');
+      if (installBtn) installBtn.classList.add('visible');
     });
     
-    installBtn.addEventListener('click', async () => {
-      if (!deferredPrompt) return;
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        installBtn.classList.remove('visible');
-      }
-      deferredPrompt = null;
-    });
+    if (installBtn) {
+      installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          installBtn.classList.remove('visible');
+        }
+        deferredPrompt = null;
+      });
+    }
     
     // Copiar feed URL feedback
     document.querySelectorAll('.feed-url').forEach(el => {
