@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+  <channel>
+    <title>{{ config.title }}</title>
+    <link>{{ config.base_url }}</link>
+    <language>{{ config.language }}</language>
+    <description>{{ config.description }}</description>
+    <itunes:author>{{ config.author }}</itunes:author>
+    <itunes:category text="{{ config.category }}" />
+    <itunes:explicit>{{ config.explicit }}</itunes:explicit>
+    <itunes:image href="{{ config.image }}" />
+    <image>
+      <url>{{ config.image }}</url>
+      <title>{{ config.title }}</title>
+      <link>{{ config.base_url }}</link>
+    </image>
+    {%- for episode in episodes %}
+    <item>
+      <title>{{ episode.title }}</title>
+      <description><![CDATA[{{ episode.description }}]]></description>
+      <pubDate>{{ episode.pub_date }}</pubDate>
+      <guid isPermaLink="false">{{ episode.guid }}</guid>
+      <enclosure url="{{ episode.audio_url }}" length="{{ episode.audio_size }}" type="audio/mp4" />
+      <itunes:duration>{{ episode.duration }}</itunes:duration>
+      <itunes:explicit>{{ config.explicit }}</itunes:explicit>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

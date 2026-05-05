@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="{{ config.language }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ config.title }}</title>
+  <style>
+    :root { --bg: #0f0f0f; --text: #f0f0f0; --accent: #ff6b00; --card: #1a1a1a; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+    .container { max-width: 800px; margin: 0 auto; padding: 2rem 1rem; }
+    header { text-align: center; margin-bottom: 3rem; }
+    header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    header p { color: #aaa; font-size: 1.1rem; }
+    .episode { background: var(--card); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .episode h2 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--accent); }
+    .meta { font-size: 0.875rem; color: #888; margin-bottom: 1rem; }
+    audio { width: 100%; margin-top: 0.5rem; }
+    footer { text-align: center; margin-top: 3rem; color: #555; font-size: 0.875rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>{{ config.title }}</h1>
+      <p>{{ config.description }}</p>
+    </header>
+    <main>
+      {% for episode in episodes %}
+      <article class="episode">
+        <h2>{{ episode.title }}</h2>
+        <div class="meta">{{ episode.date }} · {{ episode.duration }}</div>
+        <p>{{ episode.description }}</p>
+        <audio controls preload="none">
+          <source src="{{ episode.audio_url }}" type="audio/mp4">
+        </audio>
+      </article>
+      {% endfor %}
+    </main>
+    <footer>
+      <p>Suscribite copiando esta URL en tu app de podcasts:<br><code>{{ config.base_url }}/feed.xml</code></p>
+    </footer>
+  </div>
+</body>
+</html>
