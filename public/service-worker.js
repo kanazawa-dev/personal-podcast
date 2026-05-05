@@ -1,7 +1,5 @@
-const CACHE_NAME = 'podcast-kanazawa-v1';
+const CACHE_NAME = 'podcast-kanazawa-v2';
 const STATIC_ASSETS = [
-  '/personal-podcast/',
-  '/personal-podcast/index.html',
   '/personal-podcast/cover-lofi.jpg',
   '/personal-podcast/icon-192.png',
   '/personal-podcast/icon-512.png'
@@ -33,27 +31,30 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
-  
+
+  // NUNCA cachear index.html o feed.xml - siempre desde la red
+  const url = new URL(event.request.url);
+  if (url.pathname.endsWith('index.html') || url.pathname.endsWith('feed.xml') || url.pathname === '/personal-podcast/') {
+    event.respondWith(
+      fetch(event.request, { cache: 'no-store' })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Para lo demás: intentar red primero, fallback a cache
   event.respondWith(
-    caches.match(event.request).then(cached => {
-      if (cached) return cached;
-      
-      return fetch(event.request).then(response => {
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-        
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseToCache);
-        });
-        
+    fetch(event.request).then(response => {
+      if (!response || response.status !== 200 || response.type !== 'basic') {
         return response;
-      }).catch(() => {
-        if (event.request.destination === 'document') {
-          return caches.match('/personal-podcast/');
-        }
+      }
+      const responseToCache = response.clone();
+      caches.open(CACHE_NAME).then(cache => {
+        cache.put(event.request, responseToCache);
       });
+      return response;
+    }).catch(() => {
+      return caches.match(event.request);
     })
   );
 });
