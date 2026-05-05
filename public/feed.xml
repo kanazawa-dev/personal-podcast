@@ -19,7 +19,7 @@
       <description><![CDATA[En este episodio explico cómo armé este podcast usando Drive y GitHub Pages.]]></description>
       <pubDate>Mon, 04 May 2026 00:00:00 -0000</pubDate>
       <guid isPermaLink="false">https://kanazawa-dev.github.io/personal-podcast/episodes/2026-05-04-episodio-de-ejemplo</guid>
-      <enclosure url="https://drive.google.com/uc?export=download&id=1wny1EBnzxdzgfGnEILLQnhuMg3mS0Jg_" length="15728640" type="audio/mp4" />
+      <enclosure url="https://drive.google.com/uc?export=download&amp;id=1wny1EBnzxdzgfGnEILLQnhuMg3mS0Jg_" length="15728640" type="audio/mp4" />
       <itunes:duration>32:45</itunes:duration>
       <itunes:explicit>no</itunes:explicit>
     </item>

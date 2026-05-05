@@ -17,7 +17,7 @@
     {%- for episode in episodes %}
     <item>
       <title>{{ episode.title }}</title>
-      <description><![CDATA[{{ episode.description }}]]></description>
+      <description><![CDATA[{{ episode.description | safe }}]]></description>
       <pubDate>{{ episode.pub_date }}</pubDate>
       <guid isPermaLink="false">{{ episode.guid }}</guid>
       <enclosure url="{{ episode.audio_url }}" length="{{ episode.audio_size }}" type="audio/mp4" />

@@ -63,7 +63,7 @@ def main():
 
     PUBLIC_DIR.mkdir(exist_ok=True)
 
-    env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
+    env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), autoescape=True)
 
     # Generar feed RSS
     feed_tpl = env.get_template("feed.xml")
