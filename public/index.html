@@ -311,8 +311,17 @@
       transition: all 0.2s ease;
       flex-shrink: 0;
       margin-left: auto;
-      font-size: 0.75rem;
-      padding-left: 2px;
+      padding: 0;
+    }
+
+    .episode-play-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .episode-play-btn .icon-pause {
+      display: none;
     }
 
     .episode-play-btn:hover {
@@ -1140,7 +1149,7 @@
                 </div>
               </div>
               
-              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 3 - Clean Code', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a', '27:41')" aria-label="Reproducir">▶</button>
+              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 3 - Clean Code', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a', '27:41')" aria-label="Reproducir"><svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
               
             </div>
             <div class="episode-description">En este episodio hablamos de **Clean Code** de Robert C. Martin — uno de los libros más influyentes en la industria del software. Martin no se queda en la teoría: te muestra por qué el código sucio es un cáncer que destruye equipos, productos y empresas enteras.
@@ -1164,7 +1173,7 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
                 </div>
               </div>
               
-              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 2 - The Pragmatic Programmer', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a', '13:28')" aria-label="Reproducir">▶</button>
+              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 2 - The Pragmatic Programmer', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a', '13:28')" aria-label="Reproducir"><svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
               
             </div>
             <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
@@ -1182,7 +1191,7 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
                 </div>
               </div>
               
-              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 1 - Pressman y la Ingeniería de Software como disciplina', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a', '32:45')" aria-label="Reproducir">▶</button>
+              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 1 - Pressman y la Ingeniería de Software como disciplina', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a', '32:45')" aria-label="Reproducir"><svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
               
             </div>
             <div class="episode-description">Hoy hablamos de **&#34;Software Engineering: A Practitioner&#39;s Approach&#34;**, la séptima edición del libro de Roger S. Pressman que es referencia obligada para cualquiera que quiera entender esta disciplina en serio.
@@ -1223,7 +1232,7 @@ En este episodio repasamos por qué este libro sigue siendo relevante, desde apl
                 </div>
               </div>
               
-              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 5 - Cómo integrar el cerebro de tus hijos', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v.1.4.0/Como_integrar_el_cerebro_de_tus_hijos.m4a', '31:43')" aria-label="Reproducir">▶</button>
+              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 5 - Cómo integrar el cerebro de tus hijos', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v.1.4.0/Como_integrar_el_cerebro_de_tus_hijos.m4a', '31:43')" aria-label="Reproducir"><svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
               
             </div>
             <div class="episode-description">En este episodio hablamos de cómo **integrar el cerebro de los niños** a través de estrategias prácticas que fortalecen las conexiones neuronales y promueven un desarrollo emocional equilibrado.
@@ -1247,7 +1256,7 @@ Este episodio es para quienes creen que criar no es solo alimentar y vestir, sin
                 </div>
               </div>
               
-              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 4 : Hoy hablamos de crianza', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a', '17:12')" aria-label="Reproducir">▶</button>
+              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 4 : Hoy hablamos de crianza', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a', '17:12')" aria-label="Reproducir"><svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
               
             </div>
             <div class="episode-description">En este episodio hablamos de la **crianza en los primeros seis años de vida** y por qué el contacto físico y la exploración del mundo real son pilares fundamentales para un crecimiento saludable.
@@ -1286,7 +1295,7 @@ Este episodio es una invitación a confiar en lo básico: menos contenido, más 
                 </div>
               </div>
               
-              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 6 - El Príncipe de Maquiavelo', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.5.0/Manual_de_supervivencia_para_el_poder_moderno.m4a', '22:43')" aria-label="Reproducir">▶</button>
+              <button class="episode-play-btn" onclick="playEpisode(this, 'Episodio 6 - El Príncipe de Maquiavelo', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.5.0/Manual_de_supervivencia_para_el_poder_moderno.m4a', '22:43')" aria-label="Reproducir"><svg class="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><svg class="icon-pause" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg></button>
               
             </div>
             <div class="episode-description">En este episodio hablamos de **El Príncipe** de Nicolás Maquiavelo — el tratado político más influyente y controvertido de la historia occidental. Escrito en 1513, sigue siendo lectura obligada para entender el poder, la astucia y la realidad de la política tal cual es, no como debería ser.
@@ -1490,7 +1499,10 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
     function playEpisode(btn, title, url, duration) {
       // Quitar clase playing del anterior
       document.querySelectorAll('.episode.playing').forEach(el => el.classList.remove('playing'));
-      document.querySelectorAll('.episode-play-btn').forEach(b => b.textContent = '▶');
+      document.querySelectorAll('.episode-play-btn').forEach(b => {
+        b.querySelector('.icon-play').style.display = 'block';
+        b.querySelector('.icon-pause').style.display = 'none';
+      });
 
       // Si es el mismo episodio, solo toggle play/pause
       if (currentEpisodeBtn === btn && !audio.paused) {
@@ -1502,7 +1514,8 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       // Marcar nuevo episodio
       currentEpisodeBtn = btn;
       if (btn) {
-        btn.textContent = '⏸';
+        btn.querySelector('.icon-play').style.display = 'none';
+        btn.querySelector('.icon-pause').style.display = 'block';
         btn.closest('.episode').classList.add('playing');
       }
 
@@ -1522,11 +1535,17 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       if (audio.paused) {
         audio.play();
         updatePlayButton(true);
-        if (currentEpisodeBtn) currentEpisodeBtn.textContent = '⏸';
+        if (currentEpisodeBtn) {
+          currentEpisodeBtn.querySelector('.icon-play').style.display = 'none';
+          currentEpisodeBtn.querySelector('.icon-pause').style.display = 'block';
+        }
       } else {
         audio.pause();
         updatePlayButton(false);
-        if (currentEpisodeBtn) currentEpisodeBtn.textContent = '▶';
+        if (currentEpisodeBtn) {
+          currentEpisodeBtn.querySelector('.icon-play').style.display = 'block';
+          currentEpisodeBtn.querySelector('.icon-pause').style.display = 'none';
+        }
       }
     }
 
@@ -1579,7 +1598,10 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       updatePlayButton(false);
       progressBar.value = 0;
       currentTimeEl.textContent = '0:00';
-      if (currentEpisodeBtn) currentEpisodeBtn.textContent = '▶';
+      if (currentEpisodeBtn) {
+        currentEpisodeBtn.querySelector('.icon-play').style.display = 'block';
+        currentEpisodeBtn.querySelector('.icon-pause').style.display = 'none';
+      }
     });
 
     // Tema oscuro/claro
