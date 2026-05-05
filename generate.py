@@ -46,6 +46,7 @@ def main():
             date = datetime.strptime(date, "%Y-%m-%d").date()
 
         audio_url = drive_direct_url(meta.get("audio_url", ""))
+        image_url = drive_direct_url(meta.get("image_url", ""))
 
         episodes.append({
             "title": meta.get("title", path.stem),
@@ -53,6 +54,7 @@ def main():
             "pub_date": format_datetime(datetime.combine(date, datetime.min.time())) if date else "",
             "duration": meta.get("duration", "00:00"),
             "audio_url": audio_url,
+            "image_url": image_url,
             "audio_size": meta.get("audio_size", 0),
             "description": body,
             "guid": f"{config['base_url']}/episodes/{path.stem}",

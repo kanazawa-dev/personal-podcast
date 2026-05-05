@@ -21,6 +21,7 @@
       <pubDate>{{ episode.pub_date }}</pubDate>
       <guid isPermaLink="false">{{ episode.guid }}</guid>
       <enclosure url="{{ episode.audio_url }}" length="{{ episode.audio_size }}" type="audio/mp4" />
+      {% if episode.image_url %}<itunes:image href="{{ episode.image_url }}" />{% endif %}
       <itunes:duration>{{ episode.duration }}</itunes:duration>
       <itunes:explicit>{{ config.explicit }}</itunes:explicit>
     </item>

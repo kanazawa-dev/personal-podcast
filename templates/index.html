@@ -28,6 +28,7 @@
     <main>
       {% for episode in episodes %}
       <article class="episode">
+        {% if episode.image_url %}<img src="{{ episode.image_url }}" alt="{{ episode.title }}" style="width:100%;max-width:300px;border-radius:8px;margin-bottom:1rem;">{% endif %}
         <h2>{{ episode.title }}</h2>
         <div class="meta">{{ episode.date }} · {{ episode.duration }}</div>
         <p>{{ episode.description }}</p>
