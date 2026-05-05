@@ -4,6 +4,7 @@ date: 2026-05-06
 duration: "27:41"
 audio_url: "https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a"
 audio_size: 53467763
+type: personal
 ---
 
 En este episodio hablamos de **Clean Code** de Robert C. Martin — uno de los libros más influyentes en la industria del software. Martin no se queda en la teoría: te muestra por qué el código sucio es un cáncer que destruye equipos, productos y empresas enteras.

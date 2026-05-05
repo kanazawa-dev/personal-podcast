@@ -105,6 +105,21 @@
       margin-bottom: 2rem;
     }
 
+    /* Section headers */
+    .section-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      margin-top: 2rem;
+    }
+
+    .section-title:first-of-type {
+      margin-top: 0;
+    }
+
     /* Episodes */
     .episode {
       padding: 1.5rem 0;
@@ -315,7 +330,9 @@
     <div class="divider"></div>
 
     <main>
-      {% for episode in episodes %}
+      {% if episodes_personal %}
+      <h2 class="section-title">Mis episodios</h2>
+      {% for episode in episodes_personal %}
       <article class="episode">
         <div class="episode-header">
           <div class="episode-number">{{ loop.revindex }}</div>
@@ -334,6 +351,30 @@
         </audio>
       </article>
       {% endfor %}
+      {% endif %}
+
+      {% if episodes_encargo %}
+      <h2 class="section-title">Encargos</h2>
+      {% for episode in episodes_encargo %}
+      <article class="episode">
+        <div class="episode-header">
+          <div class="episode-number">{{ loop.revindex }}</div>
+          <div class="episode-info">
+            <h2>{{ episode.title }}</h2>
+            <div class="meta">
+              <span>{{ episode.date }}</span>
+              <span class="meta-separator"></span>
+              <span>{{ episode.duration }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="episode-description">{{ episode.description }}</div>
+        <audio controls preload="metadata">
+          <source src="{{ episode.audio_url }}" type="audio/mp4">
+        </audio>
+      </article>
+      {% endfor %}
+      {% endif %}
     </main>
 
     <div class="subscribe">

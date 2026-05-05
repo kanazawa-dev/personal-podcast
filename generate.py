@@ -59,10 +59,15 @@ def main():
             "audio_size": meta.get("audio_size", 0),
             "description": body,
             "guid": f"{config['base_url']}/episodes/{path.stem}",
+            "type": meta.get("type", "personal"),
         })
 
     # Ordenar por fecha descendente
     episodes.sort(key=lambda e: e["date"], reverse=True)
+
+    # Separar por tipo para la web
+    episodes_personal = [e for e in episodes if e["type"] == "personal"]
+    episodes_encargo = [e for e in episodes if e["type"] == "encargo"]
 
     PUBLIC_DIR.mkdir(exist_ok=True)
 
@@ -85,7 +90,7 @@ def main():
     # Generar sitio web
     index_tpl = env.get_template("index.html")
     with open(PUBLIC_DIR / "index.html", "w", encoding="utf-8") as f:
-        f.write(index_tpl.render(config=config, episodes=episodes))
+        f.write(index_tpl.render(config=config, episodes=episodes, episodes_personal=episodes_personal, episodes_encargo=episodes_encargo))
 
     print(f"Generados {len(episodes)} episodios en {PUBLIC_DIR}")
 
