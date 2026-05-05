@@ -318,7 +318,7 @@
       {% for episode in episodes %}
       <article class="episode">
         <div class="episode-header">
-          <div class="episode-number">{{ loop.index }}</div>
+          <div class="episode-number">{{ loop.revindex }}</div>
           <div class="episode-info">
             <h2>{{ episode.title }}</h2>
             <div class="meta">

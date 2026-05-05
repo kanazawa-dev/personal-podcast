@@ -15,6 +15,22 @@
       <link>https://kanazawa-dev.github.io/personal-podcast</link>
     </image>
     <item>
+      <title>Episodio 3 - Clean Code</title>
+      <description><![CDATA[En este episodio hablamos de **Clean Code** de Robert C. Martin — uno de los libros más influyentes en la industria del software. Martin no se queda en la teoría: te muestra por qué el código sucio es un cáncer que destruye equipos, productos y empresas enteras.
+
+El mensaje central es brutalmente simple: **el código limpio es una responsabilidad profesional**, no un capricho. Cuando dejás que la deuda técnica crezca, no estás "yendo más rápido" — estás cavando tu propia tumba. Cada `TODO`, cada variable mal nombrada, cada función de 200 líneas es un paso más hacia el colapso.
+
+Martin propone principios concretos: nombres que revelen intención, funciones que hagan UNA sola cosa, comentarios que no compensen código confuso, y la disciplina de refactorizar constantemente. Pero lo más importante es la mentalidad: el código que escribís hoy va a ser leído cientos de veces. Escribilo como si el próximo desarrollador fuera un psicópata violento que sabe dónde vivís.
+
+¿Código limpio es más lento? Al principio sí. Pero el código sucio te mata en el largo plazo. La elección es simple: inversión inteligente o deuda técnica letal.]]></description>
+      <pubDate>Wed, 06 May 2026 00:00:00 -0000</pubDate>
+      <guid isPermaLink="false">https://kanazawa-dev.github.io/personal-podcast/episodes/2026-05-06-episodio-3-clean-code</guid>
+      <enclosure url="https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a" length="53467763" type="audio/mp4" />
+      
+      <itunes:duration>27:41</itunes:duration>
+      <itunes:explicit>no</itunes:explicit>
+    </item>
+    <item>
       <title>Episodio 2 - The Pragmatic Programmer</title>
       <description><![CDATA[The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.]]></description>
       <pubDate>Tue, 05 May 2026 00:00:00 -0000</pubDate>
