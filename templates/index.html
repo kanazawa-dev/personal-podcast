@@ -95,8 +95,14 @@
       color: var(--text-secondary);
       font-size: 0.9375rem;
       font-weight: 400;
-      max-width: 420px;
+      max-width: 560px;
       margin: 0 auto;
+    }
+
+    .hero p br {
+      display: block;
+      content: "";
+      margin-bottom: 0.75rem;
     }
 
     .author-badge {
@@ -522,7 +528,7 @@
       </div>
       <div class="hero-content">
         <h1>{{ config.title }}</h1>
-        <p>{{ config.description }}</p>
+        <p>{{ config.bio | replace('\n', '<br>') | safe }}</p>
         <div class="author-badge">{{ config.author }}</div>
       </div>
     </header>

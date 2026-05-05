@@ -4,7 +4,7 @@
     <title>Podcast Kanazawa</title>
     <link>https://kanazawa-dev.github.io/personal-podcast</link>
     <language>es</language>
-    <description>Un podcast sobre tecnología, desarrollo y lo que me cruza por la cabeza.</description>
+    <description>Un podcast sobre ingeniería de software, crianza y política.</description>
     <itunes:author>Alex Elgueta</itunes:author>
     <itunes:category text="Technology" />
     <itunes:explicit>no</itunes:explicit>
