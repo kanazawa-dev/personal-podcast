@@ -1,9 +1,9 @@
 ---
 title: "Episodio 6 - El Príncipe de Maquiavelo"
 date: 2026-05-09
-duration: "00:00"
-audio_url: ""
-audio_size: 0
+duration: "22:43"
+audio_url: "https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.5.0/Manual_de_supervivencia_para_el_poder_moderno.m4a"
+audio_size: 43874549
 category: politica
 ---
 
