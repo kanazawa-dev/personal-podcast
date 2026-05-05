@@ -825,14 +825,42 @@
 
       .sticky-player {
         padding: 0.5rem 0.75rem;
+        gap: 0.5rem;
+      }
+
+      .player-info {
+        gap: 0.5rem;
+        flex: 1 1 auto;
+        min-width: 0;
+        overflow: hidden;
+      }
+
+      .player-cover {
+        width: 36px;
+        height: 36px;
       }
 
       .player-title {
-        max-width: 120px;
+        max-width: none;
+        font-size: 0.75rem;
+      }
+
+      .player-subtitle {
+        display: none;
+      }
+
+      .player-controls {
+        flex: 0 0 auto;
+        gap: 0.5rem;
+      }
+
+      .player-btn {
+        width: 36px;
+        height: 36px;
       }
 
       .player-progress {
-        max-width: none;
+        display: none;
       }
 
       .episode.playing {
@@ -844,7 +872,7 @@
 
     @media (max-width: 640px) {
       .container {
-        padding: 1.5rem 1rem 6rem;
+        padding: 1.5rem 1rem 5rem;
       }
     }
 
