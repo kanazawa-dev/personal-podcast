@@ -29,7 +29,8 @@ def drive_direct_url(url):
         return url
     m = re.search(r"/d/([a-zA-Z0-9_-]+)", url)
     if m:
-        return f"https://drive.google.com/uc?export=download&id={m.group(1)}"
+        # Usamos drive.usercontent.google.com que es la URL final sin redirect
+        return f"https://drive.usercontent.google.com/download?id={m.group(1)}&export=download"
     return url
 
 def main():
