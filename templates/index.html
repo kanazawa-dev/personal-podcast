@@ -3,89 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#f7f7f4">
+  <meta name="theme-color" content="#1a1a2e">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Kanazawa">
   <meta name="description" content="{{ config.description }}">
-
+  
   <!-- PWA -->
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icon-192.png">
-
+  
   <!-- Open Graph -->
   <meta property="og:title" content="{{ config.title }}">
   <meta property="og:description" content="{{ config.description }}">
-  <meta property="og:image" content="{{ config.image }}">
+  <meta property="og:image" content="{{ config.base_url }}/cover-lofi.jpg">
   <meta property="og:type" content="website">
-
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
   <title>{{ config.title }}</title>
   <style>
     :root {
-      --color-canvas-parchment: #f7f7f4;
-      --color-inkwell: #262510;
-      --color-muted-stone: #7a7974;
-      --color-deep-shadow: #141414;
-      --color-pebble-gray: #e6e5e0;
-      --color-onyx-outline: #f54e00;
-      --color-chartreuse-alert: #4ade80;
-      --color-goldenrod-accent: #c08532;
-      --color-forest-green-action: #34785c;
-      --color-highlight-beige: #cdcdc9;
-
-      --font-gothic: 'Space Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      --font-utility: 'Lato', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-      --text-caption: 10px;
-      --leading-caption: 1.1;
-      --tracking-caption: 0.06px;
-      --text-body-lg: 14px;
-      --leading-body-lg: 1.43;
-      --tracking-body-lg: 0.08px;
-      --text-heading-sm: 22px;
-      --leading-heading-sm: 1.25;
-      --tracking-heading-sm: -0.08px;
-      --text-heading: 26px;
-      --leading-heading: 1.2;
-      --tracking-heading: -0.35px;
-      --text-heading-lg: 36px;
-      --leading-heading-lg: 1.1;
-      --tracking-heading-lg: -0.45px;
-      --text-display: 72px;
-      --leading-display: 1;
-      --tracking-display: -2.16px;
-
-      --spacing-4: 4px;
-      --spacing-5: 5px;
-      --spacing-6: 6px;
-      --spacing-8: 8px;
-      --spacing-10: 10px;
-      --spacing-11: 11px;
-      --spacing-12: 12px;
-      --spacing-13: 13px;
-      --spacing-15: 15px;
-      --spacing-16: 16px;
-      --spacing-18: 18px;
-      --spacing-20: 20px;
-      --spacing-22: 22px;
-      --spacing-28: 28px;
-      --spacing-43: 43px;
-      --spacing-67: 67px;
-
-      --radius-sm: 1.5px;
-      --radius-md: 4px;
-      --radius-lg: 8px;
-      --radius-xl: 12px;
-
-      --shadow-xl: rgba(0, 0, 0, 0.14) 0px 28px 70px 0px, rgba(0, 0, 0, 0.1) 0px 14px 32px 0px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px;
-      --shadow-xl-2: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px, rgba(0, 0, 0, 0.15) 0px 12px 24px -8px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 0.5px;
-      --shadow-subtle: oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px, rgba(0, 0, 0, 0.28) 0px 18px 36px -18px;
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --text: #f5f5f5;
+      --text-secondary: #737373;
+      --border: #262626;
+      --accent: #e5e5e5;
     }
 
     * {
@@ -95,384 +41,292 @@
     }
 
     body {
-      font-family: var(--font-gothic);
-      background-color: var(--color-canvas-parchment);
-      color: var(--color-inkwell);
-      line-height: var(--leading-body-lg);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       min-height: 100vh;
     }
 
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in {
-      opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    .fade-in-delay-1 { animation-delay: 0.15s; }
-    .fade-in-delay-2 { animation-delay: 0.3s; }
-    .fade-in-delay-3 { animation-delay: 0.5s; }
-    .fade-in-delay-4 { animation-delay: 0.7s; }
-
-    /* Navigation */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(247, 247, 244, 0.92);
-      backdrop-filter: blur(12px) saturate(180%);
-      -webkit-backdrop-filter: blur(12px) saturate(180%);
-      border-bottom: 1px solid var(--color-highlight-beige);
-    }
-
-    .nav-inner {
-      max-width: 1300px;
+    .container {
+      max-width: 640px;
       margin: 0 auto;
-      padding: var(--spacing-12) var(--spacing-16);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 4rem 1.5rem 2rem;
     }
 
-    .nav-brand {
-      font-family: var(--font-gothic);
-      font-size: var(--text-body-lg);
-      font-weight: 600;
-      letter-spacing: var(--tracking-body-lg);
-      color: var(--color-inkwell);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: var(--spacing-8);
-      align-items: center;
-    }
-
-    .nav-item {
-      font-family: var(--font-gothic);
-      font-size: var(--text-body-lg);
-      font-weight: 400;
-      letter-spacing: var(--tracking-body-lg);
-      color: var(--color-muted-stone);
-      text-decoration: none;
-      padding: var(--spacing-2) var(--spacing-6);
-      border-radius: var(--radius-md);
-      transition: color 0.2s ease;
-    }
-
-    .nav-item:hover,
-    .nav-item:focus {
-      color: var(--color-inkwell);
-      outline: none;
-    }
-
-    /* Hero */
+    /* Header */
     .hero {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: var(--spacing-67) var(--spacing-16) var(--spacing-43);
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-28);
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .cover-art {
+      display: inline-block;
+      margin-bottom: 1.75rem;
+    }
+
+    .cover-art img {
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     }
 
     .hero h1 {
-      font-family: var(--font-gothic);
-      font-size: clamp(36px, 5vw, var(--text-display));
+      font-size: 1.5rem;
       font-weight: 500;
-      line-height: var(--leading-display);
-      letter-spacing: var(--tracking-display);
-      color: var(--color-deep-shadow);
-      max-width: 900px;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
     }
 
     .hero p {
-      font-family: var(--font-gothic);
-      font-size: var(--text-heading-sm);
+      color: var(--text-secondary);
+      font-size: 0.9375rem;
       font-weight: 400;
-      line-height: var(--leading-heading-sm);
-      letter-spacing: var(--tracking-heading-sm);
-      color: var(--color-muted-stone);
-      max-width: 560px;
-    }
-
-    .hero-author {
-      font-family: var(--font-mono);
-      font-size: var(--text-body-lg);
-      font-weight: 400;
-      letter-spacing: var(--tracking-body-lg);
-      color: var(--color-muted-stone);
-    }
-
-    /* Layout */
-    .container {
-      max-width: 1300px;
+      max-width: 420px;
       margin: 0 auto;
-      padding: var(--spacing-43) var(--spacing-16);
     }
 
-    /* Section headers */
-    .section-header {
-      margin-bottom: var(--spacing-28);
+    .author-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
     }
 
-    .section-header h2 {
-      font-family: var(--font-gothic);
-      font-size: var(--text-heading);
-      font-weight: 500;
-      line-height: var(--leading-heading);
-      letter-spacing: var(--tracking-heading);
-      color: var(--color-deep-shadow);
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 2rem;
     }
 
     /* Episodes */
-    .episodes {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-16);
+    .episode {
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
     }
 
-    .episode-card {
-      background: var(--color-pebble-gray);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
-      padding: var(--spacing-20);
-      transition: box-shadow 0.3s ease, transform 0.2s ease;
+    .episode:first-child {
+      padding-top: 0;
     }
 
-    .episode-card:hover {
-      box-shadow: var(--shadow-xl-2);
-      transform: translateY(-1px);
+    .episode:last-child {
+      border-bottom: none;
     }
 
     .episode-header {
       display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: var(--spacing-12);
-      margin-bottom: var(--spacing-12);
+      align-items: flex-start;
+      gap: 0.875rem;
+      margin-bottom: 0.75rem;
     }
 
-    .episode h3 {
-      font-family: var(--font-gothic);
-      font-size: var(--text-heading-sm);
+    .episode-number {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.75rem;
       font-weight: 500;
-      line-height: var(--leading-heading-sm);
-      letter-spacing: var(--tracking-heading-sm);
-      color: var(--color-inkwell);
-      flex: 1;
+      color: var(--text-secondary);
     }
 
-    .episode-meta {
-      font-family: var(--font-mono);
-      font-size: var(--text-body-lg);
-      font-weight: 400;
-      letter-spacing: var(--tracking-body-lg);
-      color: var(--color-muted-stone);
-      white-space: nowrap;
+    .episode-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .episode h2 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+
+    .meta-separator {
+      width: 3px;
+      height: 3px;
+      background: var(--text-secondary);
+      border-radius: 50%;
+      opacity: 0.4;
     }
 
     .episode-description {
-      font-family: var(--font-utility);
-      font-size: var(--text-body-lg);
-      font-weight: 400;
-      line-height: var(--leading-body-lg);
-      letter-spacing: var(--tracking-body-lg);
-      color: var(--color-inkwell);
-      margin-bottom: var(--spacing-16);
-      max-width: 720px;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     /* Audio player */
     audio {
       width: 100%;
       height: 36px;
-      border-radius: var(--radius-md);
+      border-radius: 6px;
       opacity: 0.85;
     }
 
     audio::-webkit-media-controls-panel {
-      background: var(--color-canvas-parchment);
+      background: var(--surface);
     }
 
     audio::-webkit-media-controls-enclosure {
-      background: var(--color-canvas-parchment);
-      border-radius: var(--radius-md);
+      background: var(--surface);
+      border-radius: 6px;
     }
 
     /* Subscribe */
     .subscribe {
-      margin-top: var(--spacing-43);
-      padding: var(--spacing-28);
-      background: var(--color-pebble-gray);
-      border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-xl);
+      margin: 3rem 0 2rem;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      text-align: center;
     }
 
     .subscribe h3 {
-      font-family: var(--font-gothic);
-      font-size: var(--text-heading);
+      font-size: 0.9375rem;
       font-weight: 500;
-      line-height: var(--leading-heading);
-      letter-spacing: var(--tracking-heading);
-      color: var(--color-deep-shadow);
-      margin-bottom: var(--spacing-12);
+      margin-bottom: 0.25rem;
+      color: var(--text);
     }
 
     .subscribe p {
-      font-family: var(--font-utility);
-      font-size: var(--text-body-lg);
-      font-weight: 400;
-      line-height: var(--leading-body-lg);
-      letter-spacing: var(--tracking-body-lg);
-      color: var(--color-muted-stone);
-      margin-bottom: var(--spacing-20);
+      color: var(--text-secondary);
+      font-size: 0.8125rem;
+      margin-bottom: 1rem;
     }
 
     .feed-url {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: var(--text-body-lg);
-      font-weight: 400;
-      letter-spacing: var(--tracking-body-lg);
-      color: var(--color-muted-stone);
-      background: var(--color-canvas-parchment);
-      border: 1px solid var(--color-highlight-beige);
-      border-radius: var(--radius-md);
-      padding: var(--spacing-10) var(--spacing-16);
-      cursor: pointer;
-      user-select: all;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.625rem 1rem;
+      border-radius: 8px;
+      font-family: 'SF Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
       word-break: break-all;
+      cursor: pointer;
       transition: border-color 0.2s ease;
+      user-select: all;
     }
 
-    .feed-url:hover,
-    .feed-url:focus {
-      border-color: var(--color-onyx-outline);
-      outline: none;
+    .feed-url:hover {
+      border-color: var(--text-secondary);
     }
 
     /* Install button */
     #install-btn {
       display: none;
-      margin-top: var(--spacing-16);
-      padding: var(--spacing-10) var(--spacing-18);
-      background: transparent;
-      color: var(--color-onyx-outline);
-      border: 1px solid var(--color-onyx-outline);
-      border-radius: var(--radius-md);
-      font-family: var(--font-gothic);
-      font-size: var(--text-body-lg);
+      width: 100%;
+      padding: 0.875rem;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9375rem;
       font-weight: 500;
-      letter-spacing: var(--tracking-body-lg);
       cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease;
+      transition: opacity 0.2s ease;
     }
 
     #install-btn.visible {
-      display: inline-block;
+      display: block;
     }
 
-    #install-btn:hover,
-    #install-btn:focus {
-      background: var(--color-onyx-outline);
-      color: var(--color-canvas-parchment);
-      outline: none;
+    #install-btn:hover {
+      opacity: 0.9;
     }
 
     /* Footer */
     footer {
-      margin-top: var(--spacing-43);
-      padding: var(--spacing-28) var(--spacing-16);
-      border-top: 1px solid var(--color-highlight-beige);
       text-align: center;
-    }
-
-    footer p {
-      font-family: var(--font-utility);
-      font-size: var(--text-caption);
-      font-weight: 400;
-      letter-spacing: var(--tracking-caption);
-      color: var(--color-muted-stone);
-      text-transform: uppercase;
+      padding: 2rem 0;
+      color: var(--text-secondary);
+      font-size: 0.75rem;
     }
 
     /* Responsive */
     @media (max-width: 640px) {
-      .hero {
-        padding: var(--spacing-43) var(--spacing-12) var(--spacing-28);
+      .container {
+        padding: 2.5rem 1rem 1.5rem;
+      }
+
+      .cover-art img {
+        width: 160px;
+        height: 160px;
       }
 
       .hero h1 {
-        font-size: 32px;
-        letter-spacing: -0.96px;
-      }
-
-      .container {
-        padding: var(--spacing-28) var(--spacing-12);
-      }
-
-      .episode-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: var(--spacing-6);
-      }
-
-      .nav-inner {
-        padding: var(--spacing-10) var(--spacing-12);
-      }
-
-      .nav-links {
-        gap: var(--spacing-4);
+        font-size: 1.375rem;
       }
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     ::selection {
-      background: var(--color-onyx-outline);
-      color: var(--color-canvas-parchment);
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--text);
     }
   </style>
 </head>
 <body>
-  <nav class="nav">
-    <div class="nav-inner">
-      <a class="nav-brand" href="/">{{ config.title }}</a>
-      <div class="nav-links">
-        <a class="nav-item" href="#episodes">Episodios</a>
-        <a class="nav-item" href="#subscribe">Suscribirse</a>
+  <div class="container">
+    <header class="hero">
+      <div class="cover-art">
+        <img src="cover-lofi.jpg" alt="{{ config.title }}">
       </div>
-    </div>
-  </nav>
+      <h1>{{ config.title }}</h1>
+      <p>{{ config.description }}</p>
+      <div class="author-badge">{{ config.author }}</div>
+    </header>
 
-  <header class="hero">
-    <h1 class="fade-in">{{ config.title }}</h1>
-    <p class="fade-in fade-in-delay-1">{{ config.description }}</p>
-    <span class="hero-author fade-in fade-in-delay-2">{{ config.author }}</span>
-  </header>
+    <div class="divider"></div>
 
-  <main class="container" id="episodes">
-    <div class="section-header fade-in">
-      <h2>Episodios</h2>
-    </div>
-
-    <div class="episodes">
+    <main>
       {% for episode in episodes %}
-      <article class="episode-card fade-in">
+      <article class="episode">
         <div class="episode-header">
-          <h3>{{ episode.title }}</h3>
-          <span class="episode-meta">{{ episode.date }} — {{ episode.duration }}</span>
+          <div class="episode-number">{{ loop.index }}</div>
+          <div class="episode-info">
+            <h2>{{ episode.title }}</h2>
+            <div class="meta">
+              <span>{{ episode.date }}</span>
+              <span class="meta-separator"></span>
+              <span>{{ episode.duration }}</span>
+            </div>
+          </div>
         </div>
         <div class="episode-description">{{ episode.description }}</div>
         <audio controls preload="metadata">
@@ -480,22 +334,23 @@
         </audio>
       </article>
       {% endfor %}
-    </div>
+    </main>
 
-    <section class="subscribe fade-in" id="subscribe">
+    <div class="subscribe">
       <h3>Suscribite en tu app favorita</h3>
-      <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app.</p>
+      <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
       <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
         {{ config.base_url }}/feed.xml
       </div>
-      <button id="install-btn">Instalar como app</button>
-    </section>
-  </main>
+    </div>
 
-  <footer>
-    <p>Hecho por {{ config.author }}</p>
-  </footer>
+    <button id="install-btn">Instalar como app</button>
 
+    <footer>
+      <p>Hecho por {{ config.author }}</p>
+    </footer>
+  </div>
+  
   <script>
     // Registrar Service Worker
     if ('serviceWorker' in navigator) {
@@ -503,17 +358,17 @@
         .then(reg => console.log('SW registered'))
         .catch(err => console.log('SW error:', err));
     }
-
+    
     // Botón de instalación
     let deferredPrompt;
     const installBtn = document.getElementById('install-btn');
-
+    
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       deferredPrompt = e;
       installBtn.classList.add('visible');
     });
-
+    
     installBtn.addEventListener('click', async () => {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
@@ -523,12 +378,12 @@
       }
       deferredPrompt = null;
     });
-
+    
     // Copiar feed URL feedback
     document.querySelectorAll('.feed-url').forEach(el => {
       el.addEventListener('click', function() {
         const original = this.innerHTML;
-        this.innerHTML = 'Copiado';
+        this.innerHTML = '✅ Copiado!';
         setTimeout(() => {
           this.innerHTML = original;
         }, 2000);

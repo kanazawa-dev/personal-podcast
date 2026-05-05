@@ -75,14 +75,6 @@ def main():
         if src.exists():
             shutil.copy2(src, dst)
 
-    # Copiar carpeta de imágenes
-    images_src = ROOT / "images"
-    images_dst = PUBLIC_DIR / "images"
-    if images_src.exists():
-        if images_dst.exists():
-            shutil.rmtree(images_dst)
-        shutil.copytree(images_src, images_dst)
-
     env = Environment(loader=FileSystemLoader(TEMPLATES_DIR), autoescape=True)
 
     # Generar feed RSS
