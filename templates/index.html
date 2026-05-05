@@ -255,6 +255,40 @@
       color: var(--text-secondary);
     }
 
+    .eq-bars {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
+
+    .eq-bar {
+      width: 3px;
+      background: var(--text);
+      border-radius: 1px;
+      animation: eq 0.8s ease-in-out infinite;
+    }
+
+    .eq-bar:nth-child(1) { height: 30%; animation-delay: 0s; }
+    .eq-bar:nth-child(2) { height: 60%; animation-delay: 0.15s; }
+    .eq-bar:nth-child(3) { height: 45%; animation-delay: 0.3s; }
+
+    @keyframes eq {
+      0%, 100% { height: 20%; }
+      50% { height: 90%; }
+    }
+
+    .episode.playing .episode-number {
+      display: none;
+    }
+
+    .episode.playing .eq-bars {
+      display: flex;
+    }
+
     .episode-info {
       flex: 1;
       min-width: 0;
@@ -1132,6 +1166,11 @@
           <article class="episode">
             <div class="episode-header">
               <div class="episode-number">{{ loop.revindex }}</div>
+              <div class="eq-bars" aria-hidden="true">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+              </div>
               <div class="episode-info">
                 <h2>{{ episode.title }}</h2>
                 <div class="meta">
@@ -1165,6 +1204,11 @@
           <article class="episode">
             <div class="episode-header">
               <div class="episode-number">{{ loop.revindex }}</div>
+              <div class="eq-bars" aria-hidden="true">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+              </div>
               <div class="episode-info">
                 <h2>{{ episode.title }}</h2>
                 <div class="meta">
@@ -1198,6 +1242,11 @@
           <article class="episode">
             <div class="episode-header">
               <div class="episode-number">{{ loop.revindex }}</div>
+              <div class="eq-bars" aria-hidden="true">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+              </div>
               <div class="episode-info">
                 <h2>{{ episode.title }}</h2>
                 <div class="meta">
@@ -1371,6 +1420,8 @@
 
     // Global Audio Player
     let currentEpisodeBtn = null;
+    let currentEpisodeData = null;
+    let saveTimer = null;
     const audio = document.getElementById('global-audio');
     const player = document.getElementById('sticky-player');
     const playBtn = document.getElementById('play-btn');
@@ -1387,6 +1438,49 @@
     const fsTotal = document.getElementById('fs-total');
     const fsIconPlay = document.getElementById('fs-icon-play');
     const fsIconPause = document.getElementById('fs-icon-pause');
+
+    function saveProgress() {
+      if (currentEpisodeData && audio.src) {
+        localStorage.setItem('kanazawa-player', JSON.stringify({
+          ...currentEpisodeData,
+          time: audio.currentTime,
+          savedAt: Date.now()
+        }));
+      }
+    }
+
+    function restoreProgress() {
+      const saved = localStorage.getItem('kanazawa-player');
+      if (!saved) return;
+      try {
+        const data = JSON.parse(saved);
+        // Buscar el botón del episodio por URL
+        const btns = document.querySelectorAll('.episode-play-btn');
+        for (const btn of btns) {
+          const onclick = btn.getAttribute('onclick');
+          if (onclick && onclick.includes(data.url)) {
+            currentEpisodeBtn = btn;
+            currentEpisodeData = { url: data.url, title: data.title, duration: data.duration };
+            audio.src = data.url;
+            audio.currentTime = data.time || 0;
+            player.classList.remove('hidden');
+            playerTitle.textContent = data.title;
+            fsTitle.textContent = data.title;
+            totalTimeEl.textContent = data.duration;
+            fsTotal.textContent = data.duration;
+            currentTimeEl.textContent = formatTime(data.time || 0);
+            fsCurrent.textContent = formatTime(data.time || 0);
+            updatePlayButton(false);
+            btn.closest('.episode').classList.add('playing');
+            btn.querySelector('.icon-play').style.display = 'none';
+            btn.querySelector('.icon-pause').style.display = 'block';
+            return;
+          }
+        }
+      } catch (e) {
+        console.error('Restore failed', e);
+      }
+    }
 
     function formatTime(seconds) {
       if (isNaN(seconds)) return '0:00';
@@ -1414,11 +1508,13 @@
       if (currentEpisodeBtn === btn && !audio.paused) {
         audio.pause();
         updatePlayButton(false);
+        saveProgress();
         return;
       }
 
       // Marcar nuevo episodio
       currentEpisodeBtn = btn;
+      currentEpisodeData = { url, title, duration };
       if (btn) {
         btn.querySelector('.icon-play').style.display = 'none';
         btn.querySelector('.icon-pause').style.display = 'block';
@@ -1434,6 +1530,7 @@
       totalTimeEl.textContent = duration;
       fsTotal.textContent = duration;
       updatePlayButton(true);
+      saveProgress();
     }
 
     function togglePlay() {
@@ -1452,6 +1549,7 @@
           currentEpisodeBtn.querySelector('.icon-play').style.display = 'block';
           currentEpisodeBtn.querySelector('.icon-pause').style.display = 'none';
         }
+        saveProgress();
       }
     }
 
@@ -1493,6 +1591,13 @@
         currentTimeEl.textContent = formatTime(audio.currentTime);
         fsCurrent.textContent = formatTime(audio.currentTime);
       }
+      // Guardar progreso cada 5 segundos
+      if (!saveTimer) {
+        saveTimer = setTimeout(() => {
+          saveProgress();
+          saveTimer = null;
+        }, 5000);
+      }
     });
 
     audio.addEventListener('loadedmetadata', () => {
@@ -1508,6 +1613,7 @@
         currentEpisodeBtn.querySelector('.icon-play').style.display = 'block';
         currentEpisodeBtn.querySelector('.icon-pause').style.display = 'none';
       }
+      localStorage.removeItem('kanazawa-player');
     });
 
     // Tema oscuro/claro
@@ -1544,6 +1650,7 @@
     }
 
     initTheme();
+    restoreProgress();
 
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
       if (!localStorage.getItem('theme')) {
