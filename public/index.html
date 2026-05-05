@@ -34,6 +34,26 @@
       --accent: #e5e5e5;
     }
 
+    @media (prefers-color-scheme: light) {
+      :root:not(.dark) {
+        --bg: #fafafa;
+        --surface: #f0f0f0;
+        --text: #1a1a1a;
+        --text-secondary: #666666;
+        --border: #e0e0e0;
+        --accent: #333333;
+      }
+    }
+
+    :root.light {
+      --bg: #fafafa;
+      --surface: #f0f0f0;
+      --text: #1a1a1a;
+      --text-secondary: #666666;
+      --border: #e0e0e0;
+      --accent: #333333;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -117,6 +137,18 @@
 
     .hero p a:hover {
       opacity: 0.7;
+    }
+
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mobile-theme-toggle {
+      display: none;
     }
 
     .author-badge {
@@ -341,6 +373,28 @@
       color: var(--text);
     }
 
+    /* Theme toggle */
+    .theme-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--text-secondary);
+      color: var(--text);
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .episodes-grid {
@@ -366,6 +420,10 @@
       .episodes-grid {
         grid-template-columns: 1fr;
         gap: 0;
+      }
+
+      .mobile-theme-toggle {
+        display: flex;
       }
     }
 
@@ -545,22 +603,25 @@
         <img src="cover-lofi.jpg" alt="Podcast Kanazawa">
       </div>
       <div class="hero-content">
-        <h1>Podcast Kanazawa</h1>
+        <div class="hero-title-row">
+          <h1>Podcast Kanazawa</h1>
+          <button class="theme-toggle mobile-theme-toggle" id="theme-toggle-mobile" onclick="toggleTheme()" aria-label="Cambiar tema">🌙</button>
+        </div>
   
       
       <p>¡Hola! Soy Alex Elgueta. De día (y a veces de noche) soy ingeniero de software. De tiempo completo, soy papá de Josefa y Helena, y esposo de Constanza Rebolledo, la mujer que hace que todo esto funcione.</p>
       
-      <p><strong>Junto a ella fundamos:</strong><br><br>— <a href="https://trysurco.cl" target="_blank">trysurco.cl</a>, donde ella aprende de tecnología de mí y yo aprendo todo el resto de ella. Jajaja.</p>
+      <p><strong>Junto a ella fundamos:</strong><br><br>— <a href="https://trysurco.cl" target="_blank">trysurco.cl</a>, donde ella aprende tecnología de mi y yo aprendo todo lo demás de ella. Jajaja.</p>
       
-      <p><strong>También ando en:</strong><br><br>— <a href="https://portaldeespecialistas.com" target="_blank">portaldeespecialistas.com</a>.</p>
+      <p><strong>También participo en:</strong><br><br>— <a href="https://portaldeespecialistas.com" target="_blank">portaldeespecialistas.com</a>.</p>
       
-      <p><strong>¿Por qué Kanazawa?</strong><br><br>Porque me fascinan los samuráis. La disciplina, la estrategia, la calma bajo presión... y admitámoslo, las espadas son muy cool. Esa filosofía de mejora constante es lo que intento traer acá.</p>
+      <p><strong>¿Por qué Kanazawa?</strong><br><br>Porque me fascinan los samuráis. La disciplina, la estrategia, la calma bajo presión... y admitámoslo, las espadas son geniales. Esa filosofía de mejora constante es lo que intento traer aquí.</p>
       
-      <p><strong>¿De qué va esto?</strong><br><br>De ingeniería de software, crianza y política. De leer a Maquiavelo a las 3 AM mientras una de mis hijas me pide agua. De intentar retomar el gym (fui dos veces, me dolió todo, descanso una semana). De criar en un campo de batalla adorable donde el café nunca está lo suficientemente caliente.</p>
+      <p><strong>¿De qué va esto?</strong><br><br>De ingeniería de software, crianza y política. De leer a Maquiavelo a las 3 AM mientras una de mis hijas me pide agua. De intentar volver al gimnasio (fui dos veces, me dolió todo, y ahora necesito una semana de descanso). De criar en un campo de batalla adorable donde el café nunca está lo suficientemente caliente.</p>
       
-      <p>Es para quienes se sientan identificados, para quienes quieran aprender, o simplemente para quienes necesiten compañía mientras lavan los platos. Lo hago con todo el amor del mundo, entre pañales y deploys, y se actualiza... bueno, cuando la vida me deja. Jajaja.</p>
+      <p>Es para quienes se sientan identificados, para quienes quieran aprender, o simplemente para quienes necesiten compañía mientras lavan los platos. Lo hago con todo el amor del mundo, entre pañales y deploys, y se actualiza... bueno, cuando la vida me lo permite. Jajaja.</p>
       
-      <p><strong>¿Querés un podcast sobre algo?</strong><br><br>Si tenés mi número, escribime y pedímelo. Quizás lo puedo agregar.</p>
+      <p><strong>¿Quieres un podcast sobre algo?</strong><br><br>Si tienes mi número, escríbeme y pídemelo. Quizás lo puedo agregar.</p>
       
         <div class="author-badge">Alex Elgueta</div>
       </div>
@@ -766,8 +827,8 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
     <!-- Mobile only -->
     <div class="mobile-only">
       <div class="subscribe">
-        <h3>Suscribite en tu app favorita</h3>
-        <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
+        <h3>Suscríbete en tu app favorita</h3>
+        <p>Copia este link y pégalo en Apple Podcasts, Spotify o cualquier app</p>
         <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
           https://kanazawa-dev.github.io/personal-podcast/feed.xml
         </div>
@@ -783,8 +844,8 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
     <!-- Desktop bottom bar -->
     <div class="bottom-bar desktop-only">
       <div class="subscribe">
-        <h3>Suscribite en tu app favorita</h3>
-        <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
+        <h3>Suscríbete en tu app favorita</h3>
+        <p>Copia este link y pégalo en Apple Podcasts, Spotify o cualquier app</p>
         <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
           https://kanazawa-dev.github.io/personal-podcast/feed.xml
         </div>
@@ -792,6 +853,7 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       <footer>
         <p>Hecho por Alex Elgueta</p>
       </footer>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">🌙</button>
     </div>
   </div>
   
@@ -842,6 +904,43 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
           this.innerHTML = original;
         }, 2000);
       });
+    });
+
+    // Tema oscuro/claro
+    function initTheme() {
+      const saved = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      const isLight = saved ? saved === 'light' : prefersLight;
+      applyTheme(isLight);
+    }
+
+    function applyTheme(isLight) {
+      const root = document.documentElement;
+      const toggles = document.querySelectorAll('.theme-toggle');
+      if (isLight) {
+        root.classList.add('light');
+        toggles.forEach(t => t.textContent = '🌙');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#fafafa');
+      } else {
+        root.classList.remove('light');
+        toggles.forEach(t => t.textContent = '☀️');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#1a1a2e');
+      }
+    }
+
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.contains('light');
+      const newIsLight = !isLight;
+      applyTheme(newIsLight);
+      localStorage.setItem('theme', newIsLight ? 'light' : 'dark');
+    }
+
+    initTheme();
+
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches);
+      }
     });
   </script>
 </body>

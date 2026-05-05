@@ -34,6 +34,26 @@
       --accent: #e5e5e5;
     }
 
+    @media (prefers-color-scheme: light) {
+      :root:not(.dark) {
+        --bg: #fafafa;
+        --surface: #f0f0f0;
+        --text: #1a1a1a;
+        --text-secondary: #666666;
+        --border: #e0e0e0;
+        --accent: #333333;
+      }
+    }
+
+    :root.light {
+      --bg: #fafafa;
+      --surface: #f0f0f0;
+      --text: #1a1a1a;
+      --text-secondary: #666666;
+      --border: #e0e0e0;
+      --accent: #333333;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -117,6 +137,18 @@
 
     .hero p a:hover {
       opacity: 0.7;
+    }
+
+    .hero-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .mobile-theme-toggle {
+      display: none;
     }
 
     .author-badge {
@@ -341,6 +373,28 @@
       color: var(--text);
     }
 
+    /* Theme toggle */
+    .theme-toggle {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--text-secondary);
+      color: var(--text);
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .episodes-grid {
@@ -366,6 +420,10 @@
       .episodes-grid {
         grid-template-columns: 1fr;
         gap: 0;
+      }
+
+      .mobile-theme-toggle {
+        display: flex;
       }
     }
 
@@ -545,7 +603,10 @@
         <img src="cover-lofi.jpg" alt="{{ config.title }}">
       </div>
       <div class="hero-content">
-        <h1>{{ config.title }}</h1>
+        <div class="hero-title-row">
+          <h1>{{ config.title }}</h1>
+          <button class="theme-toggle mobile-theme-toggle" id="theme-toggle-mobile" onclick="toggleTheme()" aria-label="Cambiar tema">🌙</button>
+        </div>
   {% set bio_paragraphs = config.bio.split('\n\n') %}
       {% for para in bio_paragraphs if para.strip() %}
       <p>{{ para.strip() | replace('\n', '<br>') | safe }}</p>
@@ -666,8 +727,8 @@
     <!-- Mobile only -->
     <div class="mobile-only">
       <div class="subscribe">
-        <h3>Suscribite en tu app favorita</h3>
-        <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
+        <h3>Suscríbete en tu app favorita</h3>
+        <p>Copia este link y pégalo en Apple Podcasts, Spotify o cualquier app</p>
         <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
           {{ config.base_url }}/feed.xml
         </div>
@@ -683,8 +744,8 @@
     <!-- Desktop bottom bar -->
     <div class="bottom-bar desktop-only">
       <div class="subscribe">
-        <h3>Suscribite en tu app favorita</h3>
-        <p>Copiá este link y pegalo en Apple Podcasts, Spotify o cualquier app</p>
+        <h3>Suscríbete en tu app favorita</h3>
+        <p>Copia este link y pégalo en Apple Podcasts, Spotify o cualquier app</p>
         <div class="feed-url" onclick="navigator.clipboard.writeText(this.innerText.trim())">
           {{ config.base_url }}/feed.xml
         </div>
@@ -692,6 +753,7 @@
       <footer>
         <p>Hecho por {{ config.author }}</p>
       </footer>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">🌙</button>
     </div>
   </div>
   
@@ -742,6 +804,43 @@
           this.innerHTML = original;
         }, 2000);
       });
+    });
+
+    // Tema oscuro/claro
+    function initTheme() {
+      const saved = localStorage.getItem('theme');
+      const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+      const isLight = saved ? saved === 'light' : prefersLight;
+      applyTheme(isLight);
+    }
+
+    function applyTheme(isLight) {
+      const root = document.documentElement;
+      const toggles = document.querySelectorAll('.theme-toggle');
+      if (isLight) {
+        root.classList.add('light');
+        toggles.forEach(t => t.textContent = '🌙');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#fafafa');
+      } else {
+        root.classList.remove('light');
+        toggles.forEach(t => t.textContent = '☀️');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#1a1a2e');
+      }
+    }
+
+    function toggleTheme() {
+      const isLight = document.documentElement.classList.contains('light');
+      const newIsLight = !isLight;
+      applyTheme(newIsLight);
+      localStorage.setItem('theme', newIsLight ? 'light' : 'dark');
+    }
+
+    initTheme();
+
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches);
+      }
     });
   </script>
 </body>
