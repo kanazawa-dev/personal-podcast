@@ -96,13 +96,16 @@
       font-size: 0.9375rem;
       font-weight: 400;
       max-width: 640px;
-      margin: 0 auto;
+      margin: 0 auto 0.75rem;
     }
 
-    .hero p br {
-      display: block;
-      content: "";
-      margin-bottom: 0.75rem;
+    .hero p:last-child {
+      margin-bottom: 0;
+    }
+
+    .hero p strong {
+      color: var(--text);
+      font-weight: 600;
     }
 
     .hero p a {
@@ -392,20 +395,24 @@
         margin-bottom: 0;
         padding: 1rem 1.5rem 0.75rem;
         display: flex;
-        align-items: center;
+        align-items: stretch;
         gap: 1.25rem;
         text-align: left;
       }
 
       .cover-art {
         margin-bottom: 0;
+        display: flex;
+        align-items: center;
       }
 
       .cover-art img {
-        width: 64px;
-        height: 64px;
+        height: 100%;
+        width: auto;
+        aspect-ratio: 1;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        object-fit: cover;
       }
 
       .hero-content {
@@ -539,7 +546,10 @@
       </div>
       <div class="hero-content">
         <h1>{{ config.title }}</h1>
-        <p>{{ config.bio | replace('\n', '<br>') | safe }}</p>
+  {% set bio_paragraphs = config.bio.split('\n\n') %}
+      {% for para in bio_paragraphs if para.strip() %}
+      <p>{{ para.strip() | replace('\n', '<br>') | safe }}</p>
+      {% endfor %}
         <div class="author-badge">{{ config.author }}</div>
       </div>
     </header>
