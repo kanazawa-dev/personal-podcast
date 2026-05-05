@@ -2,8 +2,8 @@
 title: "Episodio 1 - Pressman y la Ingeniería de Software como disciplina"
 date: 2026-05-04
 duration: "32:45"
-audio_url: "https://drive.google.com/file/d/1wny1EBnzxdzgfGnEILLQnhuMg3mS0Jg_/view?usp=drive_link"
-audio_size: 15728640
+audio_url: "https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a"
+audio_size: 58346917
 ---
 
 Hoy hablamos de **"Software Engineering: A Practitioner's Approach"**, la séptima edición del libro de Roger S. Pressman que es referencia obligada para cualquiera que quiera entender esta disciplina en serio.
