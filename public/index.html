@@ -387,17 +387,23 @@
       height: 36px;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: all 0.2s ease;
       flex-shrink: 0;
+      padding: 0;
     }
 
     .theme-toggle:hover {
       border-color: var(--text-secondary);
       color: var(--text);
+    }
+
+    .theme-toggle svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
     }
 
     /* Responsive */
@@ -456,11 +462,13 @@
       .hero {
         flex-shrink: 0;
         margin-bottom: 0;
-        padding: 1rem 1.5rem;
+        padding: 0.75rem 1.5rem;
         display: flex;
-        align-items: flex-start;
+        flex-direction: row-reverse;
+        align-items: center;
         gap: 1rem;
         text-align: left;
+        max-height: 140px;
       }
 
       .cover-art {
@@ -472,8 +480,8 @@
       }
 
       .cover-art img {
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
         max-width: 100%;
         object-fit: cover;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -482,27 +490,34 @@
 
       .hero-content {
         flex: 1;
+        min-width: 0;
+        overflow: hidden;
       }
 
-      .hero h1 {
-        font-size: 1.25rem;
+      .hero-title-row {
+        justify-content: flex-start;
         margin-bottom: 0.25rem;
       }
 
+      .hero h1 {
+        font-size: 1.1rem;
+        margin-bottom: 0;
+      }
+
       .hero p {
-        font-size: 0.875rem;
-        line-height: 1.6;
+        font-size: 0.8rem;
+        line-height: 1.45;
         margin: 0;
         max-width: none;
       }
 
       .hero p + p {
-        margin-top: 0.5rem;
+        margin-top: 0.25rem;
       }
 
       .author-badge {
-        margin-top: 0;
-        font-size: 0.75rem;
+        margin-top: 0.25rem;
+        font-size: 0.7rem;
       }
 
       .divider {
@@ -611,31 +626,32 @@
 <body>
   <div class="container">
     <header class="hero">
-      <div class="cover-art">
-        <img src="cover-lofi.jpg" alt="Podcast Kanazawa">
-      </div>
       <div class="hero-content">
         <div class="hero-title-row">
           <h1>Podcast Kanazawa</h1>
-          <button class="theme-toggle mobile-theme-toggle" id="theme-toggle-mobile" onclick="toggleTheme()" aria-label="Cambiar tema">🌙</button>
+          <button class="theme-toggle mobile-theme-toggle" id="theme-toggle-mobile" onclick="toggleTheme()" aria-label="Cambiar tema">
+            <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
         </div>
-  
-      
-      <p>¡Hola! Soy Alex Elgueta. De día (y a veces de noche) soy ingeniero de software. De tiempo completo, soy papá de Josefa y Helena, y esposo de Constanza Rebolledo, la mujer que hace que todo esto funcione.</p>
-      
-      <p><strong>Junto a ella fundamos:</strong><br><br>— <a href="https://trysurco.cl" target="_blank">trysurco.cl</a>, donde ella aprende tecnología de mi y yo aprendo todo lo demás de ella. Jajaja.</p>
-      
-      <p><strong>También participo en:</strong><br><br>— <a href="https://portaldeespecialistas.com" target="_blank">portaldeespecialistas.com</a>.</p>
-      
-      <p><strong>¿Por qué Kanazawa?</strong><br><br>Porque me fascinan los samuráis. La disciplina, la estrategia, la calma bajo presión... y admitámoslo, las espadas son geniales. Esa filosofía de mejora constante es lo que intento traer aquí.</p>
-      
-      <p><strong>¿De qué va esto?</strong><br><br>De ingeniería de software, crianza y política. De leer a Maquiavelo a las 3 AM mientras una de mis hijas me pide agua. De intentar volver al gimnasio (fui dos veces, me dolió todo, y ahora necesito una semana de descanso). De criar en un campo de batalla adorable donde el café nunca está lo suficientemente caliente.</p>
-      
-      <p>Es para quienes se sientan identificados, para quienes quieran aprender, o simplemente para quienes necesiten compañía mientras lavan los platos. Lo hago con todo el amor del mundo, entre pañales y deploys, y se actualiza... bueno, cuando la vida me lo permite. Jajaja.</p>
-      
-      <p><strong>¿Quieres un podcast sobre algo?</strong><br><br>Si tienes mi número, escríbeme y pídemelo. Quizás lo puedo agregar.</p>
-      
+        
+        
+        <p>👋 ¡Hola! Soy Alex Elgueta. De día soy ingeniero de software, y de tiempo completo soy papá de Josefa y Helena ❤️, y esposo de Constanza Rebolledo ❤️, la mujer que hace que todo esto funcione.</p>
+        
+        <p>Junto a ella fundamos <a href="https://trysurco.cl" target="_blank">trysurco.cl</a>, donde ella aprende tecnología de mí y yo aprendo todo lo demás de ella. También participo en <a href="https://portaldeespecialistas.com" target="_blank">portaldeespecialistas.com</a>.</p>
+        
+        <p>El nombre <strong>Kanazawa</strong> viene de mi fascinación por los samuráis: la disciplina, la estrategia, la calma bajo presión... y admitámoslo, las espadas son geniales. Esa filosofía de mejora constante es lo que intento traer aquí.</p>
+        
+        <p>Este podcast es sobre <strong>ingeniería de software, crianza y política</strong>. Sobre leer a Maquiavelo a las 3 AM mientras una de mis hijas me pide agua. Sobre intentar volver al gimnasio (fui dos veces, me dolió todo, y ahora necesito una semana de descanso). Sobre criar en un campo de batalla adorable donde el café nunca está lo suficientemente caliente.</p>
+        
+        <p>Es para quienes se sientan identificados, para quienes quieran aprender, o simplemente para quienes necesiten compañía mientras lavan los platos. Lo hago con todo el amor del mundo, entre pañales y deploys, y se actualiza cuando la vida me lo permite.</p>
+        
+        <p><strong>Si quieres que haga un podcast sobre algo</strong>, escríbeme y pídemelo. Quizás lo puedo agregar.</p>
+        
         <div class="author-badge">Alex Elgueta</div>
+      </div>
+      <div class="cover-art">
+        <img src="cover-lofi.jpg" alt="Podcast Kanazawa">
       </div>
     </header>
 
@@ -869,7 +885,10 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       <footer>
         <p>Hecho por Alex Elgueta</p>
       </footer>
-      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">🌙</button>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+        <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
     </div>
   </div>
   
@@ -932,14 +951,18 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
 
     function applyTheme(isLight) {
       const root = document.documentElement;
-      const toggles = document.querySelectorAll('.theme-toggle');
+      const sunIcons = document.querySelectorAll('.icon-sun');
+      const moonIcons = document.querySelectorAll('.icon-moon');
+      
       if (isLight) {
         root.classList.add('light');
-        toggles.forEach(t => t.textContent = '🌙');
+        sunIcons.forEach(i => i.style.display = 'block');
+        moonIcons.forEach(i => i.style.display = 'none');
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#fafafa');
       } else {
         root.classList.remove('light');
-        toggles.forEach(t => t.textContent = '☀️');
+        sunIcons.forEach(i => i.style.display = 'none');
+        moonIcons.forEach(i => i.style.display = 'block');
         document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#1a1a2e');
       }
     }
