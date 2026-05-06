@@ -599,6 +599,17 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* Highlight pulse for shared links */
+    @keyframes highlightPulse {
+      0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+
+    .highlight-pulse {
+      animation: highlightPulse 1.5s ease-out;
+    }
+
     /* Playback speed */
     .speed-btn {
       background: transparent;
@@ -1417,7 +1428,7 @@
         </div>
         <div class="episodes-list" id="list-ingenieria">
           {% for episode in episodes_ingenieria %}
-          <article class="episode">
+          <article class="episode" id="ep-ing-{{ loop.index }}">
             <div class="episode-header">
               <div class="episode-number">{{ loop.revindex }}</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1439,7 +1450,7 @@
             </div>
             <div class="episode-description">{{ episode.description }}</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('{{ episode.title | replace("'", "\\'") }}', '{{ episode.audio_url }}')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('{{ episode.title | replace("'", "\\'") }}', '{{ episode.audio_url }}', 'ingenieria', 'ep-ing-{{ loop.index }}')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
@@ -1461,7 +1472,7 @@
         </div>
         <div class="episodes-list" id="list-crianza">
           {% for episode in episodes_crianza %}
-          <article class="episode">
+          <article class="episode" id="ep-cri-{{ loop.index }}">
             <div class="episode-header">
               <div class="episode-number">{{ loop.revindex }}</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1483,7 +1494,7 @@
             </div>
             <div class="episode-description">{{ episode.description }}</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('{{ episode.title | replace("'", "\\'") }}', '{{ episode.audio_url }}')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('{{ episode.title | replace("'", "\\'") }}', '{{ episode.audio_url }}', 'crianza', 'ep-cri-{{ loop.index }}')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
@@ -1505,7 +1516,7 @@
         </div>
         <div class="episodes-list" id="list-politica">
           {% for episode in episodes_politica %}
-          <article class="episode">
+          <article class="episode" id="ep-pol-{{ loop.index }}">
             <div class="episode-header">
               <div class="episode-number">{{ loop.revindex }}</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1527,7 +1538,7 @@
             </div>
             <div class="episode-description">{{ episode.description }}</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('{{ episode.title | replace("'", "\\'") }}', '{{ episode.audio_url }}')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('{{ episode.title | replace("'", "\\'") }}', '{{ episode.audio_url }}', 'politica', 'ep-pol-{{ loop.index }}')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
@@ -1975,18 +1986,27 @@
       }
     });
 
-    function shareEpisode(title, url) {
+    function shareEpisode(title, audioUrl, category, episodeId) {
+      const shareUrl = new URL(window.location.href);
+      shareUrl.search = '';
+      shareUrl.hash = '';
+      if (category && category !== 'all') {
+        shareUrl.searchParams.set('cat', category);
+      }
+      if (episodeId) {
+        shareUrl.hash = episodeId;
+      }
+
       const shareData = {
         title: title,
         text: title + ' - Podcast Kanazawa',
-        url: url || window.location.href
+        url: shareUrl.toString()
       };
 
-      if (navigator.share && !url) {
+      if (navigator.share) {
         navigator.share(shareData).catch(() => {});
       } else {
-        const textToCopy = url ? shareData.text + '\n' + shareData.url : shareData.url;
-        navigator.clipboard.writeText(textToCopy).then(() => {
+        navigator.clipboard.writeText(shareData.url).then(() => {
           const toast = document.getElementById('share-toast');
           toast.classList.add('show');
           setTimeout(() => toast.classList.remove('show'), 2000);
@@ -2021,9 +2041,47 @@
       }
     }
 
+    // Handle shared link: ?cat=xxx#ep-yyy
+    function handleSharedLink() {
+      const url = new URL(window.location.href);
+      const cat = url.searchParams.get('cat');
+      const hash = url.hash.slice(1); // remove #
+
+      if (cat) {
+        filterCategory(cat);
+      }
+
+      if (hash) {
+        // Wait for filter to apply and DOM to settle
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.classList.add('highlight-pulse');
+            setTimeout(() => el.classList.remove('highlight-pulse'), 2000);
+
+            // Auto-load episode in player
+            const playBtn = el.querySelector('.episode-play-btn');
+            if (playBtn) {
+              const onclick = playBtn.getAttribute('onclick');
+              if (onclick) {
+                // Extract params from onclick: playEpisode(this, 'title', 'url', 'duration')
+                const match = onclick.match(/playEpisode\(this,\s*'([^']+)',\s*'([^']+)',\s*'([^']+)'\)/);
+                if (match) {
+                  const [, title, audioUrl, duration] = match;
+                  playEpisode(playBtn, title, audioUrl, duration);
+                }
+              }
+            }
+          }
+        }, 100);
+      }
+    }
+
     initTheme();
     restoreProgress();
     restoreSpeed();
+    handleSharedLink();
 
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
       if (!localStorage.getItem('theme')) {

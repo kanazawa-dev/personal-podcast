@@ -599,6 +599,17 @@
       transform: translateX(-50%) translateY(0);
     }
 
+    /* Highlight pulse for shared links */
+    @keyframes highlightPulse {
+      0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+    }
+
+    .highlight-pulse {
+      animation: highlightPulse 1.5s ease-out;
+    }
+
     /* Playback speed */
     .speed-btn {
       background: transparent;
@@ -1427,7 +1438,7 @@
         </div>
         <div class="episodes-list" id="list-ingenieria">
           
-          <article class="episode">
+          <article class="episode" id="ep-ing-1">
             <div class="episode-header">
               <div class="episode-number">3</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1455,14 +1466,14 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
 
 ¿Código limpio es más lento? Al principio sí. Pero el código sucio te mata en el largo plazo. La elección es simple: inversión inteligente o deuda técnica letal.</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('Episodio 3 - Clean Code', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('Episodio 3 - Clean Code', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a', 'ingenieria', 'ep-ing-1')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
             </div>
           </article>
           
-          <article class="episode">
+          <article class="episode" id="ep-ing-2">
             <div class="episode-header">
               <div class="episode-number">2</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1484,14 +1495,14 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
             </div>
             <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('Episodio 2 - The Pragmatic Programmer', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('Episodio 2 - The Pragmatic Programmer', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a', 'ingenieria', 'ep-ing-2')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
             </div>
           </article>
           
-          <article class="episode">
+          <article class="episode" id="ep-ing-3">
             <div class="episode-header">
               <div class="episode-number">1</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1521,7 +1532,7 @@ El autor insiste en que antes de diseñar una solución técnica, tenés que ent
 
 En este episodio repasamos por qué este libro sigue siendo relevante, desde aplicaciones web hasta sistemas heredados, y por qué un enfoque de ingeniería adaptable es la única forma de garantizar calidad a largo plazo.</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('Episodio 1 - Pressman y la Ingeniería de Software como disciplina', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('Episodio 1 - Pressman y la Ingeniería de Software como disciplina', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a', 'ingenieria', 'ep-ing-3')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
@@ -1543,7 +1554,7 @@ En este episodio repasamos por qué este libro sigue siendo relevante, desde apl
         </div>
         <div class="episodes-list" id="list-crianza">
           
-          <article class="episode">
+          <article class="episode" id="ep-cri-1">
             <div class="episode-header">
               <div class="episode-number">2</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1571,14 +1582,14 @@ Exploramos cómo las rutinas, el contacto físico, el juego libre y la validaci�
 
 Este episodio es para quienes creen que criar no es solo alimentar y vestir, sino **acompañar la construcción de una mente**.</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('Episodio 5 - Cómo integrar el cerebro de tus hijos', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v.1.4.0/Como_integrar_el_cerebro_de_tus_hijos.m4a')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('Episodio 5 - Cómo integrar el cerebro de tus hijos', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v.1.4.0/Como_integrar_el_cerebro_de_tus_hijos.m4a', 'crianza', 'ep-cri-1')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
             </div>
           </article>
           
-          <article class="episode">
+          <article class="episode" id="ep-cri-2">
             <div class="episode-header">
               <div class="episode-number">1</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1606,7 +1617,7 @@ Criar sin pantallas no es un capricho romántico. Es una decisión consciente de
 
 Este episodio es una invitación a confiar en lo básico: menos contenido, más presencia. Menos scroll, más contacto.</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('Episodio 4 : Hoy hablamos de crianza', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('Episodio 4 : Hoy hablamos de crianza', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a', 'crianza', 'ep-cri-2')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
@@ -1628,7 +1639,7 @@ Este episodio es una invitación a confiar en lo básico: menos contenido, más 
         </div>
         <div class="episodes-list" id="list-politica">
           
-          <article class="episode">
+          <article class="episode" id="ep-pol-1">
             <div class="episode-header">
               <div class="episode-number">1</div>
               <div class="eq-bars" aria-hidden="true">
@@ -1656,7 +1667,7 @@ Analizamos los conceptos centrales: la virtù (capacidad de acción), la fortuna
 
 Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un manual del mal, es una radiografía despiadada de cómo funciona el poder humano.</div>
             <div class="episode-actions">
-              <button class="share-btn" onclick="shareEpisode('Episodio 6 - El Príncipe de Maquiavelo', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.5.0/Manual_de_supervivencia_para_el_poder_moderno.m4a')" aria-label="Compartir">
+              <button class="share-btn" onclick="shareEpisode('Episodio 6 - El Príncipe de Maquiavelo', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.5.0/Manual_de_supervivencia_para_el_poder_moderno.m4a', 'politica', 'ep-pol-1')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
                 Compartir
               </button>
@@ -2104,18 +2115,27 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       }
     });
 
-    function shareEpisode(title, url) {
+    function shareEpisode(title, audioUrl, category, episodeId) {
+      const shareUrl = new URL(window.location.href);
+      shareUrl.search = '';
+      shareUrl.hash = '';
+      if (category && category !== 'all') {
+        shareUrl.searchParams.set('cat', category);
+      }
+      if (episodeId) {
+        shareUrl.hash = episodeId;
+      }
+
       const shareData = {
         title: title,
         text: title + ' - Podcast Kanazawa',
-        url: url || window.location.href
+        url: shareUrl.toString()
       };
 
-      if (navigator.share && !url) {
+      if (navigator.share) {
         navigator.share(shareData).catch(() => {});
       } else {
-        const textToCopy = url ? shareData.text + '\n' + shareData.url : shareData.url;
-        navigator.clipboard.writeText(textToCopy).then(() => {
+        navigator.clipboard.writeText(shareData.url).then(() => {
           const toast = document.getElementById('share-toast');
           toast.classList.add('show');
           setTimeout(() => toast.classList.remove('show'), 2000);
@@ -2150,9 +2170,47 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       }
     }
 
+    // Handle shared link: ?cat=xxx#ep-yyy
+    function handleSharedLink() {
+      const url = new URL(window.location.href);
+      const cat = url.searchParams.get('cat');
+      const hash = url.hash.slice(1); // remove #
+
+      if (cat) {
+        filterCategory(cat);
+      }
+
+      if (hash) {
+        // Wait for filter to apply and DOM to settle
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            el.classList.add('highlight-pulse');
+            setTimeout(() => el.classList.remove('highlight-pulse'), 2000);
+
+            // Auto-load episode in player
+            const playBtn = el.querySelector('.episode-play-btn');
+            if (playBtn) {
+              const onclick = playBtn.getAttribute('onclick');
+              if (onclick) {
+                // Extract params from onclick: playEpisode(this, 'title', 'url', 'duration')
+                const match = onclick.match(/playEpisode\(this,\s*'([^']+)',\s*'([^']+)',\s*'([^']+)'\)/);
+                if (match) {
+                  const [, title, audioUrl, duration] = match;
+                  playEpisode(playBtn, title, audioUrl, duration);
+                }
+              }
+            }
+          }
+        }, 100);
+      }
+    }
+
     initTheme();
     restoreProgress();
     restoreSpeed();
+    handleSharedLink();
 
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
       if (!localStorage.getItem('theme')) {
