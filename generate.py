@@ -2,7 +2,7 @@
 import os
 import re
 import yaml
-from datetime import datetime
+from datetime import datetime, timedelta
 from email.utils import format_datetime
 from pathlib import Path
 
@@ -38,6 +38,7 @@ def main():
         config = yaml.safe_load(f)
 
     episodes = []
+    today = datetime.now().date()
     for path in sorted(EPISODES_DIR.glob("*.md")):
         with open(path, "r", encoding="utf-8") as f:
             meta, body = parse_frontmatter(f.read())
@@ -48,6 +49,7 @@ def main():
 
         audio_url = drive_direct_url(meta.get("audio_url", ""))
         image_url = drive_direct_url(meta.get("image_url", ""))
+        is_new = bool(date and (today - date) <= timedelta(days=7))
 
         episodes.append({
             "title": meta.get("title", path.stem),
@@ -60,6 +62,7 @@ def main():
             "description": body,
             "guid": f"{config['base_url']}/episodes/{path.stem}",
             "category": meta.get("category", "ingenieria"),
+            "is_new": is_new,
         })
 
     # Ordenar por fecha descendente

@@ -469,6 +469,156 @@
       border-radius: 8px;
     }
 
+    /* Transitions & glassmorphism */
+    .episode {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      border-radius: 8px;
+      padding: 1.5rem 0.75rem;
+      margin: 0 -0.75rem;
+      border-bottom: none;
+    }
+
+    .episode:not(:last-child) {
+      border-bottom: 1px solid var(--border);
+      border-radius: 8px 8px 0 0;
+    }
+
+    .episode:last-child {
+      border-bottom: none;
+    }
+
+    .episode:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      background: var(--surface);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .episode {
+      animation: fadeIn 0.4s ease forwards;
+    }
+
+    .episodes-list .episode:nth-child(1) { animation-delay: 0s; }
+    .episodes-list .episode:nth-child(2) { animation-delay: 0.05s; }
+    .episodes-list .episode:nth-child(3) { animation-delay: 0.1s; }
+    .episodes-list .episode:nth-child(4) { animation-delay: 0.15s; }
+    .episodes-list .episode:nth-child(5) { animation-delay: 0.2s; }
+    .episodes-list .episode:nth-child(6) { animation-delay: 0.25s; }
+    .episodes-list .episode:nth-child(7) { animation-delay: 0.3s; }
+    .episodes-list .episode:nth-child(8) { animation-delay: 0.35s; }
+
+    /* Nuevo badge */
+    .episode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: #ef4444;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.15rem 0.5rem;
+      border-radius: 100px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .episode-badge::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      background: #fff;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Share button */
+    .episode-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .share-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .share-btn:hover {
+      border-color: var(--text);
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .share-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .share-toast {
+      position: fixed;
+      bottom: 5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--text);
+      color: var(--bg);
+      padding: 0.625rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      z-index: 200;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    .share-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Playback speed */
+    .speed-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      min-width: 32px;
+    }
+
+    .speed-btn:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
     /* Sticky player */
     .sticky-player {
       position: fixed;
@@ -1286,7 +1436,7 @@
                 <div class="eq-bar"></div>
               </div>
               <div class="episode-info">
-                <h2>Episodio 3 - Clean Code</h2>
+                <h2>Episodio 3 - Clean Code<span class="episode-badge">Nuevo</span></h2>
                 <div class="meta">
                   <span>2026-05-06</span>
                   <span class="meta-separator"></span>
@@ -1304,6 +1454,12 @@ El mensaje central es brutalmente simple: **el código limpio es una responsabil
 Martin propone principios concretos: nombres que revelen intención, funciones que hagan UNA sola cosa, comentarios que no compensen código confuso, y la disciplina de refactorizar constantemente. Pero lo más importante es la mentalidad: el código que escribís hoy va a ser leído cientos de veces. Escribilo como si el próximo desarrollador fuera un psicópata violento que sabe dónde vivís.
 
 ¿Código limpio es más lento? Al principio sí. Pero el código sucio te mata en el largo plazo. La elección es simple: inversión inteligente o deuda técnica letal.</div>
+            <div class="episode-actions">
+              <button class="share-btn" onclick="shareEpisode('Episodio 3 - Clean Code', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a')" aria-label="Compartir">
+                <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                Compartir
+              </button>
+            </div>
           </article>
           
           <article class="episode">
@@ -1315,7 +1471,7 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
                 <div class="eq-bar"></div>
               </div>
               <div class="episode-info">
-                <h2>Episodio 2 - The Pragmatic Programmer</h2>
+                <h2>Episodio 2 - The Pragmatic Programmer<span class="episode-badge">Nuevo</span></h2>
                 <div class="meta">
                   <span>2026-05-05</span>
                   <span class="meta-separator"></span>
@@ -1327,6 +1483,12 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
               
             </div>
             <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
+            <div class="episode-actions">
+              <button class="share-btn" onclick="shareEpisode('Episodio 2 - The Pragmatic Programmer', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a')" aria-label="Compartir">
+                <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                Compartir
+              </button>
+            </div>
           </article>
           
           <article class="episode">
@@ -1338,7 +1500,7 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
                 <div class="eq-bar"></div>
               </div>
               <div class="episode-info">
-                <h2>Episodio 1 - Pressman y la Ingeniería de Software como disciplina</h2>
+                <h2>Episodio 1 - Pressman y la Ingeniería de Software como disciplina<span class="episode-badge">Nuevo</span></h2>
                 <div class="meta">
                   <span>2026-05-04</span>
                   <span class="meta-separator"></span>
@@ -1358,6 +1520,12 @@ Lo que me gusta de Pressman es que no se olvida de lo obvio: el software es un p
 El autor insiste en que antes de diseñar una solución técnica, tenés que entender el problema. Suena simple, pero mirá cuántos proyectos fallan por empezar a codear sin saber qué están resolviendo.
 
 En este episodio repasamos por qué este libro sigue siendo relevante, desde aplicaciones web hasta sistemas heredados, y por qué un enfoque de ingeniería adaptable es la única forma de garantizar calidad a largo plazo.</div>
+            <div class="episode-actions">
+              <button class="share-btn" onclick="shareEpisode('Episodio 1 - Pressman y la Ingeniería de Software como disciplina', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a')" aria-label="Compartir">
+                <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                Compartir
+              </button>
+            </div>
           </article>
           
         </div>
@@ -1384,7 +1552,7 @@ En este episodio repasamos por qué este libro sigue siendo relevante, desde apl
                 <div class="eq-bar"></div>
               </div>
               <div class="episode-info">
-                <h2>Episodio 5 - Cómo integrar el cerebro de tus hijos</h2>
+                <h2>Episodio 5 - Cómo integrar el cerebro de tus hijos<span class="episode-badge">Nuevo</span></h2>
                 <div class="meta">
                   <span>2026-05-08</span>
                   <span class="meta-separator"></span>
@@ -1402,6 +1570,12 @@ El cerebro infantil no es una miniatura del adulto: está en constante construcc
 Exploramos cómo las rutinas, el contacto físico, el juego libre y la validación emocional contribuyen a una integración cerebral saludada. Un cerebro integrado es un cerebro que puede regular emociones, tomar decisiones conscientes y construir relaciones significativas.
 
 Este episodio es para quienes creen que criar no es solo alimentar y vestir, sino **acompañar la construcción de una mente**.</div>
+            <div class="episode-actions">
+              <button class="share-btn" onclick="shareEpisode('Episodio 5 - Cómo integrar el cerebro de tus hijos', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v.1.4.0/Como_integrar_el_cerebro_de_tus_hijos.m4a')" aria-label="Compartir">
+                <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                Compartir
+              </button>
+            </div>
           </article>
           
           <article class="episode">
@@ -1413,7 +1587,7 @@ Este episodio es para quienes creen que criar no es solo alimentar y vestir, sin
                 <div class="eq-bar"></div>
               </div>
               <div class="episode-info">
-                <h2>Episodio 4 : Hoy hablamos de crianza</h2>
+                <h2>Episodio 4 : Hoy hablamos de crianza<span class="episode-badge">Nuevo</span></h2>
                 <div class="meta">
                   <span>2026-05-07</span>
                   <span class="meta-separator"></span>
@@ -1431,6 +1605,12 @@ La pantalla no es un peligro por sí sola, pero sí lo es cuando reemplaza lo es
 Criar sin pantallas no es un capricho romántico. Es una decisión consciente de priorizar la **neuroplasticidad natural**, la regulación emocional a través del cuerpo, y el aprendizaje por descubrimiento sobre la estimulación pasiva. El mundo real, con toda su lentitud y fricción, es el mejor entorno para que un cerebro en desarrollo se conecte de verdad.
 
 Este episodio es una invitación a confiar en lo básico: menos contenido, más presencia. Menos scroll, más contacto.</div>
+            <div class="episode-actions">
+              <button class="share-btn" onclick="shareEpisode('Episodio 4 : Hoy hablamos de crianza', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a')" aria-label="Compartir">
+                <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                Compartir
+              </button>
+            </div>
           </article>
           
         </div>
@@ -1457,7 +1637,7 @@ Este episodio es una invitación a confiar en lo básico: menos contenido, más 
                 <div class="eq-bar"></div>
               </div>
               <div class="episode-info">
-                <h2>Episodio 6 - El Príncipe de Maquiavelo</h2>
+                <h2>Episodio 6 - El Príncipe de Maquiavelo<span class="episode-badge">Nuevo</span></h2>
                 <div class="meta">
                   <span>2026-05-09</span>
                   <span class="meta-separator"></span>
@@ -1475,12 +1655,21 @@ Maquiavelo rompe con la tradición medieval de justificar el poder desde la mora
 Analizamos los conceptos centrales: la virtù (capacidad de acción), la fortuna (lo que escapa al control), el uso estratégico del miedo y el amor, y por qué Maquiavelo sigue siendo relevante en democracias modernas donde el marketing político reemplazó a las espadas.
 
 Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un manual del mal, es una radiografía despiadada de cómo funciona el poder humano.</div>
+            <div class="episode-actions">
+              <button class="share-btn" onclick="shareEpisode('Episodio 6 - El Príncipe de Maquiavelo', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.5.0/Manual_de_supervivencia_para_el_poder_moderno.m4a')" aria-label="Compartir">
+                <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                Compartir
+              </button>
+            </div>
           </article>
           
         </div>
       </div>
       
     </main>
+
+    <!-- Share toast -->
+    <div class="share-toast" id="share-toast">Enlace copiado al portapapeles</div>
 
     <!-- Sticky Player -->
     <div class="sticky-player hidden" id="sticky-player">
@@ -1493,7 +1682,7 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
           <div class="player-subtitle" id="player-subtitle">Podcast Kanazawa</div>
         </div>
       </div>
-      <div class="player-controls">
+        <div class="player-controls">
         <button class="player-btn" id="play-btn" onclick="togglePlay()" aria-label="Reproducir/Pausar">
           <svg id="icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
           <svg id="icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -1503,6 +1692,7 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
           <input type="range" id="progress-bar" value="0" min="0" max="100" step="0.1" oninput="seekAudio(this.value)">
           <span class="player-time" id="total-time">0:00</span>
         </div>
+        <button class="speed-btn" id="speed-btn" onclick="cycleSpeed()" aria-label="Velocidad de reproducción">1x</button>
       </div>
       <audio id="global-audio" preload="metadata"></audio>
     </div>
@@ -1527,6 +1717,7 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
           </div>
         </div>
         <div class="fs-controls">
+          <button class="speed-btn" id="fs-speed-btn" onclick="cycleSpeed()" aria-label="Velocidad de reproducción">1x</button>
           <button class="fs-btn fs-btn-play" id="fs-play-btn" onclick="togglePlay()" aria-label="Reproducir/Pausar">
             <svg id="fs-icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             <svg id="fs-icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -1888,8 +2079,80 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       localStorage.setItem('theme', newIsLight ? 'light' : 'dark');
     }
 
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      // Ignorar si el foco está en un input
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+      switch (e.key) {
+        case ' ':
+          e.preventDefault();
+          togglePlay();
+          break;
+        case 'ArrowLeft':
+          e.preventDefault();
+          if (audio.duration) {
+            audio.currentTime = Math.max(0, audio.currentTime - 10);
+          }
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          if (audio.duration) {
+            audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
+          }
+          break;
+      }
+    });
+
+    function shareEpisode(title, url) {
+      const shareData = {
+        title: title,
+        text: title + ' - Podcast Kanazawa',
+        url: url || window.location.href
+      };
+
+      if (navigator.share && !url) {
+        navigator.share(shareData).catch(() => {});
+      } else {
+        const textToCopy = url ? shareData.text + '\n' + shareData.url : shareData.url;
+        navigator.clipboard.writeText(textToCopy).then(() => {
+          const toast = document.getElementById('share-toast');
+          toast.classList.add('show');
+          setTimeout(() => toast.classList.remove('show'), 2000);
+        });
+      }
+    }
+
+    // Playback speed
+    const speeds = [1, 1.5, 2];
+    let speedIndex = 0;
+
+    function cycleSpeed() {
+      speedIndex = (speedIndex + 1) % speeds.length;
+      const speed = speeds[speedIndex];
+      audio.playbackRate = speed;
+      document.getElementById('speed-btn').textContent = speed + 'x';
+      document.getElementById('fs-speed-btn').textContent = speed + 'x';
+      localStorage.setItem('kanazawa-speed', speed);
+    }
+
+    function restoreSpeed() {
+      const saved = localStorage.getItem('kanazawa-speed');
+      if (saved) {
+        const speed = parseFloat(saved);
+        const idx = speeds.indexOf(speed);
+        if (idx !== -1) {
+          speedIndex = idx;
+          audio.playbackRate = speed;
+          document.getElementById('speed-btn').textContent = speed + 'x';
+          document.getElementById('fs-speed-btn').textContent = speed + 'x';
+        }
+      }
+    }
+
     initTheme();
     restoreProgress();
+    restoreSpeed();
 
     window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
       if (!localStorage.getItem('theme')) {
