@@ -78,39 +78,39 @@
     }
 
     .episodes-column[data-cat="ingenieria"] {
-      --cat-color: #3b82f6;
+      --cat-color: #8bb4ff;
     }
 
     .episodes-column[data-cat="crianza"] {
-      --cat-color: #10b981;
+      --cat-color: #7dd3b2;
     }
 
     .episodes-column[data-cat="politica"] {
-      --cat-color: #f59e0b;
+      --cat-color: #fde047;
     }
 
     .episodes-column[data-cat="ingenieria"] .section-title {
-      color: #3b82f6;
+      color: #8bb4ff;
     }
 
     .episodes-column[data-cat="crianza"] .section-title {
-      color: #10b981;
+      color: #7dd3b2;
     }
 
     .episodes-column[data-cat="politica"] .section-title {
-      color: #f59e0b;
+      color: #fde047;
     }
 
     .episodes-column[data-cat="ingenieria"] .column-header {
-      border-bottom: 2px solid #3b82f6;
+      border-bottom: 2px solid #8bb4ff;
     }
 
     .episodes-column[data-cat="crianza"] .column-header {
-      border-bottom: 2px solid #10b981;
+      border-bottom: 2px solid #7dd3b2;
     }
 
     .episodes-column[data-cat="politica"] .column-header {
-      border-bottom: 2px solid #f59e0b;
+      border-bottom: 2px solid #fde047;
     }
 
     /* Filter tabs */
@@ -147,20 +147,20 @@
     }
 
     .filter-tab[data-filter="ingenieria"].active {
-      background: #3b82f6;
-      border-color: #3b82f6;
+      background: #8bb4ff;
+      border-color: #8bb4ff;
       color: #fff;
     }
 
     .filter-tab[data-filter="crianza"].active {
-      background: #10b981;
-      border-color: #10b981;
+      background: #7dd3b2;
+      border-color: #7dd3b2;
       color: #fff;
     }
 
     .filter-tab[data-filter="politica"].active {
-      background: #f59e0b;
-      border-color: #f59e0b;
+      background: #fde047;
+      border-color: #fde047;
       color: #000;
     }
 
@@ -716,6 +716,21 @@
       fill: currentColor;
     }
 
+    .timer-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      width: 36px;
+      height: 36px;
+      position: relative;
+    }
+
+    .timer-btn:hover {
+      border-color: var(--text);
+      color: var(--text);
+      opacity: 1;
+    }
+
     .player-progress {
       display: flex;
       align-items: center;
@@ -929,8 +944,120 @@
       height: 28px;
     }
 
+    .fs-btn-prev svg,
+    .fs-btn-next svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .fs-btn-timer {
+      position: relative;
+    }
+
+    .fs-btn-timer svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
+    .timer-indicator {
+      position: absolute;
+      top: -4px;
+      right: -4px;
+      width: 8px;
+      height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      display: none;
+    }
+
+    .timer-indicator.active {
+      display: block;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
     .player-info {
       cursor: pointer;
+    }
+
+    /* Mini progress bar */
+    .episode-progress {
+      margin-top: 0.5rem;
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .episode-progress.visible {
+      display: block;
+    }
+
+    .episode-progress-fill {
+      height: 100%;
+      background: var(--cat-color, var(--text-secondary));
+      border-radius: 2px;
+      transition: width 0.3s ease;
+    }
+
+    /* Sleep timer menu */
+    .timer-menu {
+      position: fixed;
+      bottom: 7rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      z-index: 150;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .timer-menu.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .timer-option {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .timer-option:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    .timer-option.active {
+      background: var(--text);
+      color: var(--bg);
+      border-color: var(--text);
     }
 
     /* Subscribe */
@@ -1456,6 +1583,9 @@ El mensaje central es brutalmente simple: **el código limpio es una responsabil
 Martin propone principios concretos: nombres que revelen intención, funciones que hagan UNA sola cosa, comentarios que no compensen código confuso, y la disciplina de refactorizar constantemente. Pero lo más importante es la mentalidad: el código que escribís hoy va a ser leído cientos de veces. Escribilo como si el próximo desarrollador fuera un psicópata violento que sabe dónde vivís.
 
 ¿Código limpio es más lento? Al principio sí. Pero el código sucio te mata en el largo plazo. La elección es simple: inversión inteligente o deuda técnica letal.</div>
+            <div class="episode-progress" data-audio="https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a" data-duration="27:41">
+              <div class="episode-progress-fill" style="width: 0%"></div>
+            </div>
             <div class="episode-actions">
               <button class="share-btn" onclick="shareEpisode('Episodio 3 - Clean Code', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/1.2.0/Por_que_el_codigo_sucio_destruye_empresas.m4a', 'ingenieria', 'ep-ing-1')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
@@ -1485,6 +1615,9 @@ Martin propone principios concretos: nombres que revelen intención, funciones q
               
             </div>
             <div class="episode-description">The Pragmatic Programmer, escrito por Andrew Hunt y David Thomas, es un manual fundamental que propone una filosofía práctica para alcanzar la excelencia en el desarrollo de software. El texto enfatiza que la programación es un oficio que requiere responsabilidad personal, una mentalidad crítica y un compromiso con la mejora constante. A través de consejos prácticos, los autores instan a los desarrolladores a evitar las excusas mediocres y a combatir activamente el deterioro del código o la entropía del software. La obra se organiza en secciones modulares que cubren desde el uso de herramientas básicas hasta la gestión de proyectos complejos. En definitiva, el libro busca transformar a los programadores en maestros artesanos capaces de adaptarse a cualquier desafío tecnológico mediante el pensamiento reflexivo.</div>
+            <div class="episode-progress" data-audio="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a" data-duration="13:28">
+              <div class="episode-progress-fill" style="width: 0%"></div>
+            </div>
             <div class="episode-actions">
               <button class="share-btn" onclick="shareEpisode('Episodio 2 - The Pragmatic Programmer', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.1.0/Gestiona_tu_vida_como_un_programador_pragmatico.m4a', 'ingenieria', 'ep-ing-2')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
@@ -1522,6 +1655,9 @@ Lo que me gusta de Pressman es que no se olvida de lo obvio: el software es un p
 El autor insiste en que antes de diseñar una solución técnica, tenés que entender el problema. Suena simple, pero mirá cuántos proyectos fallan por empezar a codear sin saber qué están resolviendo.
 
 En este episodio repasamos por qué este libro sigue siendo relevante, desde aplicaciones web hasta sistemas heredados, y por qué un enfoque de ingeniería adaptable es la única forma de garantizar calidad a largo plazo.</div>
+            <div class="episode-progress" data-audio="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a" data-duration="32:45">
+              <div class="episode-progress-fill" style="width: 0%"></div>
+            </div>
             <div class="episode-actions">
               <button class="share-btn" onclick="shareEpisode('Episodio 1 - Pressman y la Ingeniería de Software como disciplina', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.0.0/episodio-pressman.m4a', 'ingenieria', 'ep-ing-3')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
@@ -1572,6 +1708,9 @@ El cerebro infantil no es una miniatura del adulto: está en constante construcc
 Exploramos cómo las rutinas, el contacto físico, el juego libre y la validación emocional contribuyen a una integración cerebral saludada. Un cerebro integrado es un cerebro que puede regular emociones, tomar decisiones conscientes y construir relaciones significativas.
 
 Este episodio es para quienes creen que criar no es solo alimentar y vestir, sino **acompañar la construcción de una mente**.</div>
+            <div class="episode-progress" data-audio="https://github.com/kanazawa-dev/personal-podcast/releases/download/v.1.4.0/Como_integrar_el_cerebro_de_tus_hijos.m4a" data-duration="31:43">
+              <div class="episode-progress-fill" style="width: 0%"></div>
+            </div>
             <div class="episode-actions">
               <button class="share-btn" onclick="shareEpisode('Episodio 5 - Cómo integrar el cerebro de tus hijos', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v.1.4.0/Como_integrar_el_cerebro_de_tus_hijos.m4a', 'crianza', 'ep-cri-1')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
@@ -1607,6 +1746,9 @@ La pantalla no es un peligro por sí sola, pero sí lo es cuando reemplaza lo es
 Criar sin pantallas no es un capricho romántico. Es una decisión consciente de priorizar la **neuroplasticidad natural**, la regulación emocional a través del cuerpo, y el aprendizaje por descubrimiento sobre la estimulación pasiva. El mundo real, con toda su lentitud y fricción, es el mejor entorno para que un cerebro en desarrollo se conecte de verdad.
 
 Este episodio es una invitación a confiar en lo básico: menos contenido, más presencia. Menos scroll, más contacto.</div>
+            <div class="episode-progress" data-audio="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a" data-duration="17:12">
+              <div class="episode-progress-fill" style="width: 0%"></div>
+            </div>
             <div class="episode-actions">
               <button class="share-btn" onclick="shareEpisode('Episodio 4 : Hoy hablamos de crianza', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.3.0/Criar_sin_pantallas_de_cero_a_seis.m4a', 'crianza', 'ep-cri-2')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
@@ -1657,6 +1799,9 @@ Maquiavelo rompe con la tradición medieval de justificar el poder desde la mora
 Analizamos los conceptos centrales: la virtù (capacidad de acción), la fortuna (lo que escapa al control), el uso estratégico del miedo y el amor, y por qué Maquiavelo sigue siendo relevante en democracias modernas donde el marketing político reemplazó a las espadas.
 
 Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un manual del mal, es una radiografía despiadada de cómo funciona el poder humano.</div>
+            <div class="episode-progress" data-audio="https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.5.0/Manual_de_supervivencia_para_el_poder_moderno.m4a" data-duration="22:43">
+              <div class="episode-progress-fill" style="width: 0%"></div>
+            </div>
             <div class="episode-actions">
               <button class="share-btn" onclick="shareEpisode('Episodio 6 - El Príncipe de Maquiavelo', 'https://github.com/kanazawa-dev/personal-podcast/releases/download/v1.5.0/Manual_de_supervivencia_para_el_poder_moderno.m4a', 'politica', 'ep-pol-1')" aria-label="Compartir">
                 <svg viewBox="0 0 24 24"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
@@ -1672,6 +1817,16 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
 
     <!-- Share toast -->
     <div class="share-toast" id="share-toast">Enlace copiado al portapapeles</div>
+
+    <!-- Sleep timer menu -->
+    <div class="timer-menu" id="timer-menu">
+      <button class="timer-option" data-min="5" onclick="setSleepTimer(5)">5 min</button>
+      <button class="timer-option" data-min="15" onclick="setSleepTimer(15)">15 min</button>
+      <button class="timer-option" data-min="30" onclick="setSleepTimer(30)">30 min</button>
+      <button class="timer-option" data-min="45" onclick="setSleepTimer(45)">45 min</button>
+      <button class="timer-option" data-min="60" onclick="setSleepTimer(60)">60 min</button>
+      <button class="timer-option" onclick="clearSleepTimer()">Off</button>
+    </div>
 
     <!-- Sticky Player -->
     <div class="sticky-player hidden" id="sticky-player">
@@ -1695,6 +1850,10 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
           <span class="player-time" id="total-time">0:00</span>
         </div>
         <button class="speed-btn" id="speed-btn" onclick="cycleSpeed()" aria-label="Velocidad de reproducción">1x</button>
+        <button class="player-btn timer-btn" id="sticky-timer-btn" onclick="toggleSleepTimer()" aria-label="Temporizador">
+          <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="timer-indicator" id="sticky-timer-indicator"></span>
+        </button>
       </div>
       <audio id="global-audio" preload="metadata"></audio>
     </div>
@@ -1720,9 +1879,19 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
         </div>
         <div class="fs-controls">
           <button class="speed-btn" id="fs-speed-btn" onclick="cycleSpeed()" aria-label="Velocidad de reproducción">1x</button>
+          <button class="fs-btn fs-btn-prev" id="fs-prev-btn" onclick="playPrevEpisode()" aria-label="Anterior">
+            <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+          </button>
           <button class="fs-btn fs-btn-play" id="fs-play-btn" onclick="togglePlay()" aria-label="Reproducir/Pausar">
             <svg id="fs-icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             <svg id="fs-icon-pause" viewBox="0 0 24 24" style="display:none"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+          </button>
+          <button class="fs-btn fs-btn-next" id="fs-next-btn" onclick="playNextEpisode()" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+          </button>
+          <button class="fs-btn fs-btn-timer" id="fs-timer-btn" onclick="toggleSleepTimer()" aria-label="Temporizador">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span class="timer-indicator" id="timer-indicator"></span>
           </button>
         </div>
       </div>
@@ -1830,6 +1999,9 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
     let currentEpisodeBtn = null;
     let currentEpisodeData = null;
     let saveTimer = null;
+    let episodeList = [];
+    let currentEpisodeIndex = -1;
+    let sleepTimerTimeout = null;
     const audio = document.getElementById('global-audio');
     const player = document.getElementById('sticky-player');
     const playBtn = document.getElementById('play-btn');
@@ -1855,6 +2027,60 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
           savedAt: Date.now()
         }));
       }
+    }
+
+    function saveAllProgress() {
+      if (!audio.src || !audio.duration) return;
+      const allProgress = JSON.parse(localStorage.getItem('kanazawa-all-progress') || '{}');
+      allProgress[audio.src] = {
+        time: audio.currentTime,
+        duration: audio.duration,
+        savedAt: Date.now()
+      };
+      localStorage.setItem('kanazawa-all-progress', JSON.stringify(allProgress));
+    }
+
+    function getEpisodeProgress(url) {
+      const allProgress = JSON.parse(localStorage.getItem('kanazawa-all-progress') || '{}');
+      return allProgress[url] || null;
+    }
+
+    function buildEpisodeList() {
+      episodeList = [];
+      document.querySelectorAll('.episode').forEach(ep => {
+        const btn = ep.querySelector('.episode-play-btn');
+        if (!btn) return;
+        const onclick = btn.getAttribute('onclick');
+        const match = onclick.match(/playEpisode\(this,\s*'([^']+)',\s*'([^']+)',\s*'([^']+)'\)/);
+        if (match) {
+          episodeList.push({
+            title: match[1],
+            url: match[2],
+            duration: match[3],
+            btn: btn,
+            element: ep
+          });
+        }
+      });
+    }
+
+    function findEpisodeIndex(url) {
+      return episodeList.findIndex(e => e.url === url);
+    }
+
+    function updateMiniProgressBars() {
+      const allProgress = JSON.parse(localStorage.getItem('kanazawa-all-progress') || '{}');
+      document.querySelectorAll('.episode-progress').forEach(bar => {
+        const audioUrl = bar.dataset.audio;
+        const progress = allProgress[audioUrl];
+        if (progress && progress.duration) {
+          const pct = Math.min(100, (progress.time / progress.duration) * 100);
+          bar.querySelector('.episode-progress-fill').style.width = pct + '%';
+          bar.classList.add('visible');
+        } else {
+          bar.classList.remove('visible');
+        }
+      });
     }
 
     function restoreProgress() {
@@ -1923,6 +2149,7 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       // Marcar nuevo episodio
       currentEpisodeBtn = btn;
       currentEpisodeData = { url, title, duration };
+      currentEpisodeIndex = findEpisodeIndex(url);
       if (btn) {
         btn.querySelector('.icon-play').style.display = 'none';
         btn.querySelector('.icon-pause').style.display = 'block';
@@ -1939,6 +2166,7 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       fsTotal.textContent = duration;
       updatePlayButton(true);
       saveProgress();
+      saveAllProgress();
     }
 
     function togglePlay() {
@@ -2003,6 +2231,8 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       if (!saveTimer) {
         saveTimer = setTimeout(() => {
           saveProgress();
+          saveAllProgress();
+          updateMiniProgressBars();
           saveTimer = null;
         }, 5000);
       }
@@ -2022,6 +2252,11 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
         currentEpisodeBtn.querySelector('.icon-pause').style.display = 'none';
       }
       localStorage.removeItem('kanazawa-player');
+      // Auto-play next episode
+      if (currentEpisodeIndex !== -1 && currentEpisodeIndex < episodeList.length - 1) {
+        const next = episodeList[currentEpisodeIndex + 1];
+        playEpisode(next.btn, next.title, next.url, next.duration);
+      }
     });
 
     // Tema oscuro/claro
@@ -2081,6 +2316,65 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       localStorage.setItem('theme', newIsLight ? 'light' : 'dark');
     }
 
+    // Episode navigation
+    function playNextEpisode() {
+      if (currentEpisodeIndex === -1) return;
+      const nextIndex = (currentEpisodeIndex + 1) % episodeList.length;
+      const next = episodeList[nextIndex];
+      playEpisode(next.btn, next.title, next.url, next.duration);
+    }
+
+    function playPrevEpisode() {
+      if (currentEpisodeIndex === -1) return;
+      const prevIndex = (currentEpisodeIndex - 1 + episodeList.length) % episodeList.length;
+      const prev = episodeList[prevIndex];
+      playEpisode(prev.btn, prev.title, prev.url, prev.duration);
+    }
+
+    // Sleep timer
+    function setSleepTimer(minutes) {
+      clearSleepTimer();
+      sleepTimerTimeout = setTimeout(() => {
+        audio.pause();
+        updatePlayButton(false);
+        if (currentEpisodeBtn) {
+          currentEpisodeBtn.querySelector('.icon-play').style.display = 'block';
+          currentEpisodeBtn.querySelector('.icon-pause').style.display = 'none';
+        }
+        clearSleepTimer();
+      }, minutes * 60 * 1000);
+      updateTimerIndicators(true);
+      document.querySelectorAll('.timer-option').forEach(b => b.classList.toggle('active', b.dataset.min === String(minutes)));
+      document.getElementById('timer-menu').classList.remove('show');
+    }
+
+    function clearSleepTimer() {
+      if (sleepTimerTimeout) {
+        clearTimeout(sleepTimerTimeout);
+        sleepTimerTimeout = null;
+      }
+      updateTimerIndicators(false);
+      document.querySelectorAll('.timer-option').forEach(b => b.classList.remove('active'));
+    }
+
+    function toggleSleepTimer() {
+      document.getElementById('timer-menu').classList.toggle('show');
+    }
+
+    function updateTimerIndicators(active) {
+      document.getElementById('timer-indicator').classList.toggle('active', active);
+      document.getElementById('sticky-timer-indicator').classList.toggle('active', active);
+    }
+
+    // Close timer menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('timer-menu');
+      const btn = e.target.closest('.fs-btn-timer, .timer-btn');
+      if (!btn && menu.classList.contains('show')) {
+        menu.classList.remove('show');
+      }
+    });
+
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       // Ignorar si el foco está en un input
@@ -2102,6 +2396,16 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
           if (audio.duration) {
             audio.currentTime = Math.min(audio.duration, audio.currentTime + 10);
           }
+          break;
+        case 'n':
+        case 'N':
+          e.preventDefault();
+          playNextEpisode();
+          break;
+        case 'p':
+        case 'P':
+          e.preventDefault();
+          playPrevEpisode();
           break;
       }
     });
@@ -2199,6 +2503,8 @@ Este episodio es una invitación a leer a Maquiavelo sin prejuicios: no es un ma
       }
     }
 
+    buildEpisodeList();
+    updateMiniProgressBars();
     initTheme();
     restoreProgress();
     restoreSpeed();
